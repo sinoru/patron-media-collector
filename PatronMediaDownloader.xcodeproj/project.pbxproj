@@ -1,0 +1,971 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		198D1D022B70CA3200EC2215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D012B70CA3200EC2215 /* AppDelegate.swift */; };
+		198D1D042B70CA3200EC2215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D032B70CA3200EC2215 /* SceneDelegate.swift */; };
+		198D1D072B70CA3200EC2215 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198D1D052B70CA3200EC2215 /* LaunchScreen.storyboard */; };
+		198D1D0A2B70CA3200EC2215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198D1D082B70CA3200EC2215 /* Main.storyboard */; };
+		198D1D132B70CA3200EC2215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D122B70CA3200EC2215 /* AppDelegate.swift */; };
+		198D1D162B70CA3200EC2215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198D1D142B70CA3200EC2215 /* Main.storyboard */; };
+		198D1D1D2B70CA3200EC2215 /* PatronMediaDownloader Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 198D1D1C2B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		198D1D272B70CA3200EC2215 /* PatronMediaDownloader Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 198D1D262B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		198D1D2D2B70CA3200EC2215 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CE82B70CA3100EC2215 /* Main.html */; };
+		198D1D2E2B70CA3200EC2215 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CE82B70CA3100EC2215 /* Main.html */; };
+		198D1D2F2B70CA3200EC2215 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEA2B70CA3100EC2215 /* Icon.png */; };
+		198D1D302B70CA3200EC2215 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEA2B70CA3100EC2215 /* Icon.png */; };
+		198D1D312B70CA3200EC2215 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEB2B70CA3100EC2215 /* Style.css */; };
+		198D1D322B70CA3200EC2215 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEB2B70CA3100EC2215 /* Style.css */; };
+		198D1D332B70CA3200EC2215 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEC2B70CA3100EC2215 /* Script.js */; };
+		198D1D342B70CA3200EC2215 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEC2B70CA3100EC2215 /* Script.js */; };
+		198D1D352B70CA3200EC2215 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1CED2B70CA3100EC2215 /* ViewController.swift */; };
+		198D1D362B70CA3200EC2215 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1CED2B70CA3100EC2215 /* ViewController.swift */; };
+		198D1D372B70CA3200EC2215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEE2B70CA3200EC2215 /* Assets.xcassets */; };
+		198D1D382B70CA3200EC2215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CEE2B70CA3200EC2215 /* Assets.xcassets */; };
+		198D1D392B70CA3200EC2215 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1CF02B70CA3200EC2215 /* SafariWebExtensionHandler.swift */; };
+		198D1D3A2B70CA3200EC2215 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1CF02B70CA3200EC2215 /* SafariWebExtensionHandler.swift */; };
+		198D1D3B2B70CA3200EC2215 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF22B70CA3200EC2215 /* _locales */; };
+		198D1D3C2B70CA3200EC2215 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF22B70CA3200EC2215 /* _locales */; };
+		198D1D3D2B70CA3200EC2215 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF32B70CA3200EC2215 /* images */; };
+		198D1D3E2B70CA3200EC2215 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF32B70CA3200EC2215 /* images */; };
+		198D1D3F2B70CA3200EC2215 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF42B70CA3200EC2215 /* manifest.json */; };
+		198D1D402B70CA3200EC2215 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF42B70CA3200EC2215 /* manifest.json */; };
+		198D1D412B70CA3200EC2215 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF52B70CA3200EC2215 /* background.js */; };
+		198D1D422B70CA3200EC2215 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF52B70CA3200EC2215 /* background.js */; };
+		198D1D432B70CA3200EC2215 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF62B70CA3200EC2215 /* content.js */; };
+		198D1D442B70CA3200EC2215 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF62B70CA3200EC2215 /* content.js */; };
+		198D1D452B70CA3200EC2215 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF72B70CA3200EC2215 /* popup.html */; };
+		198D1D462B70CA3200EC2215 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF72B70CA3200EC2215 /* popup.html */; };
+		198D1D472B70CA3200EC2215 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF82B70CA3200EC2215 /* popup.css */; };
+		198D1D482B70CA3200EC2215 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF82B70CA3200EC2215 /* popup.css */; };
+		198D1D492B70CA3200EC2215 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF92B70CA3200EC2215 /* popup.js */; };
+		198D1D4A2B70CA3200EC2215 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 198D1CF92B70CA3200EC2215 /* popup.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		198D1D1E2B70CA3200EC2215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 198D1CE22B70CA3100EC2215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 198D1D1B2B70CA3200EC2215;
+			remoteInfo = "PatronMediaDownloader Extension (iOS)";
+		};
+		198D1D282B70CA3200EC2215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 198D1CE22B70CA3100EC2215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 198D1D252B70CA3200EC2215;
+			remoteInfo = "PatronMediaDownloader Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		198D1D502B70CA3200EC2215 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				198D1D1D2B70CA3200EC2215 /* PatronMediaDownloader Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D572B70CA3200EC2215 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				198D1D272B70CA3200EC2215 /* PatronMediaDownloader Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		198D1CE92B70CA3100EC2215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		198D1CEA2B70CA3100EC2215 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		198D1CEB2B70CA3100EC2215 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		198D1CEC2B70CA3100EC2215 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		198D1CED2B70CA3100EC2215 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		198D1CEE2B70CA3200EC2215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		198D1CF02B70CA3200EC2215 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		198D1CF22B70CA3200EC2215 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
+		198D1CF32B70CA3200EC2215 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		198D1CF42B70CA3200EC2215 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		198D1CF52B70CA3200EC2215 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		198D1CF62B70CA3200EC2215 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		198D1CF72B70CA3200EC2215 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		198D1CF82B70CA3200EC2215 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		198D1CF92B70CA3200EC2215 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		198D1CFE2B70CA3200EC2215 /* PatronMediaDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatronMediaDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		198D1D012B70CA3200EC2215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		198D1D032B70CA3200EC2215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		198D1D062B70CA3200EC2215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		198D1D092B70CA3200EC2215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		198D1D0B2B70CA3200EC2215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		198D1D102B70CA3200EC2215 /* PatronMediaDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatronMediaDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		198D1D122B70CA3200EC2215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		198D1D152B70CA3200EC2215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		198D1D172B70CA3200EC2215 /* PatronMediaDownloader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PatronMediaDownloader.entitlements; sourceTree = "<group>"; };
+		198D1D1C2B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PatronMediaDownloader Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		198D1D212B70CA3200EC2215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		198D1D262B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PatronMediaDownloader Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		198D1D2B2B70CA3200EC2215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		198D1D2C2B70CA3200EC2215 /* PatronMediaDownloader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PatronMediaDownloader.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		198D1CFB2B70CA3200EC2215 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D0D2B70CA3200EC2215 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D192B70CA3200EC2215 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D232B70CA3200EC2215 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		198D1CE12B70CA3100EC2215 = {
+			isa = PBXGroup;
+			children = (
+				198D1CE62B70CA3100EC2215 /* Shared (App) */,
+				198D1CEF2B70CA3200EC2215 /* Shared (Extension) */,
+				198D1D002B70CA3200EC2215 /* iOS (App) */,
+				198D1D112B70CA3200EC2215 /* macOS (App) */,
+				198D1D202B70CA3200EC2215 /* iOS (Extension) */,
+				198D1D2A2B70CA3200EC2215 /* macOS (Extension) */,
+				198D1CFF2B70CA3200EC2215 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		198D1CE62B70CA3100EC2215 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				198D1CED2B70CA3100EC2215 /* ViewController.swift */,
+				198D1CEE2B70CA3200EC2215 /* Assets.xcassets */,
+				198D1CE72B70CA3100EC2215 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		198D1CE72B70CA3100EC2215 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				198D1CE82B70CA3100EC2215 /* Main.html */,
+				198D1CEA2B70CA3100EC2215 /* Icon.png */,
+				198D1CEB2B70CA3100EC2215 /* Style.css */,
+				198D1CEC2B70CA3100EC2215 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		198D1CEF2B70CA3200EC2215 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				198D1CF02B70CA3200EC2215 /* SafariWebExtensionHandler.swift */,
+				198D1CF12B70CA3200EC2215 /* Resources */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		198D1CF12B70CA3200EC2215 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				198D1CF22B70CA3200EC2215 /* _locales */,
+				198D1CF32B70CA3200EC2215 /* images */,
+				198D1CF42B70CA3200EC2215 /* manifest.json */,
+				198D1CF52B70CA3200EC2215 /* background.js */,
+				198D1CF62B70CA3200EC2215 /* content.js */,
+				198D1CF72B70CA3200EC2215 /* popup.html */,
+				198D1CF82B70CA3200EC2215 /* popup.css */,
+				198D1CF92B70CA3200EC2215 /* popup.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		198D1CFF2B70CA3200EC2215 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				198D1CFE2B70CA3200EC2215 /* PatronMediaDownloader.app */,
+				198D1D102B70CA3200EC2215 /* PatronMediaDownloader.app */,
+				198D1D1C2B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */,
+				198D1D262B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		198D1D002B70CA3200EC2215 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				198D1D012B70CA3200EC2215 /* AppDelegate.swift */,
+				198D1D032B70CA3200EC2215 /* SceneDelegate.swift */,
+				198D1D052B70CA3200EC2215 /* LaunchScreen.storyboard */,
+				198D1D082B70CA3200EC2215 /* Main.storyboard */,
+				198D1D0B2B70CA3200EC2215 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		198D1D112B70CA3200EC2215 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				198D1D122B70CA3200EC2215 /* AppDelegate.swift */,
+				198D1D142B70CA3200EC2215 /* Main.storyboard */,
+				198D1D172B70CA3200EC2215 /* PatronMediaDownloader.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		198D1D202B70CA3200EC2215 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				198D1D212B70CA3200EC2215 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		198D1D2A2B70CA3200EC2215 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				198D1D2B2B70CA3200EC2215 /* Info.plist */,
+				198D1D2C2B70CA3200EC2215 /* PatronMediaDownloader.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		198D1CFD2B70CA3200EC2215 /* PatronMediaDownloader (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 198D1D512B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader (iOS)" */;
+			buildPhases = (
+				198D1CFA2B70CA3200EC2215 /* Sources */,
+				198D1CFB2B70CA3200EC2215 /* Frameworks */,
+				198D1CFC2B70CA3200EC2215 /* Resources */,
+				198D1D502B70CA3200EC2215 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				198D1D1F2B70CA3200EC2215 /* PBXTargetDependency */,
+			);
+			name = "PatronMediaDownloader (iOS)";
+			productName = "PatronMediaDownloader (iOS)";
+			productReference = 198D1CFE2B70CA3200EC2215 /* PatronMediaDownloader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		198D1D0F2B70CA3200EC2215 /* PatronMediaDownloader (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 198D1D582B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader (macOS)" */;
+			buildPhases = (
+				198D1D0C2B70CA3200EC2215 /* Sources */,
+				198D1D0D2B70CA3200EC2215 /* Frameworks */,
+				198D1D0E2B70CA3200EC2215 /* Resources */,
+				198D1D572B70CA3200EC2215 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				198D1D292B70CA3200EC2215 /* PBXTargetDependency */,
+			);
+			name = "PatronMediaDownloader (macOS)";
+			productName = "PatronMediaDownloader (macOS)";
+			productReference = 198D1D102B70CA3200EC2215 /* PatronMediaDownloader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		198D1D1B2B70CA3200EC2215 /* PatronMediaDownloader Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 198D1D4D2B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader Extension (iOS)" */;
+			buildPhases = (
+				198D1D182B70CA3200EC2215 /* Sources */,
+				198D1D192B70CA3200EC2215 /* Frameworks */,
+				198D1D1A2B70CA3200EC2215 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PatronMediaDownloader Extension (iOS)";
+			productName = "PatronMediaDownloader Extension (iOS)";
+			productReference = 198D1D1C2B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		198D1D252B70CA3200EC2215 /* PatronMediaDownloader Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 198D1D542B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader Extension (macOS)" */;
+			buildPhases = (
+				198D1D222B70CA3200EC2215 /* Sources */,
+				198D1D232B70CA3200EC2215 /* Frameworks */,
+				198D1D242B70CA3200EC2215 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PatronMediaDownloader Extension (macOS)";
+			productName = "PatronMediaDownloader Extension (macOS)";
+			productReference = 198D1D262B70CA3200EC2215 /* PatronMediaDownloader Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		198D1CE22B70CA3100EC2215 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					198D1CFD2B70CA3200EC2215 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					198D1D0F2B70CA3200EC2215 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					198D1D1B2B70CA3200EC2215 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					198D1D252B70CA3200EC2215 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 198D1CE52B70CA3100EC2215 /* Build configuration list for PBXProject "PatronMediaDownloader" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 198D1CE12B70CA3100EC2215;
+			productRefGroup = 198D1CFF2B70CA3200EC2215 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				198D1CFD2B70CA3200EC2215 /* PatronMediaDownloader (iOS) */,
+				198D1D0F2B70CA3200EC2215 /* PatronMediaDownloader (macOS) */,
+				198D1D1B2B70CA3200EC2215 /* PatronMediaDownloader Extension (iOS) */,
+				198D1D252B70CA3200EC2215 /* PatronMediaDownloader Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		198D1CFC2B70CA3200EC2215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D2F2B70CA3200EC2215 /* Icon.png in Resources */,
+				198D1D072B70CA3200EC2215 /* LaunchScreen.storyboard in Resources */,
+				198D1D2D2B70CA3200EC2215 /* Main.html in Resources */,
+				198D1D332B70CA3200EC2215 /* Script.js in Resources */,
+				198D1D372B70CA3200EC2215 /* Assets.xcassets in Resources */,
+				198D1D0A2B70CA3200EC2215 /* Main.storyboard in Resources */,
+				198D1D312B70CA3200EC2215 /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D0E2B70CA3200EC2215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D302B70CA3200EC2215 /* Icon.png in Resources */,
+				198D1D322B70CA3200EC2215 /* Style.css in Resources */,
+				198D1D162B70CA3200EC2215 /* Main.storyboard in Resources */,
+				198D1D342B70CA3200EC2215 /* Script.js in Resources */,
+				198D1D382B70CA3200EC2215 /* Assets.xcassets in Resources */,
+				198D1D2E2B70CA3200EC2215 /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D1A2B70CA3200EC2215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D412B70CA3200EC2215 /* background.js in Resources */,
+				198D1D472B70CA3200EC2215 /* popup.css in Resources */,
+				198D1D452B70CA3200EC2215 /* popup.html in Resources */,
+				198D1D3D2B70CA3200EC2215 /* images in Resources */,
+				198D1D3F2B70CA3200EC2215 /* manifest.json in Resources */,
+				198D1D3B2B70CA3200EC2215 /* _locales in Resources */,
+				198D1D432B70CA3200EC2215 /* content.js in Resources */,
+				198D1D492B70CA3200EC2215 /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D242B70CA3200EC2215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D422B70CA3200EC2215 /* background.js in Resources */,
+				198D1D482B70CA3200EC2215 /* popup.css in Resources */,
+				198D1D462B70CA3200EC2215 /* popup.html in Resources */,
+				198D1D3E2B70CA3200EC2215 /* images in Resources */,
+				198D1D402B70CA3200EC2215 /* manifest.json in Resources */,
+				198D1D3C2B70CA3200EC2215 /* _locales in Resources */,
+				198D1D442B70CA3200EC2215 /* content.js in Resources */,
+				198D1D4A2B70CA3200EC2215 /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		198D1CFA2B70CA3200EC2215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D352B70CA3200EC2215 /* ViewController.swift in Sources */,
+				198D1D022B70CA3200EC2215 /* AppDelegate.swift in Sources */,
+				198D1D042B70CA3200EC2215 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D0C2B70CA3200EC2215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D362B70CA3200EC2215 /* ViewController.swift in Sources */,
+				198D1D132B70CA3200EC2215 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D182B70CA3200EC2215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D392B70CA3200EC2215 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		198D1D222B70CA3200EC2215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				198D1D3A2B70CA3200EC2215 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		198D1D1F2B70CA3200EC2215 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 198D1D1B2B70CA3200EC2215 /* PatronMediaDownloader Extension (iOS) */;
+			targetProxy = 198D1D1E2B70CA3200EC2215 /* PBXContainerItemProxy */;
+		};
+		198D1D292B70CA3200EC2215 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 198D1D252B70CA3200EC2215 /* PatronMediaDownloader Extension (macOS) */;
+			targetProxy = 198D1D282B70CA3200EC2215 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		198D1CE82B70CA3100EC2215 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				198D1CE92B70CA3100EC2215 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		198D1D052B70CA3200EC2215 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				198D1D062B70CA3200EC2215 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		198D1D082B70CA3200EC2215 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				198D1D092B70CA3200EC2215 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		198D1D142B70CA3200EC2215 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				198D1D152B70CA3200EC2215 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		198D1D4B2B70CA3200EC2215 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		198D1D4C2B70CA3200EC2215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		198D1D4E2B70CA3200EC2215 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader.Extension;
+				PRODUCT_NAME = "PatronMediaDownloader Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		198D1D4F2B70CA3200EC2215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader.Extension;
+				PRODUCT_NAME = "PatronMediaDownloader Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		198D1D522B70CA3200EC2215 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = PatronMediaDownloader;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader;
+				PRODUCT_NAME = PatronMediaDownloader;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		198D1D532B70CA3200EC2215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = PatronMediaDownloader;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader;
+				PRODUCT_NAME = PatronMediaDownloader;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		198D1D552B70CA3200EC2215 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/PatronMediaDownloader.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader.Extension;
+				PRODUCT_NAME = "PatronMediaDownloader Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		198D1D562B70CA3200EC2215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/PatronMediaDownloader.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader.Extension;
+				PRODUCT_NAME = "PatronMediaDownloader Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		198D1D592B70CA3200EC2215 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/PatronMediaDownloader.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PatronMediaDownloader;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader;
+				PRODUCT_NAME = PatronMediaDownloader;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		198D1D5A2B70CA3200EC2215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/PatronMediaDownloader.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PatronMediaDownloader;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader;
+				PRODUCT_NAME = PatronMediaDownloader;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		198D1CE52B70CA3100EC2215 /* Build configuration list for PBXProject "PatronMediaDownloader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				198D1D4B2B70CA3200EC2215 /* Debug */,
+				198D1D4C2B70CA3200EC2215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		198D1D4D2B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				198D1D4E2B70CA3200EC2215 /* Debug */,
+				198D1D4F2B70CA3200EC2215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		198D1D512B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				198D1D522B70CA3200EC2215 /* Debug */,
+				198D1D532B70CA3200EC2215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		198D1D542B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				198D1D552B70CA3200EC2215 /* Debug */,
+				198D1D562B70CA3200EC2215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		198D1D582B70CA3200EC2215 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				198D1D592B70CA3200EC2215 /* Debug */,
+				198D1D5A2B70CA3200EC2215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 198D1CE22B70CA3100EC2215 /* Project object */;
+}
