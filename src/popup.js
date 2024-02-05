@@ -16,6 +16,7 @@ async function updateBody() {
     downloadAllButton.textContent = `Download all media ${media.length}`;
     downloadAllButton.addEventListener('click', () => {
         browser.runtime.sendMessage({'media': media, url: url.toString()});
+        window.close();
     });
 
     document.body.replaceChildren(downloadAllButton);

@@ -7,6 +7,14 @@ function dataURLFromBlob(blob) {
     });
 }
 
+function timeout(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    });
+}
+
 browser.runtime.onMessage.addListener(async (request, sender) => {
     console.log("Received request: ", request, sender);
 
@@ -21,45 +29,58 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
                 'media': request.media
             },
         });
-
-        console.log(await browser.storage.session.get());
     } else {
-        try {
-            let tabID;
-            if (!browser.downloads) {
-                let tabs = await browser.tabs.query({
-                    currentWindow: true,
-                    url: request.url
-                });
-
-                tabID = tabs[0].id;
+        let downloads = request.media.map((x, i) => {
+            return {
+                download: `${String(i + 1).padStart(2, '0')} - ${x.download}`,
+                href: x.href,
             }
+        });
 
-            for (const [index, value] of request.media.entries()) {
-                const download = `${String(index + 1).padStart(2, '0')} - ${value.download}`;
-                const href = value.href;
-
-                if (tabID) {
-                    let response = await fetch(href)
+        if (browser.download) {
+            for (let download of downloads) {
+                await browser.downloads.download({
+                    filename: download.download,
+                    url: download.href
+                });
+            }
+        } else {
+            let downloadedDataURLs = await Promise.all(
+                downloads.map(async (download) => {
+                    let response = await fetch(
+                        download.href,
+                        {
+                            method: 'GET',
+                            credentials: 'include',
+                            referrerPolicy: 'no-referrer',
+                        }
+                    )
                     let blob = await response.blob()
                     let dataURL = await dataURLFromBlob(blob);
 
-                    await browser.tabs.sendMessage(
-                        tabID,
-                        {
-                            download,
-                            'href': dataURL,
-                        }
-                    )
-                } else {
-                    await browser.downloads.download({
-                        filename: download,
-                        url: href
-                    });
-                }
+                    return {
+                        'download': download.download,
+                        dataURL,
+                    }
+                })
+            )
+
+            for (let downloadedDataURL of downloadedDataURLs) {
+                let tabs = await browser.tabs.query({
+                    currentWindow: true,
+                    active: true,
+                });
+    
+                await browser.tabs.sendMessage(
+                    tabs[0].id,
+                    {
+                        'download': downloadedDataURL.download,
+                        'href': downloadedDataURL.dataURL,
+                    }
+                );
+
+                await timeout(50);
             }
-        } catch (e) {
-            console.error(e);
         }
     }
 });

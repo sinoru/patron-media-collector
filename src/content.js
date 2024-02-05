@@ -43,6 +43,5 @@ function main() {
 }
 
 const domObserver = new MutationObserver(main);
-
 domObserver.observe(document, { childList: true, subtree: true });
 main();

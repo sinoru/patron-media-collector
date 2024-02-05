@@ -6,6 +6,20 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		19D08D8B2B71607D004A8BD0 /* PatronMediaDownloader WebExtension */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 19D08D8C2B71607D004A8BD0 /* Build configuration list for PBXAggregateTarget "PatronMediaDownloader WebExtension" */;
+			buildPhases = (
+				19D08D8F2B716089004A8BD0 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "PatronMediaDownloader WebExtension";
+			productName = "PatronMediaDownloader WebExtension";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		198D1D022B70CA3200EC2215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D012B70CA3200EC2215 /* AppDelegate.swift */; };
 		198D1D042B70CA3200EC2215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D032B70CA3200EC2215 /* SceneDelegate.swift */; };
@@ -61,6 +75,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 198D1D252B70CA3200EC2215;
 			remoteInfo = "PatronMediaDownloader Extension (macOS)";
+		};
+		19D08D902B716120004A8BD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 198D1CE22B70CA3100EC2215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19D08D8B2B71607D004A8BD0;
+			remoteInfo = "PatronMediaDownloader WebExtension";
+		};
+		19D08D922B716124004A8BD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 198D1CE22B70CA3100EC2215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19D08D8B2B71607D004A8BD0;
+			remoteInfo = "PatronMediaDownloader WebExtension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -314,6 +342,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				19D08D912B716120004A8BD0 /* PBXTargetDependency */,
 			);
 			name = "PatronMediaDownloader Extension (iOS)";
 			productName = "PatronMediaDownloader Extension (iOS)";
@@ -331,6 +360,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				19D08D932B716124004A8BD0 /* PBXTargetDependency */,
 			);
 			name = "PatronMediaDownloader Extension (macOS)";
 			productName = "PatronMediaDownloader Extension (macOS)";
@@ -359,6 +389,9 @@
 					198D1D252B70CA3200EC2215 = {
 						CreatedOnToolsVersion = 15.2;
 					};
+					19D08D8B2B71607D004A8BD0 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 				};
 			};
 			buildConfigurationList = 198D1CE52B70CA3100EC2215 /* Build configuration list for PBXProject "PatronMediaDownloader" */;
@@ -378,6 +411,7 @@
 				198D1D0F2B70CA3200EC2215 /* PatronMediaDownloader (macOS) */,
 				198D1D1B2B70CA3200EC2215 /* PatronMediaDownloader Extension (iOS) */,
 				198D1D252B70CA3200EC2215 /* PatronMediaDownloader Extension (macOS) */,
+				19D08D8B2B71607D004A8BD0 /* PatronMediaDownloader WebExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -442,6 +476,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19D08D8F2B716089004A8BD0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../src",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/../dist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\ncd ..\n\ncase \"$CONFIGURATION\" in\n    \"Debug\")\n        npx webpack --mode development\n        ;;\n    \"Release\")\n        npx webpack --mode production\n        ;;\n    *)\n        npx webpack\n        ;;\nesac\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		198D1CFA2B70CA3200EC2215 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -490,6 +547,16 @@
 			isa = PBXTargetDependency;
 			target = 198D1D252B70CA3200EC2215 /* PatronMediaDownloader Extension (macOS) */;
 			targetProxy = 198D1D282B70CA3200EC2215 /* PBXContainerItemProxy */;
+		};
+		19D08D912B716120004A8BD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19D08D8B2B71607D004A8BD0 /* PatronMediaDownloader WebExtension */;
+			targetProxy = 19D08D902B716120004A8BD0 /* PBXContainerItemProxy */;
+		};
+		19D08D932B716124004A8BD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19D08D8B2B71607D004A8BD0 /* PatronMediaDownloader WebExtension */;
+			targetProxy = 19D08D922B716124004A8BD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -917,6 +984,24 @@
 			};
 			name = Release;
 		};
+		19D08D8D2B71607D004A8BD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		19D08D8E2B71607D004A8BD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -961,6 +1046,15 @@
 			buildConfigurations = (
 				198D1D592B70CA3200EC2215 /* Debug */,
 				198D1D5A2B70CA3200EC2215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19D08D8C2B71607D004A8BD0 /* Build configuration list for PBXAggregateTarget "PatronMediaDownloader WebExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19D08D8D2B71607D004A8BD0 /* Debug */,
+				19D08D8E2B71607D004A8BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

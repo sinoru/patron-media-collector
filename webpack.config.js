@@ -3,12 +3,24 @@ const CopyPlugin = require("copy-webpack-plugin");
 const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 
-module.exports = {
+var config = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     content: './content.js',
     background: './background.js',
     popup: './popup.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          // `.swcrc` can be used to configure swc
+          loader: "swc-loader"
+        }
+      }
+    ],
   },
   plugins: [
     new CopyPlugin({
@@ -32,4 +44,13 @@ module.exports = {
     filename: '[name].js',
     path: __dirname + '/dist',
   },
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+    config.optimization.minimize = false;
+  }
+
+  return config;
 };
