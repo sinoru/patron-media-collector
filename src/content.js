@@ -1,20 +1,16 @@
 browser.runtime.onMessage.addListener(async (request, sender) => {
     console.log("Received request: ", request, sender);
 
-    try {
-        let download = request.download;
-        let href = request.href;
+    let download = request.download;
+    let href = request.href;
 
-        let link = document.createElement("a");
-        link.download = download;
-        link.href = href;
-        link.style = 'display: none';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    } catch (e) {
-        console.error(e);
-    }
+    let link = document.createElement("a");
+    link.download = download;
+    link.href = href;
+    link.style = 'display: none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 });
 
 function getFanboxMedia() {
