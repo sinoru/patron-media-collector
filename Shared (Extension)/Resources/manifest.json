@@ -18,9 +18,15 @@
         "service_worker": "background.js"
     },
 
+    "host_permissions": [
+        "*://*.fanbox.cc/*"
+    ],
+
     "content_scripts": [{
         "js": [ "content.js" ],
-        "matches": [ "*://*.fanbox.cc/posts/*" ]
+        "exclude_matches": [ "*://www.fanbox.cc/*" ],
+        "matches": [ "*://*.fanbox.cc/posts/*" ],
+        "run_at": "document_idle"
     }],
 
     "action": {
@@ -35,5 +41,5 @@
         }
     },
 
-    "permissions": [ "contextMenus" ]
+    "permissions": [ "downloads", "storage" ]
 }
