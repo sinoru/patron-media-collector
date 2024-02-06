@@ -20,7 +20,7 @@ export default class Store {
      */
     static set(urlString, value) {
         return this.#store.set({
-            [urlString]: value
+            [this.#url(urlString)]: value
         });
     }
 
