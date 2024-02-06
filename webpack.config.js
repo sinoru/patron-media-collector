@@ -1,3 +1,4 @@
+const packageJson = require('./package.json');
 const path = require('path');
 const CopyPlugin = require("copy-webpack-plugin");
 const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
@@ -17,7 +18,12 @@ var config = {
         exclude: /(node_modules)/,
         use: {
           // `.swcrc` can be used to configure swc
-          loader: "swc-loader"
+          loader: "swc-loader",
+          options: {
+            env: {
+              targets: packageJson.browserslist,
+            }
+          }
         }
       }
     ],

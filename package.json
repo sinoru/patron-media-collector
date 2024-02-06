@@ -9,6 +9,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "Safari 16",
+    "Safari 17",
+    "last 3 Chrome version",
+    "last 3 Firefox version"
+  ],
   "devDependencies": {
     "@swc/core": "^1.4.0",
     "browserslist": "^4.22.3",
