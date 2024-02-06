@@ -35,7 +35,7 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
             }
         });
 
-        if (browser.download) {
+        if (browser.downloads) {
             for (let download of downloads) {
                 await browser.downloads.download({
                     filename: download.download,
