@@ -12,7 +12,7 @@ async function updateBody() {
     let downloadAllButton = document.createElement('button');
     downloadAllButton.textContent = `Download all media ${media.length}`;
     downloadAllButton.addEventListener('click', () => {
-        browser.runtime.sendMessage({'media': media, url: url.toString()});
+        browser.runtime.sendMessage({'media': media});
         window.close();
     });
 
