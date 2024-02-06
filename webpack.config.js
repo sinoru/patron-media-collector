@@ -6,9 +6,9 @@ const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 var config = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    content: './content.js',
-    background: './background.js',
-    popup: './popup.js',
+    content: './content/index.js',
+    background: './background/index.js',
+    popup: './popup/index.js',
   },
   module: {
     rules: [
