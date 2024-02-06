@@ -1,9 +1,0 @@
-{
-    "env": {
-        "targets": [
-            "last 2 Safari versions",
-            "last 2 Chrome version",
-            "last 2 Firefox version"
-        ]
-    }
-}
