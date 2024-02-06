@@ -296,7 +296,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "$(SRCROOT)/..";
+			buildWorkingDirectory = "$(PROJECT_DIR)/..";
 			dependencies = (
 			);
 			name = "PatronMediaDownloader WebExtension";
