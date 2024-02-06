@@ -1,4 +1,4 @@
-import Store from '../common/store.mjs';
+import * as Store from '../common/store.mjs';
 
 async function updateBody() {
     let tabs = await browser.tabs.query({ 

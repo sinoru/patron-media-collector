@@ -1,42 +1,36 @@
-export default class Store {
-    static get #store() {
-        return browser.storage.session;
-    }
+const store = browser.storage.session;
 
-    /**
-     * @param {string} urlString
-     * 
-     * @returns {Promise<{}>}
-     */
-    static async get(urlString) {
-        let key = this.#url(urlString).toString();
-
-        return (await this.#store.get(key))[key];
-    }
-
-    /**
-     * @param {string} urlString
-     * @param {any} value
-     */
-    static async set(urlString, value) {
-        return await this.#store.set({
-            [this.#url(urlString)]: value
-        });
-    }
-
-    /**
-     * @param {string} string
-     */
-    static #url(urlString) {
-        let url = new URL(urlString);
-        url.protocol = "";
-        url.hash = "";
-        url.search = "";
-        
-        return url;
-    }
-
-    static get onChanged() {
-        return browser.storage.onChanged
-    }
+/**
+ * @param {string} string
+ */
+function url(urlString) {
+    let url = new URL(urlString);
+    url.protocol = "";
+    url.hash = "";
+    url.search = "";
+    
+    return url;
 }
+
+/**
+ * @param {string} urlString
+ * 
+ * @returns {Promise<{}>}
+ */
+export async function get(urlString) {
+    let key = url(urlString).toString();
+
+    return (await store.get(key))[key];
+}
+
+/**
+ * @param {string} urlString
+ * @param {any} value
+ */
+export async function set(urlString, value) {
+    return await store.set({
+        [url(urlString)]: value
+    });
+}
+
+export const onChanged = browser.storage.onChanged;

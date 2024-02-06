@@ -1,4 +1,4 @@
-import Store from '../common/store.mjs';
+import * as Store from '../common/store.mjs';
 
 function dataURLFromBlob(blob) {
     return new Promise((resolve, reject) => {
