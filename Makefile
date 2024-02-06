@@ -9,5 +9,4 @@ MODE = --mode production
 endif
 
 all:
-	@echo $(PATH)
 	$(WEBPACK) $(MODE)
