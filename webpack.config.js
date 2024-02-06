@@ -41,6 +41,7 @@ var config = {
     ],
   },
   output: {
+    clean: true,
     filename: '[name].js',
     path: __dirname + '/dist',
   },

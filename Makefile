@@ -11,7 +11,3 @@ endif
 all:
 	@echo $(PATH)
 	$(WEBPACK) $(MODE)
-
-.PHONY: clean
-clean:
-	$(RM) -r dist
