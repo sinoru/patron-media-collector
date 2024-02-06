@@ -19,13 +19,20 @@
     },
 
     "host_permissions": [
-        "*://*.fanbox.cc/*"
+        "*://*.fanbox.cc/*",
+        "*://www.patreon.com/*",
+        "*://*.patreonusercontent.com/*"
     ],
 
     "content_scripts": [{
         "js": [ "content.js" ],
-        "exclude_matches": [ "*://www.fanbox.cc/*" ],
-        "matches": [ "*://*.fanbox.cc/posts/*" ],
+        "exclude_matches": [
+            "*://www.fanbox.cc/*"
+        ],
+        "matches": [ 
+            "*://*.fanbox.cc/posts/*",
+            "*://www.patreon.com/posts/*"
+        ],
         "run_at": "document_idle"
     }],
 

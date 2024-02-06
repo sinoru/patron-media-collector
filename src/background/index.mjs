@@ -43,27 +43,37 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
                 });
             }
         } else {
-            let downloadedDataURLs = await Promise.all(
+            let preparedDownloads = await Promise.all(
                 downloads.map(async (download) => {
-                    let response = await fetch(
-                        download.href,
-                        {
-                            method: 'GET',
-                            credentials: 'include',
-                            referrerPolicy: 'no-referrer',
-                        }
-                    )
-                    let blob = await response.blob()
-                    let dataURL = await dataURLFromBlob(blob);
+                    let downloadURL = new URL(download.href);
+                    let originURL = new URL(request.url);
 
-                    return {
-                        'download': download.download,
-                        dataURL,
+                    if (downloadURL.host != originURL.host) {
+                        let response = await fetch(
+                            download.href,
+                            {
+                                method: 'GET',
+                                credentials: 'include',
+                                referrerPolicy: 'no-referrer',
+                            }
+                        )
+                        let blob = await response.blob()
+                        let dataURL = await dataURLFromBlob(blob);
+    
+                        return {
+                            'download': download.download,
+                            href: dataURL,
+                        };
+                    } else {
+                        return {
+                            'download': download.download,
+                            href: download.href,
+                        };
                     }
                 })
-            )
+            );
 
-            for (let downloadedDataURL of downloadedDataURLs) {
+            for (let preparedDownload of preparedDownloads) {
                 let tabs = await browser.tabs.query({
                     currentWindow: true,
                     active: true,
@@ -71,13 +81,10 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
     
                 await browser.tabs.sendMessage(
                     tabs[0].id,
-                    {
-                        'download': downloadedDataURL.download,
-                        'href': downloadedDataURL.dataURL,
-                    }
+                    preparedDownload
                 );
 
-                await timeout(50);
+                await timeout(100);
             }
         }
     }

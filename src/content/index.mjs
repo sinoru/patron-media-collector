@@ -1,4 +1,5 @@
-import getFanboxMedia from './fanbox.mjs'
+import getFanboxMedia from './fanbox.mjs';
+import getPatreonMedia from './patreon.mjs';
 
 browser.runtime.onMessage.addListener(async (request, sender) => {
     console.log("Received request: ", request, sender);
@@ -16,11 +17,18 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
 });
 
 function main() {
-    const url = new URL(document.location.href);
+    const href = document.location.href;
 
     let media = null;
-    if (/.+\.fanbox\.cc/.test(url.host)) {
+    if (/.+:\/\/.+\.fanbox\.cc\/posts\/.+/.test(href)) {
+        if (!window.domObserver) {
+            window.domObserver = new MutationObserver(main);
+            domObserver.observe(document, { childList: true, subtree: true });
+        }
+
         media = getFanboxMedia();
+    } else if (/.+:\/\/www\.patreon\.com\/posts\/.+/.test(href)) {
+        media = getPatreonMedia();
     }
 
     browser.runtime.sendMessage({
@@ -28,6 +36,4 @@ function main() {
     });
 }
 
-const domObserver = new MutationObserver(main);
-domObserver.observe(document, { childList: true, subtree: true });
 main();
