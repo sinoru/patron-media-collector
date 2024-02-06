@@ -1,6 +1,6 @@
 {
   "name": "patronmediadownloader",
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.",
   "main": "index.js",
   "scripts": {
