@@ -6,8 +6,8 @@ async function updateBody() {
         currentWindow: true
     });
 
-    const data = await Store.get(url.toString());
-    const media = data[url.toString()]['media'];
+    const data = await Store.get(tabs[0].url);
+    const media = data['media'];
 
     let downloadAllButton = document.createElement('button');
     downloadAllButton.textContent = `Download all media ${media.length}`;

@@ -8,29 +8,27 @@ export default class Store {
      * 
      * @returns {Promise<{}>}
      */
-    static get(urlString) {
-        return this.#store.get(this.#url(urlString).toString());
+    static async get(urlString) {
+        let key = this.#url(urlString).toString();
+
+        return (await this.#store.get(key))[key];
     }
 
     /**
      * @param {string} urlString
      * @param {any} value
-     * 
-     * @returns {Promise<void>}
      */
-    static set(urlString, value) {
-        return this.#store.set({
+    static async set(urlString, value) {
+        return await this.#store.set({
             [this.#url(urlString)]: value
         });
     }
 
     /**
      * @param {string} string
-     * 
-     * @returns {URL}
      */
-    static #url(string) {
-        let url = new URL(url);
+    static #url(urlString) {
+        let url = new URL(urlString);
         url.protocol = "";
         url.hash = "";
         url.search = "";
