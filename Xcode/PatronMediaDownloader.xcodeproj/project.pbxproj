@@ -6,6 +6,20 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		191AAF882B72A45100F7BDFC /* PatronMediaDownloader WebExtension */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 191AAF892B72A45200F7BDFC /* Build configuration list for PBXAggregateTarget "PatronMediaDownloader WebExtension" */;
+			buildPhases = (
+				191AAF8C2B72A45D00F7BDFC /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "PatronMediaDownloader WebExtension";
+			productName = "PatronMediaDownloader WebExtension";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		198D1D022B70CA3200EC2215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D012B70CA3200EC2215 /* AppDelegate.swift */; };
 		198D1D042B70CA3200EC2215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D1D032B70CA3200EC2215 /* SceneDelegate.swift */; };
@@ -48,18 +62,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		196FD8AF2B72168E00279E8F /* PBXContainerItemProxy */ = {
+		191AAF8D2B72A5DC00F7BDFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 198D1CE22B70CA3100EC2215 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 196FD8AB2B72164E00279E8F;
+			remoteGlobalIDString = 191AAF882B72A45100F7BDFC;
 			remoteInfo = "PatronMediaDownloader WebExtension";
 		};
-		196FD8B12B72169200279E8F /* PBXContainerItemProxy */ = {
+		191AAF8F2B72A5DF00F7BDFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 198D1CE22B70CA3100EC2215 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 196FD8AB2B72164E00279E8F;
+			remoteGlobalIDString = 191AAF882B72A45100F7BDFC;
 			remoteInfo = "PatronMediaDownloader WebExtension";
 		};
 		198D1D1E2B70CA3200EC2215 /* PBXContainerItemProxy */ = {
@@ -288,23 +302,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		196FD8AB2B72164E00279E8F /* PatronMediaDownloader WebExtension */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 196FD8AC2B72164E00279E8F /* Build configuration list for PBXLegacyTarget "PatronMediaDownloader WebExtension" */;
-			buildPhases = (
-			);
-			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "$(PROJECT_DIR)/..";
-			dependencies = (
-			);
-			name = "PatronMediaDownloader WebExtension";
-			passBuildSettingsInEnvironment = 1;
-			productName = "PatronMediaDownloader WebExtension";
-		};
-/* End PBXLegacyTarget section */
-
 /* Begin PBXNativeTarget section */
 		198D1CFD2B70CA3200EC2215 /* PatronMediaDownloader (iOS) */ = {
 			isa = PBXNativeTarget;
@@ -355,7 +352,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				196FD8B02B72168E00279E8F /* PBXTargetDependency */,
+				191AAF8E2B72A5DC00F7BDFC /* PBXTargetDependency */,
 			);
 			name = "PatronMediaDownloader Extension (iOS)";
 			productName = "PatronMediaDownloader Extension (iOS)";
@@ -373,7 +370,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				196FD8B22B72169200279E8F /* PBXTargetDependency */,
+				191AAF902B72A5DF00F7BDFC /* PBXTargetDependency */,
 			);
 			name = "PatronMediaDownloader Extension (macOS)";
 			productName = "PatronMediaDownloader Extension (macOS)";
@@ -390,7 +387,7 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					196FD8AB2B72164E00279E8F = {
+					191AAF882B72A45100F7BDFC = {
 						CreatedOnToolsVersion = 15.2;
 					};
 					198D1CFD2B70CA3200EC2215 = {
@@ -424,7 +421,7 @@
 				198D1D0F2B70CA3200EC2215 /* PatronMediaDownloader (macOS) */,
 				198D1D1B2B70CA3200EC2215 /* PatronMediaDownloader Extension (iOS) */,
 				198D1D252B70CA3200EC2215 /* PatronMediaDownloader Extension (macOS) */,
-				196FD8AB2B72164E00279E8F /* PatronMediaDownloader WebExtension */,
+				191AAF882B72A45100F7BDFC /* PatronMediaDownloader WebExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -489,6 +486,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		191AAF8C2B72A45D00F7BDFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/../dist/_locales",
+				"$(SRCROOT)/../dist/images",
+				"$(SRCROOT)/../dist/manifest.json",
+				"$(SRCROOT)/../dist/background.js",
+				"$(SRCROOT)/../dist/content.js",
+				"$(SRCROOT)/../dist/popup.css",
+				"$(SRCROOT)/../dist/popup.html",
+				"$(SRCROOT)/../dist/popup.js",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    webpack=\"nodenv exec npx webpack\"\nelse\n    webpack=\"nodenv exec npx webpack\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${webpack} ${mode}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		198D1CFA2B70CA3200EC2215 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -528,15 +554,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		196FD8B02B72168E00279E8F /* PBXTargetDependency */ = {
+		191AAF8E2B72A5DC00F7BDFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 196FD8AB2B72164E00279E8F /* PatronMediaDownloader WebExtension */;
-			targetProxy = 196FD8AF2B72168E00279E8F /* PBXContainerItemProxy */;
+			target = 191AAF882B72A45100F7BDFC /* PatronMediaDownloader WebExtension */;
+			targetProxy = 191AAF8D2B72A5DC00F7BDFC /* PBXContainerItemProxy */;
 		};
-		196FD8B22B72169200279E8F /* PBXTargetDependency */ = {
+		191AAF902B72A5DF00F7BDFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 196FD8AB2B72164E00279E8F /* PatronMediaDownloader WebExtension */;
-			targetProxy = 196FD8B12B72169200279E8F /* PBXContainerItemProxy */;
+			target = 191AAF882B72A45100F7BDFC /* PatronMediaDownloader WebExtension */;
+			targetProxy = 191AAF8F2B72A5DF00F7BDFC /* PBXContainerItemProxy */;
 		};
 		198D1D1F2B70CA3200EC2215 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -586,31 +612,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		196FD8AD2B72164E00279E8F /* Debug */ = {
+		191AAF8A2B72A45200F7BDFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PATH = "${PATH}:${HOME}/.nodenv/shims:/opt/homebrew/bin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		196FD8AE2B72164E00279E8F /* Release */ = {
+		191AAF8B2B72A45200F7BDFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PATH = "${PATH}:${HOME}/.nodenv/shims:/opt/homebrew/bin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -994,11 +1009,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		196FD8AC2B72164E00279E8F /* Build configuration list for PBXLegacyTarget "PatronMediaDownloader WebExtension" */ = {
+		191AAF892B72A45200F7BDFC /* Build configuration list for PBXAggregateTarget "PatronMediaDownloader WebExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				196FD8AD2B72164E00279E8F /* Debug */,
-				196FD8AE2B72164E00279E8F /* Release */,
+				191AAF8A2B72A45200F7BDFC /* Debug */,
+				191AAF8B2B72A45200F7BDFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
