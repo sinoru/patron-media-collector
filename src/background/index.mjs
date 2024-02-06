@@ -1,3 +1,5 @@
+import Store from '../common/store.mjs';
+
 function dataURLFromBlob(blob) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -19,16 +21,12 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
     console.log("Received request: ", request, sender);
 
     if (/^https?:/.test(sender.url)) {
-        let url = new URL(sender.url);
-        url.protocol = "";
-        url.hash = "";
-        url.search = "";
-
-        await browser.storage.session.set({
-            [url.toString()]: {
+        await Store.set(
+            sender.url,
+            {
                 'media': request.media
-            },
-        });
+            }
+        )
     } else {
         let downloads = request.media.map((x, i) => {
             return {

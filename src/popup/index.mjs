@@ -1,15 +1,12 @@
+import Store from '../common/store.mjs';
+
 async function updateBody() {
     let tabs = await browser.tabs.query({ 
         active: true,
         currentWindow: true
     });
 
-    let url = new URL(tabs[0].url);
-    url.protocol = "";
-    url.hash = "";
-    url.search = "";
-
-    const data = await browser.storage.session.get(url.toString());
+    const data = await Store.get(url.toString());
     const media = data[url.toString()]['media'];
 
     let downloadAllButton = document.createElement('button');
@@ -22,5 +19,5 @@ async function updateBody() {
     document.body.replaceChildren(downloadAllButton);
 }
 
-browser.storage.onChanged.addListener(() => updateBody);
+Store.onChanged.addListener(() => updateBody);
 updateBody();
