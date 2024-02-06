@@ -20,7 +20,7 @@ function main() {
     const href = document.location.href;
 
     let media = null;
-    if (/.+:\/\/.+\.fanbox\.cc\/posts\/.+/.test(href)) {
+    if (/.+:\/\/www\.fanbox\.cc\/@.+\/posts\/.+/.test(href) || /.+:\/\/.+\.fanbox\.cc\/posts\/.+/.test(href)) {
         if (!window.domObserver) {
             window.domObserver = new MutationObserver(main);
             domObserver.observe(document, { childList: true, subtree: true });

@@ -26,11 +26,9 @@
 
     "content_scripts": [{
         "js": [ "content.js" ],
-        "exclude_matches": [
-            "*://www.fanbox.cc/*"
-        ],
         "matches": [ 
             "*://*.fanbox.cc/posts/*",
+            "*://www.fanbox.cc/*/posts/*",
             "*://www.patreon.com/posts/*"
         ],
         "run_at": "document_idle"
