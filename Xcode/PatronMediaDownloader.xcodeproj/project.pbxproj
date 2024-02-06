@@ -104,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		196FD8B42B72203A00279E8F /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../src; sourceTree = "<group>"; };
 		198D1CE92B70CA3100EC2215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
 		198D1CEA2B70CA3100EC2215 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		198D1CEB2B70CA3100EC2215 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
@@ -168,6 +169,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		196FD8B32B72201F00279E8F /* dist */ = {
+			isa = PBXGroup;
+			children = (
+				19D08D812B715AD8004A8BD0 /* _locales */,
+				19D08D842B715ADE004A8BD0 /* images */,
+				19D08D702B715AC3004A8BD0 /* manifest.json */,
+				19D08D732B715AC3004A8BD0 /* background.js */,
+				19D08D6F2B715AC3004A8BD0 /* content.js */,
+				19D08D722B715AC3004A8BD0 /* popup.html */,
+				19D08D712B715AC3004A8BD0 /* popup.css */,
+				19D08D742B715AC3004A8BD0 /* popup.js */,
+			);
+			name = dist;
+			sourceTree = "<group>";
+		};
 		198D1CE12B70CA3100EC2215 = {
 			isa = PBXGroup;
 			children = (
@@ -264,14 +280,8 @@
 		19D08D6E2B715AA8004A8BD0 /* Shared (WebExtension) */ = {
 			isa = PBXGroup;
 			children = (
-				19D08D812B715AD8004A8BD0 /* _locales */,
-				19D08D842B715ADE004A8BD0 /* images */,
-				19D08D702B715AC3004A8BD0 /* manifest.json */,
-				19D08D732B715AC3004A8BD0 /* background.js */,
-				19D08D6F2B715AC3004A8BD0 /* content.js */,
-				19D08D722B715AC3004A8BD0 /* popup.html */,
-				19D08D712B715AC3004A8BD0 /* popup.css */,
-				19D08D742B715AC3004A8BD0 /* popup.js */,
+				196FD8B42B72203A00279E8F /* src */,
+				196FD8B32B72201F00279E8F /* dist */,
 			);
 			name = "Shared (WebExtension)";
 			sourceTree = "<group>";
