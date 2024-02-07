@@ -56,6 +56,7 @@ var config = {
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     config.optimization.minimize = false;
+    config.devtool = 'inline-source-map';
   }
 
   return config;
