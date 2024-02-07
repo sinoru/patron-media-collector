@@ -39,7 +39,6 @@ var config = {
     }),
   ],
   optimization: {
-    minimize: true,
     minimizer: [
       '...',
       new HtmlMinimizerPlugin(),
@@ -57,6 +56,23 @@ module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     config.optimization.minimize = false;
     config.devtool = 'inline-source-map';
+  } else if (argv.mode == 'production') {
+    config.devtool = null;
+  }
+
+  switch (argv.mode) {
+    case 'development':
+      config.optimization.minimize = false;
+      config.devtool = 'inline-source-map';
+      break;
+    case 'production':
+      config.optimization.minimize = true;
+      config.devtool = null;
+      break;
+    default:
+      config.optimization.minimize = false;
+      config.devtool = 'source-map';
+      break;
   }
 
   return config;
