@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/build.yml'
-      - 'src/**.js'
+      - 'src/**'
       - '.node-version'
       - 'package.json'
       - 'package-lock.json'
