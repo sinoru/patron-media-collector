@@ -67,7 +67,7 @@ module.exports = (env, argv) => {
       break;
     case 'production':
       config.optimization.minimize = true;
-      config.devtool = null;
+      config.devtool = false;
       break;
     default:
       config.optimization.minimize = false;
