@@ -42,5 +42,11 @@
         "default_icon": "images/toolbar-icon.svg"
     },
 
-    "permissions": [ "downloads", "storage" ]
+    "permissions": [ "downloads", "storage" ],
+
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "io.sinoru.PatronMediaDownloader.WebExtension"
+        }
+      }
 }
