@@ -1,5 +1,5 @@
-import getFanboxMedia from './fanbox.mjs';
-import getPatreonMedia from './patreon.mjs';
+import getFanboxMedia from './fanbox.js';
+import getPatreonMedia from './patreon.js';
 
 browser.runtime.onMessage.addListener(async (request, sender) => {
     console.log("Received request: ", request, sender);

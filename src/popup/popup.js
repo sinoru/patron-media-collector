@@ -1,4 +1,5 @@
-import * as Store from '../common/store.mjs';
+import './popup.css';
+import * as Store from '../common/store.js';
 
 async function updateBody() {
     let tabs = await browser.tabs.query({ 

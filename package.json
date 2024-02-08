@@ -1,28 +1,15 @@
 {
-  "name": "patronmediadownloader",
+  "name": "patron-media-downloader",
+  "private": true,
   "version": "0.1",
   "description": "A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "browserslist": [
-    "Safari 16",
-    "Safari 17",
-    "last 3 Chrome version",
-    "last 3 Firefox version"
-  ],
   "devDependencies": {
-    "@swc/core": "^1.4.0",
-    "browserslist": "^4.22.3",
-    "copy-webpack-plugin": "^12.0.2",
-    "html-minimizer-webpack-plugin": "^5.0.0",
-    "json-minimizer-webpack-plugin": "^5.0.0",
-    "swc-loader": "^0.2.6",
-    "webpack": "^5.90.1",
-    "webpack-cli": "^5.1.4"
+    "vite": "^5.0.8"
   }
 }

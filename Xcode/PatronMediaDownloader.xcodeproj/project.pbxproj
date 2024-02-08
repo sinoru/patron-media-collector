@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19174D232B73B89A005F62DE /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 19174D172B73B89A005F62DE /* popup.js */; };
 		19174D242B73B89A005F62DE /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 19174D182B73B89A005F62DE /* background.js */; };
-		19174D272B73B89A005F62DE /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 19174D1C2B73B89A005F62DE /* popup.html */; };
 		19174D282B73B89A005F62DE /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 19174D1D2B73B89A005F62DE /* manifest.json */; };
-		19174D292B73B89B005F62DE /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 19174D1E2B73B89A005F62DE /* popup.css */; };
 		19174D2B2B73B89B005F62DE /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 19174D222B73B89A005F62DE /* content.js */; };
 		19174D2D2B73B8AB005F62DE /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 19174D2C2B73B8AB005F62DE /* _locales */; };
 		19174D2F2B73B8B1005F62DE /* images in Resources */ = {isa = PBXBuildFile; fileRef = 19174D2E2B73B8B1005F62DE /* images */; };
 		195260772B73BC7900FBE7BE /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */; };
+		196434272B74CFCC00FF7212 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 196434262B74CFCC00FF7212 /* assets */; };
+		196434292B74CFD300FF7212 /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 196434282B74CFD300FF7212 /* popup */; };
 		196AF1712B73B02500945C40 /* PatronMediaDownloaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196AF1702B73B02500945C40 /* PatronMediaDownloaderApp.swift */; };
 		196AF1732B73B02500945C40 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196AF1722B73B02500945C40 /* ContentView.swift */; };
 		196AF1752B73B02600945C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1742B73B02600945C40 /* Assets.xcassets */; };
@@ -49,15 +48,14 @@
 
 /* Begin PBXFileReference section */
 		19174D152B73B891005F62DE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../src; sourceTree = "<group>"; };
-		19174D172B73B89A005F62DE /* popup.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
 		19174D182B73B89A005F62DE /* background.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
-		19174D1C2B73B89A005F62DE /* popup.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		19174D1D2B73B89A005F62DE /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
-		19174D1E2B73B89A005F62DE /* popup.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
 		19174D222B73B89A005F62DE /* content.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		19174D2C2B73B8AB005F62DE /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
 		19174D2E2B73B8B1005F62DE /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		196434262B74CFCC00FF7212 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		196434282B74CFD300FF7212 /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = popup; sourceTree = "<group>"; };
 		196AF16D2B73B02500945C40 /* PatronMediaDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatronMediaDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		196AF1702B73B02500945C40 /* PatronMediaDownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronMediaDownloaderApp.swift; sourceTree = "<group>"; };
 		196AF1722B73B02500945C40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,12 +89,11 @@
 			isa = PBXGroup;
 			children = (
 				19174D2C2B73B8AB005F62DE /* _locales */,
+				196434262B74CFCC00FF7212 /* assets */,
 				19174D2E2B73B8B1005F62DE /* images */,
-				19174D172B73B89A005F62DE /* popup.js */,
+				196434282B74CFD300FF7212 /* popup */,
 				19174D182B73B89A005F62DE /* background.js */,
-				19174D1C2B73B89A005F62DE /* popup.html */,
 				19174D1D2B73B89A005F62DE /* manifest.json */,
-				19174D1E2B73B89A005F62DE /* popup.css */,
 				19174D222B73B89A005F62DE /* content.js */,
 			);
 			name = dist;
@@ -247,10 +244,9 @@
 			files = (
 				19174D2D2B73B8AB005F62DE /* _locales in Resources */,
 				19174D242B73B89A005F62DE /* background.js in Resources */,
-				19174D292B73B89B005F62DE /* popup.css in Resources */,
-				19174D232B73B89A005F62DE /* popup.js in Resources */,
-				19174D272B73B89A005F62DE /* popup.html in Resources */,
+				196434272B74CFCC00FF7212 /* assets in Resources */,
 				19174D282B73B89A005F62DE /* manifest.json in Resources */,
+				196434292B74CFD300FF7212 /* popup in Resources */,
 				19174D2F2B73B8B1005F62DE /* images in Resources */,
 				19174D2B2B73B89B005F62DE /* content.js in Resources */,
 			);
@@ -284,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    webpack=\"nodenv exec npx webpack\"\nelse\n    webpack=\"nodenv exec npx webpack\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${webpack} ${mode}\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    npm=\"nodenv exec npm\"\nelse\n    npm=\"nodenv exec npm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${npm} run build -- ${mode}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
