@@ -53,13 +53,6 @@ var config = {
 };
 
 module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
-    config.optimization.minimize = false;
-    config.devtool = 'inline-source-map';
-  } else if (argv.mode == 'production') {
-    config.devtool = null;
-  }
-
   switch (argv.mode) {
     case 'development':
       config.optimization.minimize = false;
