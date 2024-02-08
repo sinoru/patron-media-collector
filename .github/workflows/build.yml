@@ -3,6 +3,7 @@ name: build
 on:
   push:
     paths:
+      - '.github/workflows/build.yml'
       - 'src/**.js'
       - '.node-version'
       - 'package.json'
