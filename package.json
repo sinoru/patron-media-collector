@@ -11,7 +11,7 @@
     "build-ext": "web-ext build"
   },
   "devDependencies": {
-    "vite": "^5.0.8",
+    "vite": "^5.1.0",
     "web-ext": "^7.11.0"
   },
   "webExt": {
