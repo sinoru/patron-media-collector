@@ -13,50 +13,79 @@ import Cocoa
 #endif
 
 struct ContentView: View {
-    #if os(macOS)
-    static var extensionBundleIdentifier: String {
+    @inlinable
+    static var bundle: Bundle {
         class `_` {}
 
-        return [Bundle(for: `_`.self).bundleIdentifier, "WebExtension"]
+        return Bundle(for: `_`.self)
+    }
+
+    @inlinable
+    static var bundleName: String {
+        let infoDictionaryKey = kCFBundleNameKey as String
+
+        return 
+            (Self.bundle.localizedInfoDictionary?[infoDictionaryKey] as? String) ??
+            (Self.bundle.object(forInfoDictionaryKey: infoDictionaryKey) as? String) ??
+            ""
+    }
+
+    #if os(macOS)
+    static var extensionBundleIdentifier: String {
+        [Self.bundle.bundleIdentifier, "WebExtension"]
             .compactMap { $0 }
             .joined(separator: ".")
+    }
+
+    static var safariPreferencesForExtensionTitle: String {
+        if #available(macOS 13, *) {
+            "the Extensions section of Safari Settings"
+        } else {
+            "Safari Extensions preferences"
+        }
+    }
+
+    static var showSafariPreferencesForExtensionTitle: LocalizedStringKey {
+        if #available(macOS 13, *) {
+            "Quit and Open Safari Settings…"
+        } else {
+            "Quit and Open Safari Extensions Preferences…"
+        }
     }
 
     @State var isSafariExtensionEnabled: Bool?
     #endif
 
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Image("Icon", label: Text("Icon"))
                 .resizable()
                 .frame(width: 128, height: 128)
 
-            #if os(iOS)
-            Text("You can turn on PatronMediaDownloader’s Safari extension in Settings.")
-            #else
+            #if os(macOS)
             switch isSafariExtensionEnabled {
-            case nil:
-                Text("You can turn on PatronMediaDownloader’s extension in Safari Extensions preferences.")
-            case true?:
-                Text("PatronMediaDownloader’s extension is currently on. You can turn it off in Safari Extensions preferences.")
-            case false?:
-                Text("PatronMediaDownloader’s extension is currently off. You can turn it on in Safari Extensions preferences.")
+            case .none:
+                Text("You can turn on \(Self.bundleName)’s extension in \(Self.safariPreferencesForExtensionTitle).")
+            case .some(let isSafariExtensionEnabled):
+                Text("\(Self.bundleName)’s extension is currently \(isSafariExtensionEnabled ? "on" : "off").")
+                Text("You can turn it \(isSafariExtensionEnabled ? "off" : "on") in \(Self.safariPreferencesForExtensionTitle).")
             }
 
-            if #available(macOS 13, *) {
-                Button("Quit and Open Safari Extensions Preferences…") {
-                    Task {
-                        try? await SFSafariApplication.showPreferencesForExtension(withIdentifier: Self.extensionBundleIdentifier)
+            Button(Self.showSafariPreferencesForExtensionTitle) {
+                Task {
+                    try? await SFSafariApplication.showPreferencesForExtension(withIdentifier: Self.extensionBundleIdentifier)
 
-                        NSApp.terminate(nil)
-                    }
+                    NSApp.terminate(nil)
                 }
             }
+
+            #else
+            Text("You can turn on \(Self.bundleName)’s Safari extension in Settings.")
             #endif
         }
         .padding()
         #if os(macOS)
-        .task {
+        .task(priority: .high) {
             let state = try? await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: Self.extensionBundleIdentifier)
 
             self.isSafariExtensionEnabled = state?.isEnabled

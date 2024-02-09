@@ -6,5 +6,5 @@ brew install nodenv
 
 pushd ..
 nodenv install
-nodenv exec npm i
+nodenv exec npm ci
 popd

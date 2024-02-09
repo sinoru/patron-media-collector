@@ -1,0 +1,51 @@
+name: release
+
+on:
+  push:
+    branches:    
+      - main
+      - 'releases/**'
+    tags:        
+      - v*
+    paths:
+      - '.github/workflows/release.yml'
+      - 'src/**'
+      - '.node-version'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run build
+        env:
+          NODE_ENV: production
+      - run: npm run build-ext
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
+
+  sign:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+      - run: npx web-ext sign --channel=unlisted --api-key=${{ secrets.WEB_EXT_API_KEY }} --api-secret=${{ secrets.WEB_EXT_API_SECRET }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: signed-web-extension
+          path: dist/web-ext-artifacts/*.xpi
+          if-no-files-found: error

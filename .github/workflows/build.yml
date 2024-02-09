@@ -1,0 +1,30 @@
+name: build
+
+on:
+  push:
+    branches:    
+      - develop
+    paths:
+      - '.github/workflows/build.yml'
+      - 'src/**'
+      - '.node-version'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run build -- --mode development
+        env:
+          NODE_ENV: development
+      - run: npm run build-ext
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
