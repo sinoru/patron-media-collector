@@ -18,11 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+      - run: npm install -g web-ext
       - run: npm ci
       - run: npm run build -- --mode development
         env:
           NODE_ENV: development
-      - run: npm run build-ext
+      - run: npx web-ext lint
+      - run: npx web-ext build
       - uses: actions/upload-artifact@v4
         with:
           name: dist
