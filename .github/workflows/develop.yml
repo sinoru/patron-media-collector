@@ -23,6 +23,7 @@ jobs:
       - run: npm run build -- --mode development
         env:
           NODE_ENV: development
+      - run: npx web-ext lint
       - run: npx web-ext build
       - uses: actions/upload-artifact@v4
         with:
