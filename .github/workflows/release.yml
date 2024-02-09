@@ -43,6 +43,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dist
+          path: dist
       - run: npx web-ext sign --channel=unlisted --api-key=${{ secrets.WEB_EXT_API_KEY }} --api-secret=${{ secrets.WEB_EXT_API_SECRET }}
       - uses: actions/upload-artifact@v4
         with:
