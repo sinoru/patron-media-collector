@@ -6,12 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "build-ext": "web-ext build"
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.1.0",
-    "web-ext": "^7.11.0"
+    "vite": "^5.1.0"
   },
   "webExt": {
     "sourceDir": "dist/",
