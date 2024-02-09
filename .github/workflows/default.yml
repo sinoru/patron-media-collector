@@ -1,11 +1,14 @@
-name: build
+name: Default
 
 on:
   push:
     branches:    
-      - develop
+      - main
+      - 'releases/**'
+    tags:        
+      - v*
     paths:
-      - '.github/workflows/build.yml'
+      - '.github/workflows/default.yml'
       - 'src/**'
       - '.node-version'
       - 'package.json'
@@ -18,11 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+      - run: npm install -g web-ext
       - run: npm ci
-      - run: npm run build -- --mode development
+      - run: npm run build
         env:
-          NODE_ENV: development
-      - run: npm run build-ext
+          NODE_ENV: production
+      - run: npx web-ext lint
+      - run: npx web-ext build
       - uses: actions/upload-artifact@v4
         with:
           name: dist
