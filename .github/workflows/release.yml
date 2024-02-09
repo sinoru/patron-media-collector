@@ -44,7 +44,10 @@ jobs:
         with:
           name: dist
           path: dist
-      - run: npx web-ext sign --channel=unlisted --api-key=${{ secrets.WEB_EXT_API_KEY }} --api-secret=${{ secrets.WEB_EXT_API_SECRET }}
+      - run: npx web-ext sign --channel=unlisted
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
       - uses: actions/upload-artifact@v4
         with:
           name: signed-web-extension
