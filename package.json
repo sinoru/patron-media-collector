@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "ext-build": "npm run build && web-ext build"
+    "build-ext": "web-ext build"
   },
   "devDependencies": {
     "vite": "^5.0.8",
