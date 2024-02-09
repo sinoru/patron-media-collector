@@ -2,6 +2,8 @@ name: build
 
 on:
   push:
+    branches:    
+      - develop
     paths:
       - '.github/workflows/build.yml'
       - 'src/**'
@@ -9,9 +11,6 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'vite.config.js'
-
-env:
-  NODE_ENV: development
 
 jobs:
   build:
@@ -21,6 +20,8 @@ jobs:
       - uses: actions/setup-node@v4
       - run: npm ci
       - run: npm run build -- --mode development
+        env:
+          NODE_ENV: development
       - run: npm run build-ext
       - uses: actions/upload-artifact@v4
         with:
