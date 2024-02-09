@@ -1,14 +1,11 @@
-name: release
+name: Develop
 
 on:
   push:
     branches:    
-      - main
-      - 'releases/**'
-    tags:        
-      - v*
+      - develop
     paths:
-      - '.github/workflows/release.yml'
+      - '.github/workflows/develop.yml'
       - 'src/**'
       - '.node-version'
       - 'package.json'
@@ -22,9 +19,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -- --mode development
         env:
-          NODE_ENV: production
+          NODE_ENV: development
       - run: npm run build-ext
       - uses: actions/upload-artifact@v4
         with:
