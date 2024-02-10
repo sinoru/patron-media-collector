@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill';
+
 import './popup.css';
 import * as Store from '../common/store.js';
 

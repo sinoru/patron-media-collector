@@ -20,6 +20,7 @@
 		196AF1752B73B02600945C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1742B73B02600945C40 /* Assets.xcassets */; };
 		196AF1792B73B02600945C40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1782B73B02600945C40 /* Preview Assets.xcassets */; };
 		196AF19C2B73B08900945C40 /* PatronMediaDownloader WebExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		19737D112B7733DD00F70069 /* browser-polyfill.js in Resources */ = {isa = PBXBuildFile; fileRef = 19737D102B7733DD00F70069 /* browser-polyfill.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		196AF1982B73B08900945C40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		196AF1992B73B08900945C40 /* PatronMediaDownloader WebExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PatronMediaDownloader WebExtension.entitlements"; sourceTree = "<group>"; };
 		19737D0F2B771ACE00F70069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		19737D102B7733DD00F70069 /* browser-polyfill.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "browser-polyfill.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,9 @@
 				19174D2E2B73B8B1005F62DE /* images */,
 				196434282B74CFD300FF7212 /* popup */,
 				19174D182B73B89A005F62DE /* background.js */,
-				19174D1D2B73B89A005F62DE /* manifest.json */,
+				19737D102B7733DD00F70069 /* browser-polyfill.js */,
 				19174D222B73B89A005F62DE /* content.js */,
+				19174D1D2B73B89A005F62DE /* manifest.json */,
 			);
 			name = dist;
 			path = ../../dist;
@@ -246,6 +249,7 @@
 			files = (
 				19174D2D2B73B8AB005F62DE /* _locales in Resources */,
 				19174D242B73B89A005F62DE /* background.js in Resources */,
+				19737D112B7733DD00F70069 /* browser-polyfill.js in Resources */,
 				196434272B74CFCC00FF7212 /* assets in Resources */,
 				19174D282B73B89A005F62DE /* manifest.json in Resources */,
 				196434292B74CFD300FF7212 /* popup in Resources */,

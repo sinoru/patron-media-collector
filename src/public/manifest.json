@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "default_locale": "en",
 
   "name": "__MSG_extension_name__",
@@ -15,32 +15,37 @@
   },
 
   "background": {
+    "service_worker": "background.js",
     "scripts": [
       "background.js"
     ],
-    "persistent": false,
     "type": "module"
   },
 
   "permissions": [
     "downloads",
-    "storage",
+    "storage"
+  ],
+
+  "host_permissions": [
     "*://*.fanbox.cc/*",
     "*://www.patreon.com/*",
     "*://*.patreonusercontent.com/*"
   ],
 
   "content_scripts": [{
-    "js": [ "content.js" ],
+    "js": [
+      "browser-polyfill.js",
+      "content.js"
+    ],
     "matches": [
       "*://*.fanbox.cc/posts/*",
       "*://www.fanbox.cc/*/posts/*",
       "*://www.patreon.com/posts/*"
-    ],
-    "run_at": "document_idle"
+    ]
   }],
 
-  "browser_action": {
+  "action": {
     "default_icon": "images/toolbar-icon.svg",
     "default_popup": "popup/index.html"
   },
