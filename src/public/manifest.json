@@ -1,10 +1,10 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "default_locale": "en",
 
   "name": "__MSG_extension_name__",
   "description": "__MSG_extension_description__",
-  "version": "0.3",
+  "version": "0.3.1",
 
   "icons": {
     "48": "images/icon.svg",
@@ -15,32 +15,37 @@
   },
 
   "background": {
+    "service_worker": "background.js",
     "scripts": [
       "background.js"
     ],
-    "persistent": false,
     "type": "module"
   },
 
   "permissions": [
     "downloads",
-    "storage",
+    "storage"
+  ],
+
+  "host_permissions": [
     "*://*.fanbox.cc/*",
     "*://www.patreon.com/*",
     "*://*.patreonusercontent.com/*"
   ],
 
   "content_scripts": [{
-    "js": [ "content.js" ],
+    "js": [
+      "browser-polyfill.js",
+      "content.js"
+    ],
     "matches": [
       "*://*.fanbox.cc/posts/*",
       "*://www.fanbox.cc/*/posts/*",
       "*://www.patreon.com/posts/*"
-    ],
-    "run_at": "document_idle"
+    ]
   }],
 
-  "browser_action": {
+  "action": {
     "default_icon": "images/toolbar-icon.svg",
     "default_popup": "popup/index.html"
   },
@@ -49,5 +54,7 @@
     "gecko": {
       "id": "{E55C3A21-C06F-4D12-8EF1-E16D18FB8245}"
     }
-  }
+  },
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3E81h+asT+5NThd/0ZnQH+TYKEXDo4sT/aUWHWyWco5JOaj3IhzRcuQgllMXeipGhM4p8zK6EUehYVyhuSIUBIkjj2ZYNp+/kA6bPJvP1kAFchlufJoZaL8qIUbEOvqaknPNCG6c/gPnBdHX+JFXPkdqXz2MA9Ox1jF+sUmTX7g/G6hug+ABmCZk0IEu0Q/p7VhMTYZ1LHZSpUEo2eP84kWdaAs6YULwYsIiv/ZGc/2qZywQSQvx2hq7BpJM/JJmuD+JfHmyxPrNZVnTDF6v9J5hxszEo/Bo9YqeJCRCf29Z4rCnrlCjx3hSZgtwxkI1i+sO28Yws9uIp76T+86eCQIDAQAB"
 }

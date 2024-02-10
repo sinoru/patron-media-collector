@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 
 const root = './src'
 
@@ -13,7 +13,7 @@ export default defineConfig(({ command, mode }) => {
         input: {
           background: resolve(__dirname, root, 'background/index.js'),
           content: resolve(__dirname, root, 'content/index.js'),
-          popup: resolve(__dirname, root, 'popup/index.html')
+          popup: resolve(__dirname, root, 'popup/index.html'),
         },
         output: {
           entryFileNames: (chunkInfo) => {
@@ -38,8 +38,10 @@ export default defineConfig(({ command, mode }) => {
         'firefox115',
         'safari16',
         'ios15',
+        'chrome121',
       ],
     },
+    plugins: [splitVendorChunkPlugin()],
     root,
   }
 });

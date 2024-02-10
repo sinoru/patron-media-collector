@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill';
+
 import * as Store from '../common/store.js';
 
 function dataURLFromBlob(blob) {

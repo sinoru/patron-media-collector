@@ -14,5 +14,8 @@
   "webExt": {
     "sourceDir": "dist/",
     "artifactsDir": "dist/web-ext-artifacts"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.10.0"
   }
 }
