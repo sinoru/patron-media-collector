@@ -12,7 +12,14 @@ async function updateBody() {
     let originURL = tabs[0].url;
 
     const data = await Store.get(originURL);
+    if (!data) {
+        return;
+    }
+
     const media = data['media'];
+    if (!media) {
+        return;
+    }
 
     let downloadAllButton = document.createElement('button');
     downloadAllButton.textContent = `Download all media ${media.length}`;
