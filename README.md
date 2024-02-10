@@ -2,6 +2,8 @@
 
 A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.
 
+![Preview](./Preview.png)
+
 ### Supported Sites
 
 - pixiv FANBOX
