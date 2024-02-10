@@ -21,12 +21,17 @@ async function updateBody() {
         return;
     }
 
+    const totalString = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
+
     let downloadAllButton = document.createElement('button');
-    downloadAllButton.textContent = `Download all media ${media.length}`;
+    downloadAllButton.textContent = 'Download All Media';
+    downloadAllButton.appendChild(document.createElement('br'));
+    downloadAllButton.appendChild(document.createTextNode(`(${totalString})`));
     downloadAllButton.addEventListener('click', () => {
         browser.runtime.sendMessage({'media': media, 'url': originURL});
         window.close();
     });
+    downloadAllButton.disabled = media.length == 0;
 
     document.body.replaceChildren(downloadAllButton);
 }
