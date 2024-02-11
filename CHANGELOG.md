@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix parameter name mismatch in type hint ([commit](https://github.com/sinoru/patron-media-downloader/commit/6208379f))
+
 ### Security
 
 ## [0.3.1] - 2024-02-10
