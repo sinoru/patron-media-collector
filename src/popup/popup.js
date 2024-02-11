@@ -11,29 +11,22 @@ async function updateBody() {
 
     let originURL = tabs[0].url;
 
-    const data = await Store.get(originURL);
-    if (!data) {
+    const data = await Store.get(originURL) ?? {};
+    const media = data['media'] ?? [];
+    
+    const downloadAllButton = document.getElementById('download-all-button');
+    if (!downloadAllButton) {
         return;
     }
 
-    const media = data['media'];
-    if (!media) {
-        return;
-    }
-
-    const totalString = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
-
-    let downloadAllButton = document.createElement('button');
-    downloadAllButton.textContent = 'Download All Media';
-    downloadAllButton.appendChild(document.createElement('br'));
-    downloadAllButton.appendChild(document.createTextNode(`(${totalString})`));
-    downloadAllButton.addEventListener('click', () => {
+    downloadAllButton.disabled = !(media.length > 0);
+    downloadAllButton.onclick = () => {
         browser.runtime.sendMessage({'media': media, 'url': originURL});
         window.close();
-    });
-    downloadAllButton.disabled = media.length == 0;
+    };
 
-    document.body.replaceChildren(downloadAllButton);
+    const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
+    donwloadAllButtonDescription.textContent = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
 }
 
 Store.onChanged.addListener(() => updateBody);
