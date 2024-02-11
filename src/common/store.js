@@ -3,7 +3,7 @@ import browser from 'webextension-polyfill';
 const store = browser.storage.session;
 
 /**
- * @param {string} string
+ * @param {string} urlString
  */
 function url(urlString) {
     let url = new URL(urlString);
