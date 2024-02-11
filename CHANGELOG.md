@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update download button UI ([commits](https://github.com/sinoru/patron-media-downloader/compare/08c2a2e6~1...1c2a92b1))
+- Add pre-number only to Fanbox images not all ([commit](https://github.com/sinoru/patron-media-downloader/commit/c046bbc0))
+- Update icon ([commits](https://github.com/sinoru/patron-media-downloader/compare/32ac0104~1...a4003379))
+
 ### Deprecated
 
 ### Removed
@@ -27,6 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.3.1...HEAD
+[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.3.1...develop
 [0.3.1]: https://github.com/sinoru/patron-media-downloader/compare/v0.3...v0.3.1
 [0.3]: https://github.com/sinoru/patron-media-downloader/releases/tag/v0.3
