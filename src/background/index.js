@@ -1,6 +1,7 @@
 import browser from 'webextension-polyfill';
 
 import * as Store from '../common/store.js';
+import _catch from '../common/catch.js';
 import download from './download.js';
 
 function timeout(delay) {
@@ -11,31 +12,38 @@ function timeout(delay) {
     });
 }
 
-browser.runtime.onMessage.addListener(async (request, sender) => {
-    console.log("Received request: ", request, sender);
+browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
+    console.log("Received request: ", message, sender);
 
-    if (/^https?:/.test(sender.url)) {
-        await Store.set(
-            sender.url,
-            {
-                'media': request.media
-            }
-        )
-    } else {
-        let media = request.media;
+    const [key, value] = Object.entries(request)[0];
 
-        for (let mediaElement of media) {
-            await download(
-                {
-                    filename: mediaElement.download,
-                    url: mediaElement.href
-                },
-                new URL(request.url)
-            );
+    switch (key) {
+        case 'store':
+            return _catch(async () => {
+                await Store.set(
+                    sender.url,
+                    value
+                )
+            })();
+        case 'download':
+            return _catch(async () => {
+                const media = value.media;
 
-            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-                await timeout(100);
-            }
-        }
+                for (let mediaElement of media) {
+                    await download(
+                        {
+                            filename: mediaElement.download,
+                            url: mediaElement.href
+                        },
+                        new URL(value.url)
+                    );
+        
+                    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+                        await timeout(100);
+                    }
+                }
+            })();
+        default:
+            return false;
     }
-});
+}));

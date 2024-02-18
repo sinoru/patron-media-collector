@@ -16,7 +16,7 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
     document.body.removeChild(link);
 });
 
-function main() {
+async function main() {
     const href = document.location.href;
 
     let media = null;
@@ -31,8 +31,8 @@ function main() {
         media = getPatreonMedia();
     }
 
-    browser.runtime.sendMessage({
-        'media': media,
+    await browser.runtime.sendMessage({
+        'store': {'media': media}
     });
 }
 
