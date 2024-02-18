@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update popup layout ([commit](https://github.com/sinoru/patron-media-downloader/commit/5465d5d8))
+- Update internal messaging part for future-proof ([commit](https://github.com/sinoru/patron-media-downloader/commit/dc48b5a3))
+- Update `npm run dev` command to work ([commit](https://github.com/sinoru/patron-media-downloader/commit/e9837af9))
+
 ### Deprecated
 
 ### Removed
