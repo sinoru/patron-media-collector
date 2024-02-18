@@ -19,6 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.5] - 2024-02-18
+
+### Changed
+
+- Update popup layout ([commit](https://github.com/sinoru/patron-media-downloader/commit/5465d5d8))
+- Update internal messaging part for future-proof ([commit](https://github.com/sinoru/patron-media-downloader/commit/dc48b5a3))
+- Update `npm run dev` command to work ([commit](https://github.com/sinoru/patron-media-downloader/commit/e9837af9))
+
 ## [0.4] - 2024-02-11
 
 ### Changed
@@ -39,7 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.4...develop
+[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.5...develop
+[0.5]: https://github.com/sinoru/patron-media-downloader/compare/v0.4...v0.5
 [0.4]: https://github.com/sinoru/patron-media-downloader/compare/v0.3.1...v0.4
 [0.3.1]: https://github.com/sinoru/patron-media-downloader/compare/v0.3...v0.3.1
 [0.3]: https://github.com/sinoru/patron-media-downloader/releases/tag/v0.3

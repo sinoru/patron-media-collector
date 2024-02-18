@@ -20,9 +20,14 @@ async function updateBody() {
     }
 
     downloadAllButton.disabled = !(media.length > 0);
-    downloadAllButton.onclick = () => {
-        browser.runtime.sendMessage({'media': media, 'url': originURL});
-        window.close();
+    downloadAllButton.onclick = async () => {
+        const disabled = downloadAllButton.disabled;
+
+        downloadAllButton.disabled = true;
+        await browser.runtime.sendMessage({
+            'download': {'media': media, 'url': originURL}
+        });
+        downloadAllButton.disabled = disabled;
     };
 
     const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
