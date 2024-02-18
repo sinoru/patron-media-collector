@@ -1,11 +1,11 @@
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
 
-browser.runtime.onMessage.addListener(async (request, sender) => {
-    console.log("Received request: ", request, sender);
+browser.runtime.onMessage.addListener(async (message, sender) => {
+    console.log("Received request: ", message, sender);
 
-    let download = request.download;
-    let href = request.href;
+    let download = message.download;
+    let href = message.href;
 
     let link = document.createElement("a");
     link.download = download;

@@ -12,10 +12,10 @@ function timeout(delay) {
     });
 }
 
-browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
+browser.runtime.onMessage.addListener(_catch((message, sender) => {
     console.log("Received request: ", message, sender);
 
-    const [key, value] = Object.entries(request)[0];
+    const [key, value] = Object.entries(message)[0];
 
     switch (key) {
         case 'store':
