@@ -12,21 +12,29 @@ function timeout(delay) {
     });
 }
 
-browser.runtime.onMessage.addListener(_catch((message, sender) => {
+browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
     console.log("Received request: ", message, sender);
 
     const [key, value] = Object.entries(message)[0];
 
     switch (key) {
         case 'store':
-            return _catch(async () => {
+            _catch(async () => {
                 await Store.set(
                     sender.url,
                     value
                 )
-            })();
+            })()
+            .then(() => {
+                sendResponse();
+            })
+            .catch((reason) => {
+                sendResponse(new Error(reason));
+            });
+
+            return true;
         case 'download':
-            return _catch(async () => {
+            _catch(async () => {
                 const media = value.media;
 
                 for (let mediaElement of media) {
@@ -42,7 +50,15 @@ browser.runtime.onMessage.addListener(_catch((message, sender) => {
                         await timeout(100);
                     }
                 }
-            })();
+            })()
+            .then(() => {
+                sendResponse();
+            })
+            .catch((reason) => {
+                sendResponse(new Error(reason));
+            });
+
+            return true;
         default:
             return false;
     }
