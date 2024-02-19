@@ -1,7 +1,7 @@
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
 
-browser.runtime.onMessage.addListener(async (message, sender) => {
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log("Received request: ", message, sender);
 
     /** @type {string} */
@@ -16,6 +16,8 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+
+    sendResponse();
 });
 
 async function main() {
