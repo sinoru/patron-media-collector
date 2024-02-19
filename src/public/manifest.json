@@ -23,6 +23,7 @@
   },
 
   "permissions": [
+    "cookies",
     "downloads",
     "storage"
   ],
