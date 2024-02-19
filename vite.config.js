@@ -19,9 +19,14 @@ export default defineConfig(({ command, mode }) => {
           entryFileNames: (chunkInfo) => {
             switch (chunkInfo.name) {
             case 'popup':
-              return '[name]/[name].js';
+              return '[name]/index.js';
             default:
               return '[name].js';
+            }
+          },
+          manualChunks: (id) => {
+            if (id.includes('src/common')) {
+              return 'common'
             }
           },
         },

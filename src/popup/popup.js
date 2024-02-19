@@ -3,6 +3,19 @@ import browser from 'webextension-polyfill';
 import './popup.css';
 import * as Store from '../common/store.js';
 
+/**
+ * 
+ * @param {HTMLElement} element 
+ * @param {boolean} disabled 
+ */
+const setDisabled = (element, disabled) => {
+    if (disabled) {
+        element.setAttribute('disabled', '');
+    } else {
+        element.removeAttribute('disabled');
+    }
+}
+
 async function updateBody() {
     let tabs = await browser.tabs.query({ 
         active: true,
@@ -19,15 +32,15 @@ async function updateBody() {
         return;
     }
 
-    downloadAllButton.disabled = !(media.length > 0);
+    setDisabled(downloadAllButton, !(media.length > 0));
     downloadAllButton.onclick = async () => {
-        const disabled = downloadAllButton.disabled;
+        const disabled = downloadAllButton.hasAttribute('disabled');
 
-        downloadAllButton.disabled = true;
+        setDisabled(downloadAllButton, true);
         await browser.runtime.sendMessage({
             'download': {'media': media, 'url': originURL}
         });
-        downloadAllButton.disabled = disabled;
+        setDisabled(downloadAllButton, disabled);
     };
 
     const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
