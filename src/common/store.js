@@ -1,18 +1,8 @@
 import browser from 'webextension-polyfill';
 
-const store = browser.storage.session;
+import url from './url.js';
 
-/**
- * @param {string} urlString
- */
-function url(urlString) {
-    let url = new URL(urlString);
-    url.protocol = "";
-    url.hash = "";
-    url.search = "";
-    
-    return url;
-}
+const store = browser.storage.session;
 
 /**
  * @param {string} urlString
