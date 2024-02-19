@@ -1,18 +1,26 @@
+/**
+ * @template T
+ * @param {T} block
+ * 
+ * @returns {T}
+ */
 export default (block) => {
     if (block.then && block.catch) {
         return async (...args) => {
             try {
-                await block(...args);
+                return await block(...args);
             } catch (e) {
                 console.error(e);
+                throw e;
             }
         };
     } else {
         return (...args) => {
             try {
-                block(...args);
+                return block(...args);
             } catch (e) {
                 console.error(e);
+                throw e;
             }
         }
     }
