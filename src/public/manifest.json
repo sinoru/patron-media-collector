@@ -30,8 +30,7 @@
 
   "host_permissions": [
     "*://*.fanbox.cc/*",
-    "*://www.patreon.com/*",
-    "*://*.patreonusercontent.com/*"
+    "*://www.patreon.com/*"
   ],
 
   "content_scripts": [{
