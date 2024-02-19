@@ -61,11 +61,9 @@
 		196AF1702B73B02500945C40 /* PatronMediaDownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronMediaDownloaderApp.swift; sourceTree = "<group>"; };
 		196AF1722B73B02500945C40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		196AF1742B73B02600945C40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		196AF1762B73B02600945C40 /* PatronMediaDownloader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PatronMediaDownloader.entitlements; sourceTree = "<group>"; };
 		196AF1782B73B02600945C40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PatronMediaDownloader WebExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		196AF1982B73B08900945C40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		196AF1992B73B08900945C40 /* PatronMediaDownloader WebExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PatronMediaDownloader WebExtension.entitlements"; sourceTree = "<group>"; };
 		19737D0F2B771ACE00F70069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		19737D102B7733DD00F70069 /* browser-polyfill.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "browser-polyfill.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +127,6 @@
 				196AF1722B73B02500945C40 /* ContentView.swift */,
 				196AF1742B73B02600945C40 /* Assets.xcassets */,
 				19737D0F2B771ACE00F70069 /* Info.plist */,
-				196AF1762B73B02600945C40 /* PatronMediaDownloader.entitlements */,
 				196AF1772B73B02600945C40 /* Preview Content */,
 			);
 			path = PatronMediaDownloader;
@@ -148,7 +145,6 @@
 			children = (
 				195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */,
 				196AF1982B73B08900945C40 /* Info.plist */,
-				196AF1992B73B08900945C40 /* PatronMediaDownloader WebExtension.entitlements */,
 				19174D152B73B891005F62DE /* src */,
 				19174D162B73B89A005F62DE /* dist */,
 			);
@@ -355,6 +351,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -380,6 +378,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = auto;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -422,6 +421,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -440,6 +441,7 @@
 				MARKETING_VERSION = 0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = auto;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
@@ -451,12 +453,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PatronMediaDownloader/PatronMediaDownloader.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PatronMediaDownloader/Preview Content\"";
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PatronMediaDownloader/Info.plist;
@@ -488,12 +488,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PatronMediaDownloader/PatronMediaDownloader.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PatronMediaDownloader/Preview Content\"";
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PatronMediaDownloader/Info.plist;
@@ -523,10 +521,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "PatronMediaDownloader WebExtension/PatronMediaDownloader WebExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
-				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PatronMediaDownloader WebExtension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader WebExtension";
@@ -556,10 +552,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "PatronMediaDownloader WebExtension/PatronMediaDownloader WebExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
-				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PatronMediaDownloader WebExtension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader WebExtension";
