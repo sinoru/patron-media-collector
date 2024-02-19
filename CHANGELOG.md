@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Enhance overall reliability ([commit](https://github.com/sinoru/patron-media-downloader/commit/c2885ea9))
+- Enhance downloading performance and reliability on Safari ([commits](https://github.com/sinoru/patron-media-downloader/commit/c2885ea9), [commits](https://github.com/sinoru/patron-media-downloader/compare/fcc9ad24~1...7ee9f382))
+- Disable download button while downloading ([commit](https://github.com/sinoru/patron-media-downloader/commit/55721a3f), [commit](https://github.com/sinoru/patron-media-downloader/commit/4c9b61f3))
+
 ### Deprecated
 
 ### Removed
