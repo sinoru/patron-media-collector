@@ -4,13 +4,13 @@ import getPatreonMedia from './patreon.js';
 browser.runtime.onMessage.addListener(async (message, sender) => {
     console.log("Received request: ", message, sender);
 
-    let download = message.download;
     let href = message.href;
+    let download = message.download;
 
     let link = document.createElement("a");
-    link.download = download;
-    link.href = href;
-    link.style = 'display: none';
+    link.setAttribute('href', href);
+    link.setAttribute('download', download);
+    link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
