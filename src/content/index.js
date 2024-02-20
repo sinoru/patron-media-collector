@@ -30,25 +30,6 @@ const handleDataURI = (uriString) => {
     }
 }
 
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log("Received request: ", message, sender);
-
-    /** @type {string} */
-    const href = handleDataURI(message.href);
-    /** @type {string} */
-    const download = message.download;
-
-    const element = document.createElement("a");
-    element.setAttribute('href', href);
-    element.setAttribute('download', download);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-
-    sendResponse();
-});
-
 async function update() {
     const href = document.location.href;
 
@@ -63,6 +44,43 @@ async function update() {
         'store': {'media': media}
     });
 }
+
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log("Received request: ", message, sender);
+
+    const [key, value] = Object.entries(message)[0];
+
+    switch (key) {
+        case 'download':
+            /** @type {string} */
+            const href = handleDataURI(value.href);
+            /** @type {string} */
+            const download = value.download;
+
+            const element = document.createElement("a");
+            element.setAttribute('href', href);
+            element.setAttribute('download', download);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            sendResponse();
+            return;
+        case 'refresh':
+            update()
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
+                });
+
+            return true;
+        default:
+            return false;
+    }
+});
 
 const domObserver = new MutationObserver(update);
 domObserver.observe(document, { childList: true, subtree: true });

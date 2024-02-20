@@ -1,6 +1,7 @@
 import browser from 'webextension-polyfill';
 
 import url from '../common/url.js';
+import * as Tab from '../common/tab.js';
 
 /**
  * @param {Blob} blob
@@ -78,16 +79,16 @@ export default async function download(downloads, originURL) {
                 href = await dataURLFromBlob(preparedDownload.blob);
             }
 
-            let tabs = await browser.tabs.query({
-                active: true,
-                url: _originURL.href,
-            });
-
-            await browser.tabs.sendMessage(
-                tabs[0].id,
+            await Tab.sendMessage(
                 {
-                    'download': preparedDownload.filename,
-                    href,
+                    active: true,
+                    url: _originURL.href,
+                },
+                {
+                    'download': {
+                        'download': preparedDownload.filename,
+                        href
+                    }
                 }
             );
 

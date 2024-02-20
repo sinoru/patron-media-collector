@@ -1,6 +1,7 @@
 import browser from 'webextension-polyfill';
 
 import * as Store from '../common/store.js';
+import * as Tab from '../common/tab.js';
 import _catch from '../common/catch.js';
 
 import './popup.css';
@@ -62,3 +63,15 @@ async function updateBody() {
 
 Store.onChanged.addListener(() => updateBody);
 updateBody();
+
+_catch(async () => {
+    await Tab.sendMessage(
+        {
+            active: true,
+            currentWindow: true
+        },
+        {
+            'refresh': null
+        }
+    );
+})();
