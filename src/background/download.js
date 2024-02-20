@@ -56,6 +56,7 @@ export default async function download(downloads, originURL) {
                 {
                     method: 'GET',
                     credentials: 'include',
+                    mode: 'cors',
                     referrerPolicy: 'no-referrer',
                 }
             )
