@@ -38,7 +38,7 @@ const timeout = (delay) => {
  * @param {Download[]} downloads
  * @param {string} originURL
  */
-export default async function download(downloads, originURL) {
+export async function prepareDownload(downloads, originURL) {
     const _originURL = url(originURL);
 
     const preparedDownloads = await Promise.all(
@@ -47,12 +47,12 @@ export default async function download(downloads, originURL) {
                 return download;
             }
 
-            let downloadURL = new URL(download.url);
+            const downloadURL = new URL(download.url);
             if (downloadURL.host == _originURL.host) {
                 return download;
             }
 
-            let response = await fetch(
+            const response = await fetch(
                 download.url,
                 {
                     method: 'GET',
@@ -60,23 +60,39 @@ export default async function download(downloads, originURL) {
                     mode: 'cors',
                     referrerPolicy: 'no-referrer',
                 }
-            )
-            let blob = await response.blob()
+            );
+            const blob = await response.blob();
 
             return {
                 ...download,
-                blob: blob,
+                'blobObjectURL': URL.createObjectURL(blob),
             }
         })
     );
 
-    for (let preparedDownload of preparedDownloads) {
+    return {
+        'downloads': preparedDownloads,
+        originURL,
+    }
+}
+
+/**
+ * @param {Download[]} downloads
+ * @param {string} originURL
+ */
+export default async function download(downloads, originURL) {
+    const _originURL = url(originURL);
+
+    for (let download of downloads) {
         if (browser.downloads && browser.downloads.download) {
-            await browser.downloads.download(preparedDownload);
+            await browser.downloads.download(download);
         } else {
-            let href = preparedDownload.url;
-            if (preparedDownload.blob) {
-                href = await dataURLFromBlob(preparedDownload.blob);
+            let href = download.url;
+            if (download.blobObjectURL) {
+                const response = await fetch(download.blobObjectURL);
+                const blob = await response.blob();
+
+                href = await dataURLFromBlob(blob);
             }
 
             await Tab.sendMessage(
@@ -86,7 +102,7 @@ export default async function download(downloads, originURL) {
                 },
                 {
                     'download': {
-                        'download': preparedDownload.filename,
+                        'download': download.filename,
                         href
                     }
                 }

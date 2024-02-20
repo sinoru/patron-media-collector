@@ -5,7 +5,7 @@ import * as Tab from '../common/tab.js';
 import _catch from '../common/catch.js';
 
 import './popup.css';
-import download from './download.js';
+import { prepareDownload } from '../common/download.js';
 
 /**
  * 
@@ -28,10 +28,11 @@ async function downloadAll(media, originURL) {
         }
     });
 
-    await download(
-        downloads,
-        originURL
-    );
+    const preparedDownloads = await prepareDownload(downloads, originURL);
+
+    await browser.runtime.sendMessage({
+        'download': preparedDownloads
+    });
 }
 
 async function updateBody() {

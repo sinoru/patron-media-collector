@@ -2,6 +2,7 @@ import browser from 'webextension-polyfill';
 
 import * as Store from '../common/store.js';
 import _catch from '../common/catch.js';
+import download from '../common/download.js';
 
 browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
     console.log("Received request: ", message, sender);
@@ -10,16 +11,26 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
 
     switch (key) {
         case 'store':
-            Store.set(
-                sender.url,
-                value
-            )
-            .then(() => {
-                sendResponse();
-            })
-            .catch((reason) => {
-                sendResponse(new Error(reason));
-            });
+            Store.set(sender.url, value)
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
+                });
+
+            return true;
+        case 'download':
+            const downloads = value.downloads;
+            const originURL = value.originURL;
+            
+            download(downloads, originURL)
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
+                });
 
             return true;
         default:
