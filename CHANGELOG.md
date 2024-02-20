@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Change to Manifest v3 ([commit](https://github.com/sinoru/patron-media-downloader/commit/f9572f6f))
-- Make it downloading more reliable on Safari ([commit](https://github.com/sinoru/patron-media-downloader/commit/3c8f9d07), [commit](https://github.com/sinoru/patron-media-downloader/commit/b260488e))
+- Make it downloading more reliable on Safari ([commit](https://github.com/sinoru/patron-media-downloader/commit/3c8f9d07), [commit](https://github.com/sinoru/patron-media-downloader/commit/b260488e), [commits](https://github.com/sinoru/patron-media-downloader/compare/7f79b541~1...b565670b))
+- Drop to use Storage API for more lightweight ([commit](https://github.com/sinoru/patron-media-downloader/commit/451c9ef1))
+- Drop to use duplicated webextension-polyfill due to diffrent entry ([commit](https://github.com/sinoru/patron-media-downloader/commit/b20116a3))
 
 ### Deprecated
 
