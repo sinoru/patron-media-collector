@@ -1,7 +1,10 @@
 import browser from 'webextension-polyfill';
 
-import './popup.css';
 import * as Store from '../common/store.js';
+import _catch from '../common/catch.js';
+
+import './popup.css';
+import download from './download.js';
 
 /**
  * 
@@ -33,15 +36,25 @@ async function updateBody() {
     }
 
     setDisabled(downloadAllButton, !(media.length > 0));
-    downloadAllButton.onclick = async () => {
+    downloadAllButton.onclick = _catch(async () => {
         const disabled = downloadAllButton.hasAttribute('disabled');
 
         setDisabled(downloadAllButton, true);
-        await browser.runtime.sendMessage({
-            'download': {'media': media, 'url': originURL}
+
+        const downloads = media.map((media) => {
+            return {
+                filename: media.download,
+                url: media.href
+            }
         });
+
+        await download(
+            downloads,
+            originURL
+        );
+
         setDisabled(downloadAllButton, disabled);
-    };
+    });
 
     const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
     donwloadAllButtonDescription.textContent = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
