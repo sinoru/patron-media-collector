@@ -1,8 +1,8 @@
-import browser from 'webextension-polyfill';
+import 'webextension-polyfill';
+/** @var {typeof import("webextension-polyfill")} browser */
 
-import * as Store from '../common/store.js';
 import _catch from '../common/catch.js';
-import download from './download.js';
+import download from '../common/download.js';
 
 browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
     console.log("Received request: ", message, sender);
@@ -10,35 +10,26 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
     const [key, value] = Object.entries(message)[0];
 
     switch (key) {
-        case 'store':
-            _catch(async () => {
-                await Store.set(
-                    sender.url,
-                    value
-                )
-            })()
-            .then(() => {
-                sendResponse();
-            })
-            .catch((reason) => {
-                sendResponse(new Error(reason));
-            });
-
-            return true;
         case 'download':
-            _catch(async () => {
-                const downloads = value.media.map((media) => {
-                    return {
-                        filename: media.download,
-                        url: media.href
-                    }
+            const downloads = value.downloads;
+            const originURL = value.originURL;
+            
+            download(downloads, originURL)
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
                 });
 
-                await download(
-                    downloads,
-                    value.url
-                );
-            })()
+            return true;
+        case 'data':
+            browser.runtime.sendMessage({
+                'data': {
+                    ...value,
+                    senderURL : sender.url
+                }
+            })
             .then(() => {
                 sendResponse();
             })

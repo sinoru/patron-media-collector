@@ -1,3 +1,5 @@
+/** @var {typeof import("webextension-polyfill")} browser */
+
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
 
@@ -30,43 +32,53 @@ const handleDataURI = (uriString) => {
     }
 }
 
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log("Received request: ", message, sender);
-
-    /** @type {string} */
-    const href = handleDataURI(message.href);
-    /** @type {string} */
-    const download = message.download;
-
-    const element = document.createElement("a");
-    element.setAttribute('href', href);
-    element.setAttribute('download', download);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-
-    sendResponse();
-});
-
-async function main() {
+async function fetch() {
     const href = document.location.href;
 
     let media = null;
     if (/.+:\/\/www\.fanbox\.cc\/@.+\/posts\/.+/.test(href) || /.+:\/\/.+\.fanbox\.cc\/posts\/.+/.test(href)) {
-        if (!window.domObserver) {
-            window.domObserver = new MutationObserver(main);
-            domObserver.observe(document, { childList: true, subtree: true });
-        }
-
         media = getFanboxMedia();
     } else if (/.+:\/\/www\.patreon\.com\/posts\/.+/.test(href)) {
         media = getPatreonMedia();
     }
 
     await browser.runtime.sendMessage({
-        'store': {'media': media}
+        'data': {'media': media}
     });
 }
 
-main();
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log("Received request: ", message, sender);
+
+    const [key, value] = Object.entries(message)[0];
+
+    switch (key) {
+        case 'download':
+            /** @type {string} */
+            const href = handleDataURI(value.href);
+            /** @type {string} */
+            const download = value.download;
+
+            const element = document.createElement("a");
+            element.setAttribute('href', href);
+            element.setAttribute('download', download);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            return;
+        case 'fetch':
+            fetch()
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
+                });
+
+            return true;
+        default:
+            return false;
+    }
+});

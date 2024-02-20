@@ -18,3 +18,4 @@ A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.
 
 - Safari (macOS, iOS, iPadOS, visionOS)
 - Firefox
+- Chrome

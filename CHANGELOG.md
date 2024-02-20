@@ -19,7 +19,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.8] - 2024-02-21
+
+### Added
+
+- Back to support Chrome again ([commit](https://github.com/sinoru/patron-media-downloader/commit/d350c69a))
+
+### Changed
+
+- Change to Manifest v3 ([commit](https://github.com/sinoru/patron-media-downloader/commit/f9572f6f))
+- Make it downloading more reliable on Safari ([commit](https://github.com/sinoru/patron-media-downloader/commit/3c8f9d07), [commit](https://github.com/sinoru/patron-media-downloader/commit/b260488e), [commits](https://github.com/sinoru/patron-media-downloader/compare/7f79b541~1...b565670b))
+- Drop to use Storage API for more lightweight ([commit](https://github.com/sinoru/patron-media-downloader/commit/451c9ef1))
+- Drop to use duplicated webextension-polyfill due to diffrent entry ([commit](https://github.com/sinoru/patron-media-downloader/commit/b20116a3))
+
+
 ## [0.7] - 2024-02-20
+
+### Changed
+
+- Change to Manifest v2 ([commit](https://github.com/sinoru/patron-media-downloader/commit/9d731e81))
 
 ### Removed
 
@@ -71,7 +89,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.7...develop
+[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.8...develop
+[0.8]: https://github.com/sinoru/patron-media-downloader/compare/v0.7...v0.8
 [0.7]: https://github.com/sinoru/patron-media-downloader/compare/v0.6.1...v0.7
 [0.6.1]: https://github.com/sinoru/patron-media-downloader/compare/v0.6...v0.6.1
 [0.6]: https://github.com/sinoru/patron-media-downloader/compare/v0.5...v0.6

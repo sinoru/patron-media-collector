@@ -1,7 +1,10 @@
-import browser from 'webextension-polyfill';
+import 'webextension-polyfill';
+/** @var {typeof import("webextension-polyfill")} browser */
+
+import _catch from '../common/catch.js';
 
 import './popup.css';
-import * as Store from '../common/store.js';
+import { prepareDownloadForBackground } from '../common/download.js';
 
 /**
  * 
@@ -16,36 +19,70 @@ const setDisabled = (element, disabled) => {
     }
 }
 
-async function updateBody() {
-    let tabs = await browser.tabs.query({ 
-        active: true,
-        currentWindow: true
+async function downloadAll(media, originURL) {
+    const downloads = media.map((media) => {
+        return {
+            filename: media.download,
+            url: media.href
+        }
     });
 
-    let originURL = tabs[0].url;
+    const preparedDownloads = await prepareDownloadForBackground(downloads, originURL);
 
-    const data = await Store.get(originURL) ?? {};
-    const media = data['media'] ?? [];
-    
+    await browser.runtime.sendMessage({
+        'download': preparedDownloads
+    });
+}
+
+async function updateBody(media, senderURL) {
     const downloadAllButton = document.getElementById('download-all-button');
-    if (!downloadAllButton) {
-        return;
-    }
 
     setDisabled(downloadAllButton, !(media.length > 0));
-    downloadAllButton.onclick = async () => {
+    downloadAllButton.onclick = _catch(async () => {
         const disabled = downloadAllButton.hasAttribute('disabled');
-
+    
         setDisabled(downloadAllButton, true);
-        await browser.runtime.sendMessage({
-            'download': {'media': media, 'url': originURL}
-        });
+    
+        await downloadAll(media, senderURL);
+    
         setDisabled(downloadAllButton, disabled);
-    };
+    });
 
     const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
     donwloadAllButtonDescription.textContent = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
 }
 
-Store.onChanged.addListener(() => updateBody);
-updateBody();
+browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
+    console.log("Received request: ", message, sender);
+
+    const [key, value] = Object.entries(message)[0];
+
+    switch (key) {
+        case 'data':
+            updateBody(value.media, value.senderURL)
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
+                });
+
+            return true;
+        default:
+            return false;
+    }
+}));
+
+_catch(async () => {
+    const currentTab = (await browser.tabs.query({
+        active: true,
+        currentWindow: true
+    }))[0];
+
+    await browser.tabs.sendMessage(
+        currentTab.id,
+        {
+            'fetch': null
+        }
+    );
+})();
