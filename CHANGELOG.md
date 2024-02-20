@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Back to support Chrome again ([commit](https://github.com/sinoru/patron-media-downloader/commit/d350c69a))
+
 ### Changed
+
+- Change to Manifest v3 ([commit](https://github.com/sinoru/patron-media-downloader/commit/f9572f6f))
+- Make it downloading more reliable on Safari ([commit](https://github.com/sinoru/patron-media-downloader/commit/3c8f9d07), [commit](https://github.com/sinoru/patron-media-downloader/commit/b260488e))
 
 ### Deprecated
 
@@ -20,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 ## [0.7] - 2024-02-20
+
+### Changed
+
+- Change to Manifest v2 ([commit](https://github.com/sinoru/patron-media-downloader/commit/9d731e81))
 
 ### Removed
 
