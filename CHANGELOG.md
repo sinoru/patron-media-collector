@@ -71,7 +71,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.6.1...develop
+[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.7...develop
+[0.7]: https://github.com/sinoru/patron-media-downloader/compare/v0.6.1...v0.7
 [0.6.1]: https://github.com/sinoru/patron-media-downloader/compare/v0.6...v0.6.1
 [0.6]: https://github.com/sinoru/patron-media-downloader/compare/v0.5...v0.6
 [0.5]: https://github.com/sinoru/patron-media-downloader/compare/v0.4...v0.5
