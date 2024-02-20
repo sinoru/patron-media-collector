@@ -1,3 +1,5 @@
+/** @var {typeof import("webextension-polyfill")} browser */
+
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
 
