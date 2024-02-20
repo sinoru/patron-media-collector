@@ -42,8 +42,8 @@ export default defineConfig(({ command, mode }) => {
       })(),
       target: [
         'firefox115',
-        'safari16',
-        'ios16',
+        'safari15',
+        'ios15',
         'chrome121',
       ],
     },

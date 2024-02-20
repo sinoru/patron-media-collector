@@ -30,7 +30,7 @@ const handleDataURI = (uriString) => {
     }
 }
 
-async function update() {
+async function fetch() {
     const href = document.location.href;
 
     let media = null;
@@ -41,7 +41,7 @@ async function update() {
     }
 
     await browser.runtime.sendMessage({
-        'store': {'media': media}
+        'data': {'media': media}
     });
 }
 
@@ -67,8 +67,8 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
             sendResponse();
             return;
-        case 'refresh':
-            update()
+        case 'fetch':
+            fetch()
                 .then(() => {
                     sendResponse();
                 })
@@ -81,8 +81,3 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             return false;
     }
 });
-
-const domObserver = new MutationObserver(update);
-domObserver.observe(document, { childList: true, subtree: true });
-
-update();

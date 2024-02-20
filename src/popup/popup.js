@@ -1,6 +1,5 @@
 import browser from 'webextension-polyfill';
 
-import * as Store from '../common/store.js';
 import * as Tab from '../common/tab.js';
 import _catch from '../common/catch.js';
 
@@ -35,16 +34,7 @@ async function downloadAll(media, originURL) {
     });
 }
 
-async function updateBody() {
-    const tabs = await browser.tabs.query({
-        active: true,
-        currentWindow: true
-    });
-    const originURL = tabs[0].url;
-
-    const data = await Store.get(originURL) ?? {};
-    const media = data['media'] ?? [];
-    
+async function updateBody(media, senderURL) {
     const downloadAllButton = document.getElementById('download-all-button');
 
     setDisabled(downloadAllButton, !(media.length > 0));
@@ -53,7 +43,7 @@ async function updateBody() {
     
         setDisabled(downloadAllButton, true);
     
-        await downloadAll(media, originURL);
+        await downloadAll(media, senderURL);
     
         setDisabled(downloadAllButton, disabled);
     });
@@ -62,8 +52,26 @@ async function updateBody() {
     donwloadAllButtonDescription.textContent = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
 }
 
-Store.onChanged.addListener(() => updateBody);
-updateBody();
+browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
+    console.log("Received request: ", message, sender);
+
+    const [key, value] = Object.entries(message)[0];
+
+    switch (key) {
+        case 'data':
+            updateBody(value.media, value.senderURL)
+                .then(() => {
+                    sendResponse();
+                })
+                .catch((reason) => {
+                    sendResponse(new Error(reason));
+                });
+
+            return true;
+        default:
+            return false;
+    }
+}));
 
 _catch(async () => {
     await Tab.sendMessage(
@@ -72,7 +80,7 @@ _catch(async () => {
             currentWindow: true
         },
         {
-            'refresh': null
+            'fetch': null
         }
     );
 })();
