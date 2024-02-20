@@ -37,10 +37,10 @@
       "content.js"
     ],
     "matches": [
-      "*://*.fanbox.cc/posts/*",
-      "*://www.fanbox.cc/*/posts/*",
-      "*://www.patreon.com/posts/*"
-    ]
+      "*://*.fanbox.cc/*",
+      "*://www.patreon.com/*"
+    ],
+    "run_at": "document_start"
   }],
 
   "action": {
