@@ -19,6 +19,30 @@ const setDisabled = (element, disabled) => {
     }
 }
 
+async function downloadAll() {
+    let tabs = await browser.tabs.query({ 
+        active: true,
+        currentWindow: true
+    });
+
+    let originURL = tabs[0].url;
+
+    const data = await Store.get(originURL) ?? {};
+    const media = data['media'] ?? [];
+
+    const downloads = media.map((media) => {
+        return {
+            filename: media.download,
+            url: media.href
+        }
+    });
+
+    await download(
+        downloads,
+        originURL
+    );
+}
+
 async function updateBody() {
     let tabs = await browser.tabs.query({ 
         active: true,
@@ -31,34 +55,23 @@ async function updateBody() {
     const media = data['media'] ?? [];
     
     const downloadAllButton = document.getElementById('download-all-button');
-    if (!downloadAllButton) {
-        return;
-    }
 
     setDisabled(downloadAllButton, !(media.length > 0));
-    downloadAllButton.onclick = _catch(async () => {
-        const disabled = downloadAllButton.hasAttribute('disabled');
-
-        setDisabled(downloadAllButton, true);
-
-        const downloads = media.map((media) => {
-            return {
-                filename: media.download,
-                url: media.href
-            }
-        });
-
-        await download(
-            downloads,
-            originURL
-        );
-
-        setDisabled(downloadAllButton, disabled);
-    });
 
     const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
     donwloadAllButtonDescription.textContent = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
 }
+
+const downloadAllButton = document.getElementById('download-all-button');
+downloadAllButton.onclick = _catch(async () => {
+    const disabled = downloadAllButton.hasAttribute('disabled');
+
+    setDisabled(downloadAllButton, true);
+
+    await downloadAll();
+
+    setDisabled(downloadAllButton, disabled);
+});
 
 Store.onChanged.addListener(() => updateBody);
 updateBody();
