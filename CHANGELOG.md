@@ -19,6 +19,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.7] - 2024-02-20
+
+### Removed
+
+- Drop Chrome support ([commit](https://github.com/sinoru/patron-media-downloader/commit/9c8cc4a3))
+
+### Fixed
+
+- Fix a issus that downloads wrong file due to lack of cookie on Safari ([commit](https://github.com/sinoru/patron-media-downloader/commit/9d731e81))
+
 ## [0.6.1] - 2024-02-20
 
 ### Changed
