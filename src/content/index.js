@@ -65,7 +65,6 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             element.click();
             document.body.removeChild(element);
 
-            sendResponse();
             return;
         case 'fetch':
             fetch()

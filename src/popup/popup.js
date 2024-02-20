@@ -1,6 +1,5 @@
 import browser from 'webextension-polyfill';
 
-import * as Tab from '../common/tab.js';
 import _catch from '../common/catch.js';
 
 import './popup.css';
@@ -74,11 +73,13 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
 }));
 
 _catch(async () => {
-    await Tab.sendMessage(
-        {
-            active: true,
-            currentWindow: true
-        },
+    const currentTab = (await browser.tabs.query({
+        active: true,
+        currentWindow: true
+    }))[0];
+
+    await browser.tabs.sendMessage(
+        currentTab.id,
         {
             'fetch': null
         }

@@ -1,7 +1,6 @@
 import browser from 'webextension-polyfill';
 
 import url from '../common/url.js';
-import * as Tab from '../common/tab.js';
 
 /**
  * @param {Blob} blob
@@ -102,28 +101,28 @@ export default async function download(downloads, originURL) {
         })
     );
 
-    for (let preparedDownload of preparedDownloads) {
+    const currentTab = (await browser.tabs.query({
+        active: true,
+        currentWindow: true,
+        url: _originURL.href,
+    }))[0];
+
+    for (const preparedDownload of preparedDownloads) {
         if (browser.downloads && browser.downloads.download) {
             await browser.downloads.download(preparedDownload);
         } else {
-            await Tab.sendMessage(
-                {
-                    active: true,
-                    currentWindow: true,
-                    url: _originURL.href,
-                },
+            await browser.tabs.sendMessage(
+                currentTab.id,
                 {
                     'download': {
                         'download': preparedDownload.filename,
                         'href': preparedDownload.url
                     }
                 }
-            );
+            )
 
             // https://stackoverflow.com/questions/61961488/allow-multiple-file-downloads-in-safari
-            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-                await timeout(50);
-            }
+            await timeout(50);
         }
     }
 }
