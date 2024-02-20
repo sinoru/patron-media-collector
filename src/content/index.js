@@ -32,7 +32,7 @@ const handleDataURI = (uriString) => {
     }
 }
 
-async function fetch() {
+function getData() {
     const href = document.location.href;
 
     let media = null;
@@ -42,12 +42,10 @@ async function fetch() {
         media = getPatreonMedia();
     }
 
-    await browser.runtime.sendMessage({
-        'data': {'media': media}
-    });
+    return {media};
 }
 
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((message, sender) => {
     console.log("Received request: ", message, sender);
 
     const [key, value] = Object.entries(message)[0];
@@ -68,17 +66,30 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             document.body.removeChild(element);
 
             return;
-        case 'fetch':
-            fetch()
-                .then(() => {
-                    sendResponse();
-                })
-                .catch((reason) => {
-                    sendResponse(new Error(reason));
-                });
-
-            return true;
         default:
-            return false;
+            return;
+    }
+});
+
+browser.runtime.onConnect.addListener((port) => {
+    switch (port.name) {
+        case 'fetch':
+            const fetch = () => {
+                const data = getData();
+                port.postMessage(data);
+            };
+
+            const domObserver = new MutationObserver(fetch);
+            domObserver.observe(document, { childList: true, subtree: true });
+            port.onDisconnect.addListener((port) => {
+                if (port.error) {
+                    console.error(port.error);
+                }
+
+                domObserver.disconnect();
+            });
+
+            fetch();
+            return;
     }
 });

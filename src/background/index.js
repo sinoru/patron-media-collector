@@ -23,21 +23,6 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
                 });
 
             return true;
-        case 'data':
-            browser.runtime.sendMessage({
-                'data': {
-                    ...value,
-                    senderURL : sender.url
-                }
-            })
-            .then(() => {
-                sendResponse();
-            })
-            .catch((reason) => {
-                sendResponse(new Error(reason));
-            });
-
-            return true;
         default:
             return false;
     }

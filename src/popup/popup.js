@@ -37,52 +37,38 @@ async function downloadAll(media, originURL) {
 async function updateBody(media, senderURL) {
     const downloadAllButton = document.getElementById('download-all-button');
 
-    setDisabled(downloadAllButton, !(media.length > 0));
+    const _media = media ?? [];
+
+    setDisabled(downloadAllButton, !(_media.length > 0));
     downloadAllButton.onclick = _catch(async () => {
         const disabled = downloadAllButton.hasAttribute('disabled');
     
         setDisabled(downloadAllButton, true);
     
-        await downloadAll(media, senderURL);
+        await downloadAll(_media, senderURL);
     
         setDisabled(downloadAllButton, disabled);
     });
 
     const donwloadAllButtonDescription = downloadAllButton.getElementsByClassName('description')[0];
-    donwloadAllButtonDescription.textContent = `Total ${media.length} ${media.length == 1 ? 'file' : 'files'}`;
+    donwloadAllButtonDescription.textContent = `Total ${_media.length} ${_media.length == 1 ? 'file' : 'files'}`;
 }
 
-browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
-    console.log("Received request: ", message, sender);
-
-    const [key, value] = Object.entries(message)[0];
-
-    switch (key) {
-        case 'data':
-            updateBody(value.media, value.senderURL)
-                .then(() => {
-                    sendResponse();
-                })
-                .catch((reason) => {
-                    sendResponse(new Error(reason));
-                });
-
-            return true;
-        default:
-            return false;
-    }
-}));
-
 _catch(async () => {
+    updateBody();
+
     const currentTab = (await browser.tabs.query({
         active: true,
         currentWindow: true
     }))[0];
 
-    await browser.tabs.sendMessage(
-        currentTab.id,
-        {
-            'fetch': null
+    let fetchPort = browser.tabs.connect(currentTab.id, { name: 'fetch' });
+    fetchPort.onDisconnect.addListener((port) => {
+        if (port.error) {
+            console.error(port.error);
         }
-    );
+    });
+    fetchPort.onMessage.addListener((message) => {
+        updateBody(message.media, currentTab.url);
+    });
 })();
