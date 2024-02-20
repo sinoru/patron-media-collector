@@ -49,16 +49,11 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     sendResponse();
 });
 
-async function main() {
+async function update() {
     const href = document.location.href;
 
     let media = null;
     if (/.+:\/\/www\.fanbox\.cc\/@.+\/posts\/.+/.test(href) || /.+:\/\/.+\.fanbox\.cc\/posts\/.+/.test(href)) {
-        if (!window.domObserver) {
-            window.domObserver = new MutationObserver(main);
-            domObserver.observe(document, { childList: true, subtree: true });
-        }
-
         media = getFanboxMedia();
     } else if (/.+:\/\/www\.patreon\.com\/posts\/.+/.test(href)) {
         media = getPatreonMedia();
@@ -69,4 +64,7 @@ async function main() {
     });
 }
 
-main();
+const domObserver = new MutationObserver(update);
+domObserver.observe(document, { childList: true, subtree: true });
+
+update();
