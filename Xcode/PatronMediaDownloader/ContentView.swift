@@ -58,7 +58,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            Image("Icon", label: Text("Icon"))
+            Image(.icon)
                 .resizable()
                 .frame(width: 128, height: 128)
 

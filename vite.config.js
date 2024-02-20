@@ -8,6 +8,7 @@ export default defineConfig(({ command, mode }) => {
     base: './',
     build: {
       emptyOutDir: true,
+      modulePreload: false,
       outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
         input: {
@@ -42,8 +43,7 @@ export default defineConfig(({ command, mode }) => {
       target: [
         'firefox115',
         'safari16',
-        'ios15',
-        'chrome121',
+        'ios16',
       ],
     },
     plugins: [splitVendorChunkPlugin()],
