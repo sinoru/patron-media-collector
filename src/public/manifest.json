@@ -53,5 +53,7 @@
     "safari": {
       "strict_min_version": "16.4"
     }
-  }
+  },
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3E81h+asT+5NThd/0ZnQH+TYKEXDo4sT/aUWHWyWco5JOaj3IhzRcuQgllMXeipGhM4p8zK6EUehYVyhuSIUBIkjj2ZYNp+/kA6bPJvP1kAFchlufJoZaL8qIUbEOvqaknPNCG6c/gPnBdHX+JFXPkdqXz2MA9Ox1jF+sUmTX7g/G6hug+ABmCZk0IEu0Q/p7VhMTYZ1LHZSpUEo2eP84kWdaAs6YULwYsIiv/ZGc/2qZywQSQvx2hq7BpJM/JJmuD+JfHmyxPrNZVnTDF6v9J5hxszEo/Bo9YqeJCRCf29Z4rCnrlCjx3hSZgtwxkI1i+sO28Yws9uIp76T+86eCQIDAQAB"
 }
