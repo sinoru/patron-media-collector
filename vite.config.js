@@ -8,6 +8,7 @@ export default defineConfig(({ command, mode }) => {
     base: './',
     build: {
       emptyOutDir: true,
+      modulePreload: false,
       outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
         input: {
