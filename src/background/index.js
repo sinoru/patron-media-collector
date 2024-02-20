@@ -10,12 +10,10 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
 
     switch (key) {
         case 'store':
-            _catch(async () => {
-                await Store.set(
-                    sender.url,
-                    value
-                )
-            })()
+            Store.set(
+                sender.url,
+                value
+            )
             .then(() => {
                 sendResponse();
             })
