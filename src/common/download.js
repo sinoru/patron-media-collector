@@ -38,7 +38,7 @@ const timeout = (delay) => {
  * @param {Download[]} downloads
  * @param {string} originURL
  */
-export async function prepareDownload(downloads, originURL) {
+export async function prepareDownloadForBackground(downloads, originURL) {
     const _originURL = url(originURL);
 
     const preparedDownloads = await Promise.all(
@@ -83,18 +83,29 @@ export async function prepareDownload(downloads, originURL) {
 export default async function download(downloads, originURL) {
     const _originURL = url(originURL);
 
-    for (let download of downloads) {
-        if (browser.downloads && browser.downloads.download) {
-            await browser.downloads.download(download);
-        } else {
-            let href = download.url;
-            if (download.blobObjectURL) {
-                const response = await fetch(download.blobObjectURL);
+    const preparedDownloads = await Promise.all(
+        downloads.map(async (download) => {
+            const {blobObjectURL, ..._download} = download;
+            
+            if (blobObjectURL) {
+                const response = await fetch(blobObjectURL);
                 const blob = await response.blob();
+                const dataURL = await dataURLFromBlob(blob);
 
-                href = await dataURLFromBlob(blob);
+                return {
+                    ..._download,
+                    url: dataURL,
+                };
+            } else {
+                return _download;
             }
+        })
+    );
 
+    for (let preparedDownload of preparedDownloads) {
+        if (browser.downloads && browser.downloads.download) {
+            await browser.downloads.download(preparedDownload);
+        } else {
             await Tab.sendMessage(
                 {
                     active: true,
@@ -102,8 +113,8 @@ export default async function download(downloads, originURL) {
                 },
                 {
                     'download': {
-                        'download': download.filename,
-                        href
+                        'download': preparedDownload.filename,
+                        'href': preparedDownload.url
                     }
                 }
             );

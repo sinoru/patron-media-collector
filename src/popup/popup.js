@@ -5,7 +5,7 @@ import * as Tab from '../common/tab.js';
 import _catch from '../common/catch.js';
 
 import './popup.css';
-import { prepareDownload } from '../common/download.js';
+import { prepareDownloadForBackground } from '../common/download.js';
 
 /**
  * 
@@ -28,7 +28,7 @@ async function downloadAll(media, originURL) {
         }
     });
 
-    const preparedDownloads = await prepareDownload(downloads, originURL);
+    const preparedDownloads = await prepareDownloadForBackground(downloads, originURL);
 
     await browser.runtime.sendMessage({
         'download': preparedDownloads
