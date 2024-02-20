@@ -32,7 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Drop to use Storage API for more lightweight ([commit](https://github.com/sinoru/patron-media-downloader/commit/451c9ef1))
 - Drop to use duplicated webextension-polyfill due to diffrent entry ([commit](https://github.com/sinoru/patron-media-downloader/commit/b20116a3))
 
-
 ## [0.7] - 2024-02-20
 
 ### Changed
