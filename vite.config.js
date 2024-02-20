@@ -44,7 +44,6 @@ export default defineConfig(({ command, mode }) => {
         'firefox115',
         'safari16',
         'ios16',
-        'chrome121',
       ],
     },
     plugins: [splitVendorChunkPlugin()],
