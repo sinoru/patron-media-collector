@@ -109,6 +109,7 @@ export default async function download(downloads, originURL) {
             await Tab.sendMessage(
                 {
                     active: true,
+                    currentWindow: true,
                     url: _originURL.href,
                 },
                 {
