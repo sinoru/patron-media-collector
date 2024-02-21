@@ -47,7 +47,8 @@ function getData() {
 }
 
 function download(download) {
-    const { filename, url } = download;
+    const { filename, url: _url } = download;
+    const url = handleDataURI(_url);
 
     const element = document.createElement("a");
     element.style.display = 'none';
