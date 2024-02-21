@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.9.1] - 2024-02-22
+
+### Fixed
+
+- Fix download not properly on Safari sometimes ([commit](https://github.com/sinoru/patron-media-downloader/commit/160c5cf0))
+
 ## [0.9] - 2024-02-22
 
 ### Changed
@@ -98,7 +104,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.9...develop
+[unreleased]: https://github.com/sinoru/patron-media-downloader/compare/v0.9.1...develop
+[0.9.1]: https://github.com/sinoru/patron-media-downloader/compare/v0.9...v0.9.1
 [0.9]: https://github.com/sinoru/patron-media-downloader/compare/v0.8...v0.9
 [0.8]: https://github.com/sinoru/patron-media-downloader/compare/v0.7...v0.8
 [0.7]: https://github.com/sinoru/patron-media-downloader/compare/v0.6.1...v0.7
