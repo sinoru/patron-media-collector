@@ -12,7 +12,6 @@ export default defineConfig(({ command, mode }) => {
       outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
         input: {
-          'browser-polyfill': resolve(__dirname, 'node_modules/webextension-polyfill/dist/browser-polyfill.js'),
           'background': resolve(__dirname, root, 'background/index.js'),
           'content': resolve(__dirname, root, 'content/index.js'),
           'popup': resolve(__dirname, root, 'popup/index.html'),

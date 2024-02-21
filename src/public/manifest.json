@@ -33,7 +33,6 @@
 
   "content_scripts": [{
     "js": [
-      "browser-polyfill.js",
       "content.js"
     ],
     "matches": [
