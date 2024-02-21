@@ -1,7 +1,8 @@
-/** @var {typeof import("webextension-polyfill")} browser */
-
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
+
+/** @type {typeof import("webextension-polyfill")} */
+const browser = globalThis.browser ?? globalThis.chrome;
 
 /**
  * @param {string} uriString
@@ -32,7 +33,7 @@ const handleDataURI = (uriString) => {
     }
 }
 
-async function fetch() {
+function getData() {
     const href = document.location.href;
 
     let media = null;
@@ -42,43 +43,57 @@ async function fetch() {
         media = getPatreonMedia();
     }
 
-    await browser.runtime.sendMessage({
-        'data': {'media': media}
-    });
+    return {media};
 }
 
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+function download(download) {
+    const { filename, url } = download;
+
+    const element = document.createElement("a");
+    element.style.display = 'none';
+
+    element.setAttribute('href', url);
+    element.setAttribute('download', filename);
+
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+browser.runtime.onMessage.addListener((message, sender) => {
     console.log("Received request: ", message, sender);
 
     const [key, value] = Object.entries(message)[0];
 
     switch (key) {
         case 'download':
-            /** @type {string} */
-            const href = handleDataURI(value.href);
-            /** @type {string} */
-            const download = value.download;
-
-            const element = document.createElement("a");
-            element.setAttribute('href', href);
-            element.setAttribute('download', download);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+            download(value);
 
             return;
-        case 'fetch':
-            fetch()
-                .then(() => {
-                    sendResponse();
-                })
-                .catch((reason) => {
-                    sendResponse(new Error(reason));
-                });
-
-            return true;
         default:
-            return false;
+            return;
+    }
+});
+
+browser.runtime.onConnect.addListener((port) => {
+    switch (port.name) {
+        case 'fetch':
+            const fetch = () => {
+                const data = getData();
+                port.postMessage(data);
+            };
+
+            const domObserver = new MutationObserver(fetch);
+            domObserver.observe(document, { childList: true, subtree: true });
+            port.onDisconnect.addListener((port) => {
+                if (port.error) {
+                    console.error(port.error);
+                }
+
+                domObserver.disconnect();
+            });
+
+            fetch();
+            return;
     }
 });
