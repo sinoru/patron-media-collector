@@ -46,6 +46,20 @@ function getData() {
     return {media};
 }
 
+function download(download) {
+    const { filename, url } = download;
+
+    const element = document.createElement("a");
+    element.style.display = 'none';
+
+    element.setAttribute('href', url);
+    element.setAttribute('download', filename);
+
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
 browser.runtime.onMessage.addListener((message, sender) => {
     console.log("Received request: ", message, sender);
 
@@ -53,18 +67,7 @@ browser.runtime.onMessage.addListener((message, sender) => {
 
     switch (key) {
         case 'download':
-            /** @type {string} */
-            const href = handleDataURI(value.href);
-            /** @type {string} */
-            const download = value.download;
-
-            const element = document.createElement("a");
-            element.setAttribute('href', href);
-            element.setAttribute('download', download);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+            download(value);
 
             return;
         default:

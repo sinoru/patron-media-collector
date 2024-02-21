@@ -113,10 +113,7 @@ export default async function download(downloads, originURL) {
             await browser.tabs.sendMessage(
                 currentTab.id,
                 {
-                    'download': {
-                        'download': preparedDownload.filename,
-                        'href': preparedDownload.url
-                    }
+                    'download': preparedDownload
                 }
             )
 
