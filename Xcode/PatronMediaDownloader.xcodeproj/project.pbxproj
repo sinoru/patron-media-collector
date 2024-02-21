@@ -64,6 +64,7 @@
 		196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PatronMediaDownloader WebExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		196AF1982B73B08900945C40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19737D0F2B771ACE00F70069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		19BC7B8A2B85EE10000C58AB /* ci_scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ci_scripts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 		196AF1642B73B02500945C40 = {
 			isa = PBXGroup;
 			children = (
+				19BC7B8A2B85EE10000C58AB /* ci_scripts */,
 				196AF16F2B73B02500945C40 /* PatronMediaDownloader */,
 				196AF1842B73B08900945C40 /* PatronMediaDownloader WebExtension */,
 				196AF16E2B73B02500945C40 /* Products */,
@@ -278,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    npm=\"nodenv exec npm\"\nelse\n    npm=\"nodenv exec npm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${npm} run build -- ${mode}\n";
+			shellScript = "if [[ ! -z \"$CI\" ]]; then\n    export PATH=\"/$HOME/.nodenv/bin:$PATH\"\nelif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    npm=\"nodenv exec npm\"\nelse\n    npm=\"nodenv exec npm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${npm} run build -- ${mode}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
