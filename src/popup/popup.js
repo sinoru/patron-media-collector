@@ -1,5 +1,4 @@
-import 'webextension-polyfill';
-/** @var {typeof import("webextension-polyfill")} browser */
+import browser from 'webextension-polyfill';
 
 import _catch from '../common/catch.js';
 

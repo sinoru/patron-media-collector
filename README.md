@@ -6,7 +6,8 @@ A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.
 
 ### Downloads
 
-- [Testflight](https://testflight.apple.com/join/VP5uE1PG)
+- [Add-ons for Firefox](https://addons.mozilla.org/addon/patron-media-downloader)
+- [TestFlight](https://testflight.apple.com/join/VP5uE1PG)
 - [GitHub](https://github.com/sinoru/patron-media-downloader/releases)
 
 ### Supported Sites

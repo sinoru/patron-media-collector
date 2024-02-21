@@ -1,6 +1,4 @@
-import 'webextension-polyfill';
-/** @var {typeof import("webextension-polyfill")} browser */
-
+import browser from 'webextension-polyfill';
 import url from '../common/url.js';
 
 /**
@@ -115,10 +113,7 @@ export default async function download(downloads, originURL) {
             await browser.tabs.sendMessage(
                 currentTab.id,
                 {
-                    'download': {
-                        'download': preparedDownload.filename,
-                        'href': preparedDownload.url
-                    }
+                    'download': preparedDownload
                 }
             )
 
