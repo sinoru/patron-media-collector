@@ -28,7 +28,8 @@
 
   "host_permissions": [
     "*://*.fanbox.cc/*",
-    "*://www.patreon.com/*"
+    "*://www.patreon.com/*",
+    "*://*.patreonusercontent.com/*"
   ],
 
   "content_scripts": [{
