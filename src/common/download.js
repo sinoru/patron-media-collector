@@ -107,18 +107,22 @@ export default async function download(downloads, originURL) {
     }))[0];
 
     for (const preparedDownload of preparedDownloads) {
-        if (browser.downloads && browser.downloads.download) {
-            await browser.downloads.download(preparedDownload);
-        } else {
-            await browser.tabs.sendMessage(
-                currentTab.id,
-                {
-                    'download': preparedDownload
-                }
-            )
+        try {
+            if (browser.downloads && browser.downloads.download) {
+                await browser.downloads.download(preparedDownload);
+            } else {
+                await browser.tabs.sendMessage(
+                    currentTab.id,
+                    {
+                        'download': preparedDownload
+                    }
+                )
 
-            // https://stackoverflow.com/questions/61961488/allow-multiple-file-downloads-in-safari
-            await timeout(50);
+                // https://stackoverflow.com/questions/61961488/allow-multiple-file-downloads-in-safari
+                await timeout(50);
+            }
+        } catch (e) {
+            console.error(e);
         }
     }
 }
