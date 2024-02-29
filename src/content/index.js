@@ -69,7 +69,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
     switch (key) {
         case 'download':
             download(value);
-
             return;
         default:
             return;
