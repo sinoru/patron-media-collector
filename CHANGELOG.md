@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix donwload not properly from Pareon ([commit](https://github.com/sinoru/patron-media-collector/commit/ea65c3c3))
+- Fix download not properly from Patreon ([commit](https://github.com/sinoru/patron-media-collector/commit/ea65c3c3))
 
 ## [0.9.1] - 2024-02-22
 
