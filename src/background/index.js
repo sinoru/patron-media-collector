@@ -18,6 +18,7 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
                     sendResponse();
                 })
                 .catch((reason) => {
+                    console.error(reason);
                     sendResponse(new Error(reason));
                 });
 

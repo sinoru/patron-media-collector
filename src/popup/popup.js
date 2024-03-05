@@ -41,11 +41,11 @@ async function updateBody(media, senderURL) {
     setDisabled(downloadAllButton, !(_media.length > 0));
     downloadAllButton.onclick = _catch(async () => {
         const disabled = downloadAllButton.hasAttribute('disabled');
-    
+
         setDisabled(downloadAllButton, true);
-    
+
         await downloadAll(_media, senderURL);
-    
+
         setDisabled(downloadAllButton, disabled);
     });
 

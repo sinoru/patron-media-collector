@@ -1,5 +1,5 @@
 {
-  "name": "patron-media-downloader",
+  "name": "patron-media-collector",
   "private": true,
   "description": "A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.",
   "type": "module",

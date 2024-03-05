@@ -1,6 +1,6 @@
 //
-//  PatronMediaDownloaderApp.swift
-//  PatronMediaDownloader
+//  PatronMediaCollectorApp.swift
+//  PatronMediaCollector
 //
 //  Created by Jaehong Kang on 2/7/24.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct PatronMediaDownloaderApp: App {
+struct PatronMediaCollectorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

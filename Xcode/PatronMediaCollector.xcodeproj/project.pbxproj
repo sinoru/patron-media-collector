@@ -15,11 +15,11 @@
 		195260772B73BC7900FBE7BE /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */; };
 		196434272B74CFCC00FF7212 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 196434262B74CFCC00FF7212 /* assets */; };
 		196434292B74CFD300FF7212 /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 196434282B74CFD300FF7212 /* popup */; };
-		196AF1712B73B02500945C40 /* PatronMediaDownloaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196AF1702B73B02500945C40 /* PatronMediaDownloaderApp.swift */; };
+		196AF1712B73B02500945C40 /* PatronMediaCollectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196AF1702B73B02500945C40 /* PatronMediaCollectorApp.swift */; };
 		196AF1732B73B02500945C40 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196AF1722B73B02500945C40 /* ContentView.swift */; };
 		196AF1752B73B02600945C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1742B73B02600945C40 /* Assets.xcassets */; };
 		196AF1792B73B02600945C40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1782B73B02600945C40 /* Preview Assets.xcassets */; };
-		196AF19C2B73B08900945C40 /* PatronMediaDownloader WebExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		196AF19C2B73B08900945C40 /* PatronMediaCollector WebExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +28,7 @@
 			containerPortal = 196AF1652B73B02500945C40 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 196AF1822B73B08900945C40;
-			remoteInfo = "PatronMediaDownloader WebExtension";
+			remoteInfo = "PatronMediaCollector WebExtension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -39,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				196AF19C2B73B08900945C40 /* PatronMediaDownloader WebExtension.appex in Embed Foundation Extensions */,
+				196AF19C2B73B08900945C40 /* PatronMediaCollector WebExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,12 +56,12 @@
 		195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		196434262B74CFCC00FF7212 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		196434282B74CFD300FF7212 /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = popup; sourceTree = "<group>"; };
-		196AF16D2B73B02500945C40 /* PatronMediaDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatronMediaDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		196AF1702B73B02500945C40 /* PatronMediaDownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronMediaDownloaderApp.swift; sourceTree = "<group>"; };
+		196AF16D2B73B02500945C40 /* PatronMediaCollector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatronMediaCollector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		196AF1702B73B02500945C40 /* PatronMediaCollectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronMediaCollectorApp.swift; sourceTree = "<group>"; };
 		196AF1722B73B02500945C40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		196AF1742B73B02600945C40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		196AF1782B73B02600945C40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PatronMediaDownloader WebExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PatronMediaCollector WebExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		196AF1982B73B08900945C40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19737D0F2B771ACE00F70069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		19BC7B8A2B85EE10000C58AB /* ci_scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ci_scripts; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				19BC7B8A2B85EE10000C58AB /* ci_scripts */,
-				196AF16F2B73B02500945C40 /* PatronMediaDownloader */,
-				196AF1842B73B08900945C40 /* PatronMediaDownloader WebExtension */,
+				196AF16F2B73B02500945C40 /* PatronMediaCollector */,
+				196AF1842B73B08900945C40 /* PatronMediaCollector WebExtension */,
 				196AF16E2B73B02500945C40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,22 +113,22 @@
 		196AF16E2B73B02500945C40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				196AF16D2B73B02500945C40 /* PatronMediaDownloader.app */,
-				196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */,
+				196AF16D2B73B02500945C40 /* PatronMediaCollector.app */,
+				196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		196AF16F2B73B02500945C40 /* PatronMediaDownloader */ = {
+		196AF16F2B73B02500945C40 /* PatronMediaCollector */ = {
 			isa = PBXGroup;
 			children = (
-				196AF1702B73B02500945C40 /* PatronMediaDownloaderApp.swift */,
+				196AF1702B73B02500945C40 /* PatronMediaCollectorApp.swift */,
 				196AF1722B73B02500945C40 /* ContentView.swift */,
 				196AF1742B73B02600945C40 /* Assets.xcassets */,
 				19737D0F2B771ACE00F70069 /* Info.plist */,
 				196AF1772B73B02600945C40 /* Preview Content */,
 			);
-			path = PatronMediaDownloader;
+			path = PatronMediaCollector;
 			sourceTree = "<group>";
 		};
 		196AF1772B73B02600945C40 /* Preview Content */ = {
@@ -139,7 +139,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		196AF1842B73B08900945C40 /* PatronMediaDownloader WebExtension */ = {
+		196AF1842B73B08900945C40 /* PatronMediaCollector WebExtension */ = {
 			isa = PBXGroup;
 			children = (
 				195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */,
@@ -147,15 +147,15 @@
 				19174D152B73B891005F62DE /* src */,
 				19174D162B73B89A005F62DE /* dist */,
 			);
-			path = "PatronMediaDownloader WebExtension";
+			path = "PatronMediaCollector WebExtension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		196AF16C2B73B02500945C40 /* PatronMediaDownloader */ = {
+		196AF16C2B73B02500945C40 /* PatronMediaCollector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 196AF17C2B73B02600945C40 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader" */;
+			buildConfigurationList = 196AF17C2B73B02600945C40 /* Build configuration list for PBXNativeTarget "PatronMediaCollector" */;
 			buildPhases = (
 				196AF1692B73B02500945C40 /* Sources */,
 				196AF16A2B73B02500945C40 /* Frameworks */,
@@ -167,14 +167,14 @@
 			dependencies = (
 				196AF19B2B73B08900945C40 /* PBXTargetDependency */,
 			);
-			name = PatronMediaDownloader;
-			productName = PatronMediaDownloader;
-			productReference = 196AF16D2B73B02500945C40 /* PatronMediaDownloader.app */;
+			name = PatronMediaCollector;
+			productName = PatronMediaCollector;
+			productReference = 196AF16D2B73B02500945C40 /* PatronMediaCollector.app */;
 			productType = "com.apple.product-type.application";
 		};
-		196AF1822B73B08900945C40 /* PatronMediaDownloader WebExtension */ = {
+		196AF1822B73B08900945C40 /* PatronMediaCollector WebExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 196AF19D2B73B08900945C40 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader WebExtension" */;
+			buildConfigurationList = 196AF19D2B73B08900945C40 /* Build configuration list for PBXNativeTarget "PatronMediaCollector WebExtension" */;
 			buildPhases = (
 				196AF17F2B73B08900945C40 /* Sources */,
 				196AF1802B73B08900945C40 /* Frameworks */,
@@ -185,9 +185,9 @@
 			);
 			dependencies = (
 			);
-			name = "PatronMediaDownloader WebExtension";
-			productName = "PatronMediaDownloader WebExtension";
-			productReference = 196AF1832B73B08900945C40 /* PatronMediaDownloader WebExtension.appex */;
+			name = "PatronMediaCollector WebExtension";
+			productName = "PatronMediaCollector WebExtension";
+			productReference = 196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +209,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 196AF1682B73B02500945C40 /* Build configuration list for PBXProject "PatronMediaDownloader" */;
+			buildConfigurationList = 196AF1682B73B02500945C40 /* Build configuration list for PBXProject "PatronMediaCollector" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -222,8 +222,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				196AF16C2B73B02500945C40 /* PatronMediaDownloader */,
-				196AF1822B73B08900945C40 /* PatronMediaDownloader WebExtension */,
+				196AF16C2B73B02500945C40 /* PatronMediaCollector */,
+				196AF1822B73B08900945C40 /* PatronMediaCollector WebExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -280,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ ! -z \"$CI\" ]]; then\n    export PATH=\"/$HOME/.nodenv/bin:$PATH\"\nelif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    npm=\"nodenv exec npm\"\nelse\n    npm=\"nodenv exec npm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${npm} run build -- ${mode}\n";
+			shellScript = "export NO_COLOR=1\n\nif [[ ! -z \"$CI\" ]]; then\n    export PATH=\"/$HOME/.nodenv/bin:$PATH\"\nelif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    npm=\"nodenv exec npm\"\nelse\n    npm=\"npm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${npm} run build -- ${mode}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -290,7 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				196AF1732B73B02500945C40 /* ContentView.swift in Sources */,
-				196AF1712B73B02500945C40 /* PatronMediaDownloaderApp.swift in Sources */,
+				196AF1712B73B02500945C40 /* PatronMediaCollectorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +307,7 @@
 /* Begin PBXTargetDependency section */
 		196AF19B2B73B08900945C40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 196AF1822B73B08900945C40 /* PatronMediaDownloader WebExtension */;
+			target = 196AF1822B73B08900945C40 /* PatronMediaCollector WebExtension */;
 			targetProxy = 196AF19A2B73B08900945C40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -372,7 +372,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -436,7 +436,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -453,11 +453,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"PatronMediaDownloader/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PatronMediaCollector/Preview Content\"";
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PatronMediaDownloader/Info.plist;
+				INFOPLIST_FILE = PatronMediaCollector/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -471,7 +471,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader;
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaCollector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -489,11 +489,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"PatronMediaDownloader/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PatronMediaCollector/Preview Content\"";
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PatronMediaDownloader/Info.plist;
+				INFOPLIST_FILE = PatronMediaCollector/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -507,7 +507,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader;
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaCollector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -525,8 +525,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PatronMediaDownloader WebExtension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader WebExtension";
+				INFOPLIST_FILE = "PatronMediaCollector WebExtension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaCollector WebExtension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,7 +537,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader.WebExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaCollector.WebExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -557,8 +557,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PatronMediaDownloader WebExtension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaDownloader WebExtension";
+				INFOPLIST_FILE = "PatronMediaCollector WebExtension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "PatronMediaCollector WebExtension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -569,7 +569,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaDownloader.WebExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = io.sinoru.PatronMediaCollector.WebExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -583,7 +583,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		196AF1682B73B02500945C40 /* Build configuration list for PBXProject "PatronMediaDownloader" */ = {
+		196AF1682B73B02500945C40 /* Build configuration list for PBXProject "PatronMediaCollector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				196AF17A2B73B02600945C40 /* Debug */,
@@ -592,7 +592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		196AF17C2B73B02600945C40 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader" */ = {
+		196AF17C2B73B02600945C40 /* Build configuration list for PBXNativeTarget "PatronMediaCollector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				196AF17D2B73B02600945C40 /* Debug */,
@@ -601,7 +601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		196AF19D2B73B08900945C40 /* Build configuration list for PBXNativeTarget "PatronMediaDownloader WebExtension" */ = {
+		196AF19D2B73B08900945C40 /* Build configuration list for PBXNativeTarget "PatronMediaCollector WebExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				196AF19E2B73B08900945C40 /* Debug */,
