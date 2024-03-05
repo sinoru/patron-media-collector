@@ -2,7 +2,7 @@
 
 A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.
 
-![Preview](./preview.png)
+![Preview](./previews/Safari.png)
 
 ### Downloads
 
