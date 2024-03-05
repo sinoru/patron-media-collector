@@ -1,10 +1,10 @@
 {
     "extension_name": {
-        "message": "PatronMediaDownloader",
+        "message": "PatronMediaCollector",
         "description": "The display name for the extension."
     },
     "extension_description": {
-        "message": "This is PatronMediaDownloader. You can download all media from pixiv FANBOX, Patreon, etc at once.",
+        "message": "This is PatronMediaCollector. You can download all media from pixiv FANBOX, Patreon, etc at once.",
         "description": "Description of what the extension does."
     }
 }

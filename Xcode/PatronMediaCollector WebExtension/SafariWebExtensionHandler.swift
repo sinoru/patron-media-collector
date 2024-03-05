@@ -1,6 +1,6 @@
 //
 //  SafariWebExtensionHandler.swift
-//  PatronMediaDownloader Extension
+//  PatronMediaCollector Extension
 //
 //  Created by Jaehong Kang on 2/7/24.
 //

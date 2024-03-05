@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  PatronMediaDownloader
+//  PatronMediaCollector
 //
 //  Created by Jaehong Kang on 2/7/24.
 //
