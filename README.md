@@ -1,6 +1,6 @@
 # PatronMediaCollector
 
-A WebExtension for downloading media from pixiv FANBOX, Patreon, etc.
+A WebExtension for downloading all media from pixiv FANBOX, Patreon, etc at once.
 
 ![Preview](./previews/Safari.png)
 
