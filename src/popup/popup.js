@@ -19,14 +19,7 @@ const setDisabled = (element, disabled) => {
 }
 
 async function downloadAll(media, originURL) {
-    const downloads = media.map((media) => {
-        return {
-            filename: media.download,
-            url: media.href
-        }
-    });
-
-    const preparedDownloads = await prepareDownloadForBackground(downloads, originURL);
+    const preparedDownloads = await prepareDownloadForBackground(media, originURL);
 
     await browser.runtime.sendMessage({
         'download': preparedDownloads

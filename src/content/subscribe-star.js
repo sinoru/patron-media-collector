@@ -9,8 +9,8 @@ export default function() {
     for (let image of uploadsImagesGallery) {
         media.push({
             'type': image.type,
-            'download': image.original_filename,
-            'href': image.url
+            'filename': image.original_filename,
+            'url': image.url
         });
     }
 
