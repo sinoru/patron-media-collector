@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.10] - 2024-03-05
+
+### Changed
+
+- Skips errored files instead of abort downloading ([commit](https://github.com/sinoru/patron-media-collector/commit/ae673c3d))
+- Rename PatronMediaCollector from PatronMediaDownload due to Apple ([commit](https://github.com/sinoru/patron-media-collector/commit/57daf748))
+
+### Fixed
+
+- Fix donwload not properly from Pareon ([commit](https://github.com/sinoru/patron-media-collector/commit/ea65c3c3))
+
 ## [0.9.1] - 2024-02-22
 
 ### Fixed
@@ -104,7 +115,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-collector/compare/v0.9.1...develop
+[unreleased]: https://github.com/sinoru/patron-media-collector/compare/v0.10...develop
+[0.10]: https://github.com/sinoru/patron-media-collector/compare/v0.9.1...v0.10
 [0.9.1]: https://github.com/sinoru/patron-media-collector/compare/v0.9...v0.9.1
 [0.9]: https://github.com/sinoru/patron-media-collector/compare/v0.8...v0.9
 [0.8]: https://github.com/sinoru/patron-media-collector/compare/v0.7...v0.8
