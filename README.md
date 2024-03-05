@@ -14,6 +14,7 @@ A WebExtension for downloading all media from pixiv FANBOX, Patreon, etc at once
 
 - pixiv FANBOX
 - Patreon
+- SubscribeStar.adult
 
 ### Supported Browsers
 
