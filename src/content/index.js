@@ -1,5 +1,6 @@
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
+import getSubscribeStarMedia from './subscribe-star.js';
 
 /** @type {typeof import("webextension-polyfill")} */
 const browser = globalThis.browser ?? globalThis.chrome;
@@ -41,6 +42,8 @@ function getData() {
         media = getFanboxMedia();
     } else if (/.+:\/\/www\.patreon\.com\/posts\/.+/.test(href)) {
         media = getPatreonMedia();
+    } else if (/.+:\/\/subscribestar\.adult\/posts\/.+/.test(href)) {
+        media = getSubscribeStarMedia();
     }
 
     return {media};

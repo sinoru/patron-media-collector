@@ -29,7 +29,8 @@
   "host_permissions": [
     "*://*.fanbox.cc/*",
     "*://www.patreon.com/*",
-    "*://*.patreonusercontent.com/*"
+    "*://*.patreonusercontent.com/*",
+    "*://subscribestar.adult/*"
   ],
 
   "content_scripts": [{
@@ -38,7 +39,8 @@
     ],
     "matches": [
       "*://*.fanbox.cc/*",
-      "*://www.patreon.com/*"
+      "*://www.patreon.com/*",
+      "*://subscribestar.adult/*"
     ],
     "run_at": "document_start"
   }],
