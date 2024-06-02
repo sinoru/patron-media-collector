@@ -1,7 +1,7 @@
 export default function() {
     const nextData = JSON.parse(document.getElementById('__NEXT_DATA__').text);
 
-    const post = nextData.props.pageProps.bootstrapEnvelope.bootstrap.post;
+    const post = nextData.props.pageProps.bootstrapEnvelope.pageBootstrap.post;
     const postIncluded = post.included.reduce(
         (accumulator, value) => {
             if (value.type != "media" && value.type != "attachment") {
