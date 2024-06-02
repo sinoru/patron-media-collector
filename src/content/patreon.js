@@ -25,13 +25,13 @@ export default function() {
     for (let image of images) {
         let imageAttributes = postIncluded[image.type][image.id].attributes;
 
-        media.push({'type': 'image', 'filename': imageAttributes.file_name, 'url': imageAttributes.download_url});
+        media.push({'type': 'image', 'filename': imageAttributes.file_name, 'url': new URL(imageAttributes.download_url, location.href)});
     }
 
     for (let attachment of attachments) {
         let attachmentAttributes = postIncluded[attachment.type][attachment.id].attributes;
 
-        media.push({'type': 'application', 'filename': attachmentAttributes.name, 'url': attachmentAttributes.url});
+        media.push({'type': 'application', 'filename': attachmentAttributes.name, 'url': new URL(attachmentAttributes.url, location.href)});
     }
 
     return media;

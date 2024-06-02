@@ -10,14 +10,14 @@ export default function() {
             media.push({
                 'type': 'image',
                 'filename': `${String(imgCounter).padStart(2, '0')} - ${aElement.href.substring(aElement.href.lastIndexOf('/')+1)}`,
-                'url': aElement.href
+                'url': new URL(aElement.href, location.href)
             });
             imgCounter++;
         } else if (aElement.download) {
             media.push({
                 'type': 'application',
                 'filename': aElement.download,
-                'url': aElement.href
+                'url': new URL(aElement.href, location.href)
             });
         }
     }
