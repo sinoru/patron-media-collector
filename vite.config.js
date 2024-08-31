@@ -1,29 +1,17 @@
 import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, mergeConfig } from 'vite';
+import commonConfig from './vite.config.common.js';
 
-const root = './src'
-
-export default defineConfig(({ command, mode }) => {
-  return {
-    base: './',
+export default defineConfig((env) => mergeConfig(
+  commonConfig(env),
+  defineConfig({
     build: {
-      emptyOutDir: true,
-      modulePreload: false,
-      outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
         input: {
-          'background': resolve(__dirname, root, 'background/index.js'),
-          'popup': resolve(__dirname, root, 'popup/index.html'),
+          'background': resolve(__dirname, 'src/background/index.js'),
+          'popup': resolve(__dirname, 'src/popup/index.html'),
         },
         output: {
-          compact: (() => {
-            switch (mode) {
-              case 'development':
-                return true;
-              default:
-                return false;
-            }
-          })(),
           entryFileNames: (chunkInfo) => {
             switch (chunkInfo.name) {
             case 'popup':
@@ -32,7 +20,6 @@ export default defineConfig(({ command, mode }) => {
               return '[name].js';
             }
           },
-          interop: 'auto',
           manualChunks: (id) => {
             if (id.includes('src/common')) {
               return 'common'
@@ -42,21 +29,6 @@ export default defineConfig(({ command, mode }) => {
           },
         },
       },
-      sourcemap: (() => {
-        switch (mode) {
-          case 'development':
-            return 'inline';
-          default:
-            return false;
-        }
-      })(),
-      target: [
-        'firefox115',
-        'safari15',
-        'ios15',
-        'chrome121',
-      ],
     },
-    root,
-  }
-});
+  }),
+));
