@@ -1,6 +1,8 @@
 import browser from 'webextension-polyfill';
 import url from '../common/url.js';
 
+const MAX_FILE_SIZE = 38_797_312; // ((4 * n / 3) + 3) & ~3 < 52_428_800
+
 /**
  * @param {Blob} blob
  * 
@@ -28,8 +30,9 @@ const timeout = (delay) => {
 
 /**
  * @typedef {Object} Download
- * @property {string} filename 
+ * @property {string} filename
  * @property {string} url
+ * @property {number?} estimatedFileSize
  */
 
 /**
@@ -46,7 +49,10 @@ export async function prepareDownloadForBackground(downloads, originURL) {
             }
 
             const downloadURL = new URL(download.url);
-            if (downloadURL.host == _originURL.host) {
+            if (
+                (downloadURL.host == _originURL.host) ||
+                (download.estimatedFileSize > MAX_FILE_SIZE)
+            ) {
                 return download;
             }
 
@@ -54,8 +60,8 @@ export async function prepareDownloadForBackground(downloads, originURL) {
                 download.url,
                 {
                     method: 'GET',
-                    credentials: 'include',
                     mode: 'cors',
+                    credentials: 'include',
                     referrerPolicy: 'no-referrer',
                 }
             );
@@ -111,15 +117,27 @@ export default async function download(downloads, originURL) {
             if (browser.downloads && browser.downloads.download) {
                 await browser.downloads.download(preparedDownload);
             } else {
-                await browser.tabs.sendMessage(
-                    currentTab.id,
-                    {
-                        'download': preparedDownload
-                    }
-                )
+                let url = new URL(preparedDownload.url)
 
-                // https://stackoverflow.com/questions/61961488/allow-multiple-file-downloads-in-safari
-                await timeout(50);
+                if (
+                    (url.host == _originURL.host) ||
+                    (/(data|blob):/i.test(url.protocol))
+                ) {
+                    await browser.tabs.sendMessage(
+                        currentTab.id,
+                        {
+                            'download': preparedDownload
+                        }
+                    );
+
+                    // https://stackoverflow.com/questions/61961488/allow-multiple-file-downloads-in-safari
+                    await timeout(50);
+                } else {
+                    await browser.tabs.create({
+                        active: false,
+                        url: url.href
+                    });
+                }
             }
         } catch (e) {
             console.error(e);
