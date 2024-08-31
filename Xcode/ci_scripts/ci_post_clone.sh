@@ -12,4 +12,5 @@ pushd ..
 nodenv install
 nodenv exec corepack enable pnpm
 nodenv rehash
+nodenv exec pnpm i
 popd
