@@ -35,7 +35,7 @@
 
   "content_scripts": [{
     "js": [
-      "content.js"
+      "content-scripts/index.js"
     ],
     "matches": [
       "*://*.fanbox.cc/*",

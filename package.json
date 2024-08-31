@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",
-    "build": "vite build",
+    "build": "npm run build --workspaces && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -17,5 +17,8 @@
   },
   "dependencies": {
     "webextension-polyfill": "^0.12.0"
-  }
+  },
+  "workspaces": [
+    "packages/content-scripts"
+  ]
 }

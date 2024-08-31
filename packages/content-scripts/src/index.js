@@ -1,9 +1,8 @@
+import browser from 'webextension-polyfill';
+
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
 import getSubscribeStarMedia from './subscribe-star.js';
-
-/** @type {typeof import("webextension-polyfill")} */
-const browser = globalThis.browser ?? globalThis.chrome;
 
 /**
  * @param {string} uriString

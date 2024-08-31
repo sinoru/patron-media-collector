@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		19174D242B73B89A005F62DE /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 19174D182B73B89A005F62DE /* background.js */; };
 		19174D282B73B89A005F62DE /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 19174D1D2B73B89A005F62DE /* manifest.json */; };
-		19174D2B2B73B89B005F62DE /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 19174D222B73B89A005F62DE /* content.js */; };
 		19174D2D2B73B8AB005F62DE /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 19174D2C2B73B8AB005F62DE /* _locales */; };
 		19174D2F2B73B8B1005F62DE /* images in Resources */ = {isa = PBXBuildFile; fileRef = 19174D2E2B73B8B1005F62DE /* images */; };
+		191BFFB22C75AE17001C857E /* content-scripts in Resources */ = {isa = PBXBuildFile; fileRef = 191BFFB12C75AE17001C857E /* content-scripts */; };
 		195260772B73BC7900FBE7BE /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */; };
 		196434272B74CFCC00FF7212 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 196434262B74CFCC00FF7212 /* assets */; };
 		196434292B74CFD300FF7212 /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 196434282B74CFD300FF7212 /* popup */; };
@@ -50,9 +50,9 @@
 		19174D152B73B891005F62DE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../src; sourceTree = "<group>"; };
 		19174D182B73B89A005F62DE /* background.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
 		19174D1D2B73B89A005F62DE /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
-		19174D222B73B89A005F62DE /* content.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
 		19174D2C2B73B8AB005F62DE /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
 		19174D2E2B73B8B1005F62DE /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		191BFFB12C75AE17001C857E /* content-scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "content-scripts"; sourceTree = "<group>"; };
 		195260762B73BC7900FBE7BE /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		196434262B74CFCC00FF7212 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		196434282B74CFD300FF7212 /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = popup; sourceTree = "<group>"; };
@@ -90,10 +90,10 @@
 			children = (
 				19174D2C2B73B8AB005F62DE /* _locales */,
 				196434262B74CFCC00FF7212 /* assets */,
+				191BFFB12C75AE17001C857E /* content-scripts */,
 				19174D2E2B73B8B1005F62DE /* images */,
 				196434282B74CFD300FF7212 /* popup */,
 				19174D182B73B89A005F62DE /* background.js */,
-				19174D222B73B89A005F62DE /* content.js */,
 				19174D1D2B73B89A005F62DE /* manifest.json */,
 			);
 			name = dist;
@@ -243,12 +243,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				19174D2D2B73B8AB005F62DE /* _locales in Resources */,
+				191BFFB22C75AE17001C857E /* content-scripts in Resources */,
 				19174D242B73B89A005F62DE /* background.js in Resources */,
 				196434272B74CFCC00FF7212 /* assets in Resources */,
 				19174D282B73B89A005F62DE /* manifest.json in Resources */,
 				196434292B74CFD300FF7212 /* popup in Resources */,
 				19174D2F2B73B8B1005F62DE /* images in Resources */,
-				19174D2B2B73B89B005F62DE /* content.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

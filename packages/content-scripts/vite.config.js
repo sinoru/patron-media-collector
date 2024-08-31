@@ -1,8 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-const root = './src'
-
 export default defineConfig(({ command, mode }) => {
   return {
     base: './',
@@ -11,10 +9,7 @@ export default defineConfig(({ command, mode }) => {
       modulePreload: false,
       outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
-        input: {
-          'background': resolve(__dirname, root, 'background/index.js'),
-          'popup': resolve(__dirname, root, 'popup/index.html'),
-        },
+        input: 'src/index.js',
         output: {
           compact: (() => {
             switch (mode) {
@@ -24,22 +19,8 @@ export default defineConfig(({ command, mode }) => {
                 return false;
             }
           })(),
-          entryFileNames: (chunkInfo) => {
-            switch (chunkInfo.name) {
-            case 'popup':
-              return '[name]/index.js';
-            default:
-              return '[name].js';
-            }
-          },
+          entryFileNames: '[name].js',
           interop: 'auto',
-          manualChunks: (id) => {
-            if (id.includes('src/common')) {
-              return 'common'
-            } else if (id.includes('node_modules')) {
-              return 'vendor';
-            }
-          },
         },
       },
       sourcemap: (() => {
@@ -57,6 +38,6 @@ export default defineConfig(({ command, mode }) => {
         'chrome121',
       ],
     },
-    root,
+    root: './src',
   }
 });
