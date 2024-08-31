@@ -280,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NO_COLOR=1\n\nif [[ ! -z \"$CI\" ]]; then\n    export PATH=\"/$HOME/.nodenv/bin:$PATH\"\nelif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    npm=\"nodenv exec npm\"\nelse\n    npm=\"npm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nmode=\"--mode development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nmode=\"--mode production\"\nfi\n\n${npm} run build -- ${mode}\n";
+			shellScript = "export NO_COLOR=1\n\nif [[ ! -z \"$CI\" ]]; then\n    export PATH=\"/$HOME/.nodenv/bin:$PATH\"\nelif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -x \"$(command -v nodenv)\" ]; then\n    pnpm=\"nodenv exec pnpm\"\nelse\n    pnpm=\"pnpm\"\nfi\n\ncd ..\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nexport NODE_ENV=\"development\"\nmode=\"development\"\nelif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nexport NODE_ENV=\"production\"\nmode=\"production\"\nfi\n\n${pnpm} run build-workspaces --mode=${mode}\n${pnpm} run build --mode=${mode}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

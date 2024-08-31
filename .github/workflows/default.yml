@@ -21,13 +21,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: npm install -g web-ext
-      - run: npm ci --workspaces
-      - run: npm run build
+      - run: pnpm add -g web-ext
+      - run: pnpm i
+      - run: pnpm run build-workspaces --mode=production
         env:
           NODE_ENV: production
-      - run: npx web-ext lint
-      - run: npx web-ext build
+      - run: pnpm run build --mode=production
+        env:
+          NODE_ENV: production
+      - run: pnpm exec web-ext lint
+      - run: pnpm exec web-ext build
       - uses: actions/upload-artifact@v4
         with:
           name: dist

@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",
-    "build": "npm run build --workspaces && vite build",
+    "build-workspaces": "pnpm run --filter='./packages/*' build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.4.2"
+    "vite": "^5.4.2",
+    "@patron-media-collector/content-scripts": "workspace:*"
   },
   "webExt": {
     "sourceDir": "dist/",
@@ -18,7 +20,5 @@
   "dependencies": {
     "webextension-polyfill": "^0.12.0"
   },
-  "workspaces": [
-    "packages/content-scripts"
-  ]
+  "packageManager": "pnpm@9.9.0"
 }
