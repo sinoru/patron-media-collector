@@ -17,7 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
       - run: pnpm add -g web-ext
       - run: pnpm i
       - run: pnpm run build-workspaces --mode=development
