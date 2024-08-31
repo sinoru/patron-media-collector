@@ -61,6 +61,7 @@ _catch(async () => {
         }
     });
     fetchPort.onMessage.addListener((message) => {
+        console.log("Received request: ", message);
         updateBody(message.media, currentTab.url);
     });
 })();

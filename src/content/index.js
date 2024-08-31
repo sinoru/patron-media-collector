@@ -64,9 +64,7 @@ function download(download) {
     document.body.removeChild(element);
 }
 
-browser.runtime.onMessage.addListener((message, sender) => {
-    console.log("Received request: ", message, sender);
-
+browser.runtime.onMessage.addListener((message) => {
     const [key, value] = Object.entries(message)[0];
 
     switch (key) {
