@@ -27,18 +27,14 @@ final class SafariLaunchTests: XCTestCase {
         )
     }
 
-    static func goTo(location: String) {
+    static func goTo(with safari: XCUIApplication, location: String) {
         let addressBar = safari.toolbars.textFields["WEB_BROWSER_ADDRESS_AND_SEARCH_FIELD"]
         addressBar.typeKey("l", modifierFlags: .command)
         addressBar.typeText(location)
         addressBar.typeKey(.enter, modifierFlags: [])
     }
 
-    override class func setUp() {
-        let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
-        app.launch()
-        app.buttons[XCUIIdentifierMinimizeWindow].click()
-
+    static func setEnableExtension(_ newValue: Bool) {
         let safari = self.safari
         safari.launch()
 
@@ -56,18 +52,23 @@ final class SafariLaunchTests: XCTestCase {
             fatalError()
         }
 
-        if let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool, !isPatronMediaCollectorEnabled {
+        if let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool, isPatronMediaCollectorEnabled != newValue {
             patronMediaCollectorCheckBox.click()
         }
 
         guard
             let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool,
-            isPatronMediaCollectorEnabled
+            isPatronMediaCollectorEnabled == newValue
         else {
             fatalError()
         }
+    }
 
-        Self.goTo(location: "https://www.fanbox.cc")
+    static func allowExtension() {
+        let safari = self.safari
+        safari.launch()
+
+        Self.goTo(with: safari, location: "https://www.fanbox.cc")
 
         let extensionButton = Self.extensionButton // This button is not hittable due to insufficient permission
         extensionButton
@@ -77,40 +78,19 @@ final class SafariLaunchTests: XCTestCase {
 
         let allowAllButton = safari.popovers.buttons.element(boundBy: 2)
         allowAllButton.click()
+    }
 
-        safari.terminate()
+    override class func setUp() {
+        let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
+        app.launch()
+        app.buttons[XCUIIdentifierMinimizeWindow].click()
+
+        setEnableExtension(true)
+        allowExtension()
     }
 
     override class func tearDown() {
-        let safari = self.safari
-        safari.launch()
-
-        safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
-
-        let preferencesWindow = safari.windows.firstMatch
-        preferencesWindow.buttons.element(boundBy: 12).click()
-
-        let patronMediaCollectorCell = preferencesWindow.cells.containing(NSPredicate(format: "value CONTAINS 'PatronMediaCollector'")).firstMatch
-        guard patronMediaCollectorCell.exists else {
-            fatalError()
-        }
-        let patronMediaCollectorCheckBox = patronMediaCollectorCell.checkBoxes.firstMatch
-        guard patronMediaCollectorCheckBox.exists else {
-            fatalError()
-        }
-
-        if let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool, isPatronMediaCollectorEnabled {
-            patronMediaCollectorCheckBox.click()
-        }
-
-        guard
-            let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool,
-            !isPatronMediaCollectorEnabled
-        else {
-            fatalError()
-        }
-
-        safari.terminate()
+        setEnableExtension(false)
     }
 
     func testLaunch() throws {
@@ -127,7 +107,7 @@ final class SafariLaunchTests: XCTestCase {
         let safari = Self.safari
         safari.launch()
 
-        Self.goTo(location: "https://www.fanbox.cc/@itiri/posts/8332491")
+        Self.goTo(with: safari, location: "https://www.fanbox.cc/@itiri/posts/8332491")
 
         let extensionButton = Self.extensionButton
         extensionButton.click()
