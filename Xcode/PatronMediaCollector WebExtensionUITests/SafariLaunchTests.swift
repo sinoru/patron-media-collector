@@ -62,9 +62,9 @@ final class SafariLaunchTests: XCTestCase {
         let safari = Self.safari
         await safari.launch()
 
-        allowUnsignedExtension(for: safari)
-        setEnableExtension(for: safari, true)
-        allowExtensionPermission(for: safari)
+        await allowUnsignedExtension(for: safari)
+        await setEnableExtension(for: safari, true)
+        await allowExtensionPermission(for: safari)
     }
 
     func testLaunch() throws {
@@ -94,6 +94,7 @@ final class SafariLaunchTests: XCTestCase {
 }
 
 extension SafariLaunchTests {
+    @MainActor
     private func allowUnsignedExtension(for safari: XCUIApplication) {
         safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
 
@@ -105,8 +106,16 @@ extension SafariLaunchTests {
         if let allowUnsignedExtension = allowUnsignedExtensionCheckBox.value as? Bool, !allowUnsignedExtension {
             allowUnsignedExtensionCheckBox.click()
         }
+
+        guard
+            let allowUnsignedExtension = allowUnsignedExtensionCheckBox.value as? Bool,
+            allowUnsignedExtension
+        else {
+            fatalError()
+        }
     }
 
+    @MainActor
     private func setEnableExtension(for safari: XCUIApplication, _ newValue: Bool) {
         safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
 
@@ -134,6 +143,7 @@ extension SafariLaunchTests {
         }
     }
 
+    @MainActor
     private func allowExtensionPermission(for safari: XCUIApplication) {
         Self.goTo(with: safari, location: "https://www.fanbox.cc")
 
