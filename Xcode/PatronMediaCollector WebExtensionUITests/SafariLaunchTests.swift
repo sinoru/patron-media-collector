@@ -34,10 +34,80 @@ final class SafariLaunchTests: XCTestCase {
         addressBar.typeKey(.enter, modifierFlags: [])
     }
 
-    static func setEnableExtension(_ newValue: Bool) {
+    static func enableDevelopModeOnSafari() {
         let safari = self.safari
         safari.launch()
 
+        safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
+
+        let preferencesWindow = safari.windows.firstMatch
+        preferencesWindow.buttons.element(boundBy: 13).click()
+
+        let developModeCheckBox = preferencesWindow.checkBoxes["_NS:8"]
+
+        if let developMode = developModeCheckBox.value as? Bool, !developMode {
+            developModeCheckBox.click()
+        }
+    }
+
+    override class func setUp() {
+        enableDevelopModeOnSafari()
+
+        let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
+        app.launch()
+        app.buttons["ShowSafariPreferencesForExtension"].click()
+    }
+
+    override func setUp() async throws {
+        let safari = Self.safari
+        await safari.launch()
+
+        allowUnsignedExtension(for: safari)
+        setEnableExtension(for: safari, true)
+        allowExtensionPermission(for: safari)
+    }
+
+    func testLaunch() throws {
+        let safari = Self.safari
+        safari.activate()
+
+        let attachment = XCTAttachment(screenshot: safari.screenshot())
+        attachment.name = "Launch Screen"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
+    func testFANBOX() throws {
+        let safari = Self.safari
+        safari.activate()
+
+        Self.goTo(with: safari, location: "https://www.fanbox.cc/@itiri/posts/8332491")
+
+        let extensionButton = Self.extensionButton
+        extensionButton.click()
+
+        let attachment = XCTAttachment(screenshot: safari.screenshot())
+        attachment.name = "pixivFANBOX Screen"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+}
+
+extension SafariLaunchTests {
+    private func allowUnsignedExtension(for safari: XCUIApplication) {
+        safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
+
+        let preferencesWindow = safari.windows.firstMatch
+        preferencesWindow.buttons.element(boundBy: 14).click()
+
+        let allowUnsignedExtensionCheckBox = preferencesWindow.checkBoxes["_NS:62"]
+
+        if let allowUnsignedExtension = allowUnsignedExtensionCheckBox.value as? Bool, !allowUnsignedExtension {
+            allowUnsignedExtensionCheckBox.click()
+        }
+    }
+
+    private func setEnableExtension(for safari: XCUIApplication, _ newValue: Bool) {
         safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
 
         let preferencesWindow = safari.windows.firstMatch
@@ -64,10 +134,7 @@ final class SafariLaunchTests: XCTestCase {
         }
     }
 
-    static func allowExtension() {
-        let safari = self.safari
-        safari.launch()
-
+    private func allowExtensionPermission(for safari: XCUIApplication) {
         Self.goTo(with: safari, location: "https://www.fanbox.cc")
 
         let extensionButton = Self.extensionButton // This button is not hittable due to insufficient permission
@@ -78,43 +145,7 @@ final class SafariLaunchTests: XCTestCase {
 
         let allowAllButton = safari.popovers.buttons.element(boundBy: 2)
         allowAllButton.click()
-    }
 
-    override class func setUp() {
-        let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
-        app.launch()
-        app.buttons["ShowSafariPreferencesForExtension"].click()
-
-        setEnableExtension(true)
-        allowExtension()
-    }
-
-    override class func tearDown() {
-        setEnableExtension(false)
-    }
-
-    func testLaunch() throws {
-        let safari = Self.safari
-        safari.launch()
-
-        let attachment = XCTAttachment(screenshot: safari.screenshot())
-        attachment.name = "Launch Screen"
-        attachment.lifetime = .keepAlways
-        add(attachment)
-    }
-
-    func testFANBOX() throws {
-        let safari = Self.safari
-        safari.launch()
-
-        Self.goTo(with: safari, location: "https://www.fanbox.cc/@itiri/posts/8332491")
-
-        let extensionButton = Self.extensionButton
-        extensionButton.click()
-
-        let attachment = XCTAttachment(screenshot: safari.screenshot())
-        attachment.name = "pixivFANBOX Screen"
-        attachment.lifetime = .keepAlways
-        add(attachment)
+        safari.windows.firstMatch.buttons[XCUIIdentifierCloseWindow].click()
     }
 }
