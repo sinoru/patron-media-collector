@@ -8,6 +8,9 @@
 import XCTest
 
 final class SafariLaunchTests: XCTestCase {
+    static let appBundleIdentifier = "dev.sinoru.PatronMediaCollector"
+    static let webExtensionBundleIdentifier = "\(appBundleIdentifier).WebExtension"
+
     static var safari: XCUIApplication {
         #if os(iOS)
         XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
@@ -17,7 +20,11 @@ final class SafariLaunchTests: XCTestCase {
     }
 
     static var extensionButton: some XCUIElement {
-        safari.toolbars.buttons["WebExtension-dev.sinoru.PatronMediaCollector.WebExtension (83XZ8ZBS6L)"]
+        safari.toolbars.buttons.element(
+            matching: NSPredicate(
+                format: "label BEGINSWITH %@", "WebExtension-\(webExtensionBundleIdentifier)"
+            )
+        )
     }
 
     static func goTo(location: String) {
@@ -28,6 +35,10 @@ final class SafariLaunchTests: XCTestCase {
     }
 
     override class func setUp() {
+        let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
+        app.launch()
+        app.buttons[XCUIIdentifierMinimizeWindow].click()
+
         let safari = self.safari
         safari.launch()
 
