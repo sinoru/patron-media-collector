@@ -129,6 +129,8 @@ extension SafariLaunchTests {
             allowUnsignedExtensionCheckBox.click()
         }
 
+        preferencesWindow.toolbars.firstMatch.click() // Trigger Interruption Monitor
+
         removeUIInterruptionMonitor(uiInterruptionMonitor)
 
         XCTAssertEqual(allowUnsignedExtensionCheckBox.value as? Bool, true)
