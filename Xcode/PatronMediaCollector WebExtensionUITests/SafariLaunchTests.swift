@@ -132,8 +132,8 @@ extension SafariLaunchTests {
             allowUnsignedExtensionCheckBox.click()
         }
 
-        safari.activate() // Wait for Authentication dialog
-        preferencesWindow.toolbars.firstMatch.click() // Trigger Interruption Monitor
+        sleep(1) // Wait for Authentication dialog
+        allowUnsignedExtensionCheckBox.rightClick() // Trigger Interruption Monitor
 
         let expectation = expectation(for: NSPredicate(format: "value == YES"), evaluatedWith: allowUnsignedExtensionCheckBox)
         wait(for: [expectation], timeout: 5.0)
