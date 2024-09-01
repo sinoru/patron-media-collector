@@ -48,6 +48,13 @@ final class SafariLaunchTests: XCTestCase {
         if let developMode = developModeCheckBox.value as? Bool, !developMode {
             developModeCheckBox.click()
         }
+
+        guard
+            let developMode = developModeCheckBox.value as? Bool,
+            developMode
+        else {
+            fatalError() // Due to static (Not instanized)
+        }
     }
 
     override class func setUp() {
@@ -107,12 +114,7 @@ extension SafariLaunchTests {
             allowUnsignedExtensionCheckBox.click()
         }
 
-        guard
-            let allowUnsignedExtension = allowUnsignedExtensionCheckBox.value as? Bool,
-            allowUnsignedExtension
-        else {
-            fatalError()
-        }
+        XCTAssertEqual(allowUnsignedExtensionCheckBox.value as? Bool, true)
     }
 
     @MainActor
@@ -123,24 +125,15 @@ extension SafariLaunchTests {
         preferencesWindow.buttons.element(boundBy: 12).click()
 
         let patronMediaCollectorCell = preferencesWindow.cells.containing(NSPredicate(format: "value CONTAINS 'PatronMediaCollector'")).firstMatch
-        guard patronMediaCollectorCell.exists else {
-            fatalError()
-        }
+        XCTAssertTrue(patronMediaCollectorCell.exists)
         let patronMediaCollectorCheckBox = patronMediaCollectorCell.checkBoxes.firstMatch
-        guard patronMediaCollectorCheckBox.exists else {
-            fatalError()
-        }
+        XCTAssertTrue(patronMediaCollectorCheckBox.exists)
 
         if let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool, isPatronMediaCollectorEnabled != newValue {
             patronMediaCollectorCheckBox.click()
         }
 
-        guard
-            let isPatronMediaCollectorEnabled = patronMediaCollectorCheckBox.value as? Bool,
-            isPatronMediaCollectorEnabled == newValue
-        else {
-            fatalError()
-        }
+        XCTAssertEqual(patronMediaCollectorCheckBox.value as? Bool, newValue)
     }
 
     @MainActor
