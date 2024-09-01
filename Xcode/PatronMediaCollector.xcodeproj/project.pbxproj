@@ -20,6 +20,7 @@
 		196AF1752B73B02600945C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1742B73B02600945C40 /* Assets.xcassets */; };
 		196AF1792B73B02600945C40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196AF1782B73B02600945C40 /* Preview Assets.xcassets */; };
 		196AF19C2B73B08900945C40 /* PatronMediaCollector WebExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		19D7FB582C84354100049AFF /* SafariLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FB572C84354100049AFF /* SafariLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 196AF1822B73B08900945C40;
 			remoteInfo = "PatronMediaCollector WebExtension";
+		};
+		19D7FB532C8434F400049AFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 196AF1652B73B02500945C40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 196AF16C2B73B02500945C40;
+			remoteInfo = PatronMediaCollector;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,6 +73,8 @@
 		196AF1982B73B08900945C40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19737D0F2B771ACE00F70069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		19BC7B8A2B85EE10000C58AB /* ci_scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ci_scripts; sourceTree = "<group>"; };
+		19D7FB4A2C84338800049AFF /* PatronMediaCollector WebExtensionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PatronMediaCollector WebExtensionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19D7FB572C84354100049AFF /* SafariLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +86,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		196AF1802B73B08900945C40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D7FB472C84338800049AFF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,6 +123,7 @@
 				19BC7B8A2B85EE10000C58AB /* ci_scripts */,
 				196AF16F2B73B02500945C40 /* PatronMediaCollector */,
 				196AF1842B73B08900945C40 /* PatronMediaCollector WebExtension */,
+				19D7FB4B2C84338800049AFF /* PatronMediaCollector WebExtensionUITests */,
 				196AF16E2B73B02500945C40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,6 +133,7 @@
 			children = (
 				196AF16D2B73B02500945C40 /* PatronMediaCollector.app */,
 				196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */,
+				19D7FB4A2C84338800049AFF /* PatronMediaCollector WebExtensionUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +167,14 @@
 				19174D162B73B89A005F62DE /* dist */,
 			);
 			path = "PatronMediaCollector WebExtension";
+			sourceTree = "<group>";
+		};
+		19D7FB4B2C84338800049AFF /* PatronMediaCollector WebExtensionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				19D7FB572C84354100049AFF /* SafariLaunchTests.swift */,
+			);
+			path = "PatronMediaCollector WebExtensionUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +217,24 @@
 			productReference = 196AF1832B73B08900945C40 /* PatronMediaCollector WebExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		19D7FB492C84338800049AFF /* PatronMediaCollector WebExtensionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19D7FB502C84338800049AFF /* Build configuration list for PBXNativeTarget "PatronMediaCollector WebExtensionUITests" */;
+			buildPhases = (
+				19D7FB462C84338800049AFF /* Sources */,
+				19D7FB472C84338800049AFF /* Frameworks */,
+				19D7FB482C84338800049AFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19D7FB542C8434F400049AFF /* PBXTargetDependency */,
+			);
+			name = "PatronMediaCollector WebExtensionUITests";
+			productName = "PatronMediaCollector WebExtensionUITests";
+			productReference = 19D7FB4A2C84338800049AFF /* PatronMediaCollector WebExtensionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,7 +242,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					196AF16C2B73B02500945C40 = {
@@ -206,6 +251,10 @@
 					196AF1822B73B08900945C40 = {
 						CreatedOnToolsVersion = 15.2;
 						LastSwiftMigration = 1520;
+					};
+					19D7FB492C84338800049AFF = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 196AF16C2B73B02500945C40;
 					};
 				};
 			};
@@ -224,6 +273,7 @@
 			targets = (
 				196AF16C2B73B02500945C40 /* PatronMediaCollector */,
 				196AF1822B73B08900945C40 /* PatronMediaCollector WebExtension */,
+				19D7FB492C84338800049AFF /* PatronMediaCollector WebExtensionUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +299,13 @@
 				19174D282B73B89A005F62DE /* manifest.json in Resources */,
 				196434292B74CFD300FF7212 /* popup in Resources */,
 				19174D2F2B73B8B1005F62DE /* images in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D7FB482C84338800049AFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +359,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19D7FB462C84338800049AFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19D7FB582C84354100049AFF /* SafariLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -309,6 +374,11 @@
 			isa = PBXTargetDependency;
 			target = 196AF1822B73B08900945C40 /* PatronMediaCollector WebExtension */;
 			targetProxy = 196AF19A2B73B08900945C40 /* PBXContainerItemProxy */;
+		};
+		19D7FB542C8434F400049AFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 196AF16C2B73B02500945C40 /* PatronMediaCollector */;
+			targetProxy = 19D7FB532C8434F400049AFF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -580,6 +650,36 @@
 			};
 			name = Release;
 		};
+		19D7FB512C84338800049AFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.sinoru.PatronMediaCollector.WebExtensionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PatronMediaCollector;
+			};
+			name = Debug;
+		};
+		19D7FB522C84338800049AFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83XZ8ZBS6L;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.sinoru.PatronMediaCollector.WebExtensionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PatronMediaCollector;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -606,6 +706,15 @@
 			buildConfigurations = (
 				196AF19E2B73B08900945C40 /* Debug */,
 				196AF19F2B73B08900945C40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19D7FB502C84338800049AFF /* Build configuration list for PBXNativeTarget "PatronMediaCollector WebExtensionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19D7FB512C84338800049AFF /* Debug */,
+				19D7FB522C84338800049AFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
