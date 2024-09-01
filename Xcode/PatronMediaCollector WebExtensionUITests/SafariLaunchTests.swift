@@ -124,16 +124,16 @@ extension SafariLaunchTests {
 
             return true
         }
+        defer {
+            removeUIInterruptionMonitor(uiInterruptionMonitor)
+        }
 
         if let allowUnsignedExtension = allowUnsignedExtensionCheckBox.value as? Bool, !allowUnsignedExtension {
             allowUnsignedExtensionCheckBox.click()
         }
 
-        preferencesWindow.toolbars.firstMatch.click() // Trigger Interruption Monitor
-
-        removeUIInterruptionMonitor(uiInterruptionMonitor)
-
-        XCTAssertEqual(allowUnsignedExtensionCheckBox.value as? Bool, true)
+        let expectation = expectation(for: NSPredicate(format: "value == YES"), evaluatedWith: allowUnsignedExtensionCheckBox)
+        wait(for: [expectation], timeout: 10.0)
     }
 
     @MainActor
