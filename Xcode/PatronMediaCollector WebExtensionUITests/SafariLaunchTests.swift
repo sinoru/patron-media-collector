@@ -113,12 +113,14 @@ extension SafariLaunchTests {
         let uiInterruptionMonitor = addUIInterruptionMonitor(
             withDescription: "Authentication"
         ) { dialog in
-            let okButton = dialog.buttons["OK"]
+            let passwordField = dialog.textFields.firstMatch
 
-            guard okButton.exists else {
+            guard passwordField.exists else {
                 return false
             }
-            okButton.click()
+
+            passwordField.click()
+            passwordField.typeKey(.enter, modifierFlags: [])
 
             return true
         }
