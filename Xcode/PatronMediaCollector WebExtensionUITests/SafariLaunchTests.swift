@@ -83,7 +83,7 @@ final class SafariLaunchTests: XCTestCase {
     override class func setUp() {
         let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
         app.launch()
-        app.buttons[XCUIIdentifierMinimizeWindow].click()
+        app.buttons["ShowSafariPreferencesForExtension"].click()
 
         setEnableExtension(true)
         allowExtension()
