@@ -110,9 +110,24 @@ extension SafariLaunchTests {
 
         let allowUnsignedExtensionCheckBox = preferencesWindow.checkBoxes["_NS:62"]
 
+        let uiInterruptionMonitor = addUIInterruptionMonitor(
+            withDescription: "Authentication"
+        ) { dialog in
+            let okButton = dialog.buttons["OK"]
+
+            guard okButton.exists else {
+                return false
+            }
+            okButton.click()
+
+            return true
+        }
+
         if let allowUnsignedExtension = allowUnsignedExtensionCheckBox.value as? Bool, !allowUnsignedExtension {
             allowUnsignedExtensionCheckBox.click()
         }
+
+        removeUIInterruptionMonitor(uiInterruptionMonitor)
 
         XCTAssertEqual(allowUnsignedExtensionCheckBox.value as? Bool, true)
     }
