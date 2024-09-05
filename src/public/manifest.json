@@ -28,9 +28,10 @@
 
   "host_permissions": [
     "*://*.fanbox.cc/*",
-    "*://www.patreon.com/*",
+    "*://*.patreon.com/*",
     "*://*.patreonusercontent.com/*",
-    "*://subscribestar.adult/*"
+    "*://*.subscribestar.adult/*",
+    "*://*.ss-uploads-prod.b-cdn.net/*"
   ],
 
   "content_scripts": [{
