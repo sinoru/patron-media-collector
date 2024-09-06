@@ -1,32 +1,9 @@
 import browser from 'webextension-polyfill';
-import url from '../common/url.js';
+import url from './url.js';
+import { dataURLFromBlob, timeout } from './utils.js';
+import { fetchCurrentTab } from './browser.js';
 
 const MAX_FILE_SIZE = 38_797_312; // ((4 * n / 3) + 3) & ~3 < 52_428_800
-
-/**
- * @param {Blob} blob
- * 
- * @returns {Promise<string, DOMException>}
- */
-const dataURLFromBlob = (blob) => {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = () => reject(reader.error);
-        reader.readAsDataURL(blob);
-    });
-}
-
-/**
- * @param {number} delay
- * 
- * @returns {Promise<void>}
- */
-const timeout = (delay) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, delay);
-    });
-}
 
 /**
  * @typedef {Object} Download
@@ -35,41 +12,73 @@ const timeout = (delay) => {
  * @property {number?} estimatedFileSize
  */
 
+const fetchEstimatedFileSize = async (url) => {
+    const response = await fetch(
+        url,
+        {
+            method: 'HEAD',
+            mode: 'cors',
+            credentials: 'include',
+            referrerPolicy: 'no-referrer',
+        }
+    );
+
+    return Number(response.headers.get('Content-Length'));
+};
+
+const fetchBlob = async (url) => {
+    const response = await fetch(
+        url,
+        {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include',
+            referrerPolicy: 'no-referrer',
+        }
+    );
+
+    return await response.blob();
+};
+
 /**
  * @param {Download[]} downloads
  * @param {string} originURL
  */
 export async function prepareDownloadForBackground(downloads, originURL) {
+    if (browser.downloads && browser.downloads.download) {
+        return {
+            downloads,
+            originURL,
+        }
+    }
+
     const _originURL = url(originURL);
 
     const preparedDownloads = await Promise.all(
         downloads.map(async (download) => {
-            if (browser.downloads && browser.downloads.download) {
-                return download;
-            }
+            try {
+                const downloadURL = new URL(download.url);
 
-            const downloadURL = new URL(download.url);
-            if (
-                (downloadURL.host == _originURL.host) ||
-                (download.estimatedFileSize > MAX_FILE_SIZE)
-            ) {
-                return download;
-            }
-
-            const response = await fetch(
-                download.url,
-                {
-                    method: 'GET',
-                    mode: 'cors',
-                    credentials: 'include',
-                    referrerPolicy: 'no-referrer',
+                if (downloadURL.host == _originURL.host) {
+                    return download
                 }
-            );
-            const blob = await response.blob();
 
-            return {
-                ...download,
-                'blobObjectURL': URL.createObjectURL(blob),
+                const estimatedFileSize = await fetchEstimatedFileSize(download.url);
+
+                if (estimatedFileSize > MAX_FILE_SIZE) {
+                    return download;
+                }
+
+                const blob = await fetchBlob(download.url);
+
+                return {
+                    ...download,
+                    'blobObjectURL': URL.createObjectURL(blob),
+                }
+            } catch (error) {
+                console.error(error);
+
+                return download;
             }
         })
     );
@@ -106,11 +115,7 @@ export default async function download(downloads, originURL) {
         })
     );
 
-    const currentTab = (await browser.tabs.query({
-        active: true,
-        currentWindow: true,
-        url: _originURL.href,
-    }))[0];
+    const currentTab = await fetchCurrentTab(_originURL.href);
 
     for (const preparedDownload of preparedDownloads) {
         try {

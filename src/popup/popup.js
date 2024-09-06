@@ -3,7 +3,6 @@ import browser from 'webextension-polyfill';
 import _catch from '../common/catch.js';
 
 import './popup.css';
-import { updateFileSize } from '../common/media.js';
 import { prepareDownloadForBackground } from '../common/download.js';
 
 /**
@@ -30,7 +29,7 @@ async function downloadAll(media, originURL) {
 async function updateBody(_media, senderURL) {
     const downloadAllButton = document.getElementById('download-all-button');
 
-    const media = await updateFileSize(_media ?? []);
+    const media = _media ?? [];
 
     setDisabled(downloadAllButton, !(media.length > 0));
     downloadAllButton.onclick = _catch(async () => {
