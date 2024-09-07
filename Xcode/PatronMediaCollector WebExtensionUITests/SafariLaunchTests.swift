@@ -2,7 +2,7 @@
 //  SafariLaunchTests.swift
 //  PatronMediaCollector WebExtensionUITests
 //
-//  Created by 강재홍 on 9/1/24.
+//  Created by Jaehong Kang on 9/1/24.
 //
 
 import XCTest
@@ -10,6 +10,12 @@ import XCTest
 final class SafariLaunchTests: XCTestCase {
     static let appBundleIdentifier = "dev.sinoru.PatronMediaCollector"
     static let webExtensionBundleIdentifier = "\(appBundleIdentifier).WebExtension"
+
+    static var isCI: Bool {
+        ProcessInfo.processInfo.environment["CI"]?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .caseInsensitiveCompare("true") == .orderedSame
+    }
 
     static var safari: XCUIApplication {
         #if os(iOS)
@@ -58,20 +64,25 @@ final class SafariLaunchTests: XCTestCase {
     }
 
     override class func setUp() {
-        enableDevelopModeOnSafari()
-
-        let app = XCUIApplication(bundleIdentifier: appBundleIdentifier)
-        app.launch()
-        app.buttons["ShowSafariPreferencesForExtension"].click()
+        if isCI {
+            enableDevelopModeOnSafari()
+        }
     }
 
     override func setUp() async throws {
+        await registerExtension()
+
         let safari = Self.safari
         await safari.launch()
 
-        await allowUnsignedExtension(for: safari)
-        await setEnableExtension(for: safari, true)
-        await allowExtensionPermission(for: safari)
+        if Self.isCI {
+            await allowUnsignedExtension(for: safari)
+            await setEnableExtension(for: safari, true)
+            await allowExtensionPermission(for: safari)
+        } else {
+            await setEnableExtension(for: safari, true)
+            await allowExtensionPermission(for: safari)
+        }
     }
 
     func testLaunch() throws {
@@ -101,6 +112,13 @@ final class SafariLaunchTests: XCTestCase {
 }
 
 extension SafariLaunchTests {
+    @MainActor
+    private func registerExtension() {
+        let app = XCUIApplication(bundleIdentifier: Self.appBundleIdentifier)
+        app.launch()
+        app.buttons["ShowSafariPreferencesForExtension"].click()
+    }
+
     @MainActor
     private func allowUnsignedExtension(for safari: XCUIApplication) {
         safari.menus["ApplicationMenu"].menuItems["Preferences"].click()
