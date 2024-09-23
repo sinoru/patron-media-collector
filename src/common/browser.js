@@ -1,10 +1,7 @@
-import browser from 'webextension-polyfill';
-
-
-export const fetchCurrentTab = async (url) => {
+export const fetchCurrentTab = async (options) => {
     return (await browser.tabs.query({
         active: true,
         currentWindow: true,
-        url: url,
+        ...options
     }))[0];
 };

@@ -115,12 +115,15 @@ export default async function download(downloads, originURL) {
         })
     );
 
-    const currentTab = await fetchCurrentTab(_originURL.href);
+    const currentTab = await fetchCurrentTab({url: _originURL.href});
 
     for (const preparedDownload of preparedDownloads) {
         try {
             if (browser.downloads && browser.downloads.download) {
-                await browser.downloads.download(preparedDownload);
+                await browser.downloads.download({
+                    url: preparedDownload.url,
+                    filename: preparedDownload.filename,
+                });
             } else {
                 let url = new URL(preparedDownload.url)
 
@@ -131,7 +134,7 @@ export default async function download(downloads, originURL) {
                     await browser.tabs.sendMessage(
                         currentTab.id,
                         {
-                            'download': preparedDownload
+                            'download': preparedDownload,
                         }
                     );
 

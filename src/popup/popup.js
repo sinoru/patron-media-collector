@@ -1,9 +1,10 @@
 import browser from 'webextension-polyfill';
 
 import _catch from '../common/catch.js';
+import { prepareDownloadForBackground } from '../common/download.js';
+import { fetchCurrentTab } from '../common/browser.js';
 
 import './popup.css';
-import { prepareDownloadForBackground } from '../common/download.js';
 
 /**
  * 
@@ -49,19 +50,16 @@ async function updateBody(_media, senderURL) {
 _catch(async () => {
     updateBody();
 
-    const currentTab = (await browser.tabs.query({
-        active: true,
-        currentWindow: true
-    }))[0];
+    const currentTab = await fetchCurrentTab();
 
     let fetchPort = browser.tabs.connect(currentTab.id, { name: 'fetch' });
+    fetchPort.onMessage.addListener((message) => {
+        console.log("Received request: ", message);
+        updateBody(message.media, currentTab.url);
+    });
     fetchPort.onDisconnect.addListener((port) => {
         if (port.error) {
             console.error(port.error);
         }
-    });
-    fetchPort.onMessage.addListener((message) => {
-        console.log("Received request: ", message);
-        updateBody(message.media, currentTab.url);
     });
 })();

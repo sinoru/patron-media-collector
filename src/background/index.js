@@ -1,9 +1,7 @@
-import browser from 'webextension-polyfill';
-
 import _catch from '../common/catch.js';
 import download from '../common/download.js';
 
-browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => {
+browser.runtime.onMessage.addListener(_catch((message, sender) => {
     console.log("Received request: ", message, sender);
 
     const [key, value] = Object.entries(message)[0];
@@ -13,16 +11,11 @@ browser.runtime.onMessage.addListener(_catch((message, sender, sendResponse) => 
             const downloads = value.downloads;
             const originURL = value.originURL;
             
-            download(downloads, originURL)
-                .then(() => {
-                    sendResponse();
-                })
-                .catch((reason) => {
+            return download(downloads, originURL)
+                .catch((e) => {
                     console.error(reason);
-                    sendResponse(new Error(reason));
+                    throw e
                 });
-
-            return true;
         default:
             return false;
     }

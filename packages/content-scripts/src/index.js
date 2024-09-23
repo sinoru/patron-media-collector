@@ -63,15 +63,15 @@ function download(download) {
     document.body.removeChild(element);
 }
 
-browser.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener((message, _, sendResponse) => {
     const [key, value] = Object.entries(message)[0];
 
     switch (key) {
         case 'download':
             download(value);
-            return;
+            sendResponse();
         default:
-            return;
+            return false;
     }
 });
 
