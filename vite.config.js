@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig, mergeConfig } from 'vite';
 import commonConfig from './vite.config.common.js';
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 export default defineConfig((env) => mergeConfig(
   commonConfig(env),
@@ -30,5 +31,15 @@ export default defineConfig((env) => mergeConfig(
         },
       },
     },
+    plugins: [
+      nodePolyfills({
+        include: ['path'],
+        globals: {
+          Buffer: false,
+          global: false,
+          process: false,
+        },
+      }),
+    ],
   }),
 ));

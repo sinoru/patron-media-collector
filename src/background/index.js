@@ -13,7 +13,7 @@ browser.runtime.onMessage.addListener(_catch((message, sender) => {
             
             return download(downloads, originURL)
                 .catch((e) => {
-                    console.error(reason);
+                    console.error(e);
                     throw e
                 });
         default:

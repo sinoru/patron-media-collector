@@ -1,7 +1,6 @@
 import browser from 'webextension-polyfill';
 
 import _catch from '../common/catch.js';
-import { prepareDownloadForBackground } from '../common/download.js';
 import { fetchCurrentTab } from '../common/browser.js';
 
 import './popup.css';
@@ -20,10 +19,11 @@ const setDisabled = (element, disabled) => {
 }
 
 async function downloadAll(media, originURL) {
-    const preparedDownloads = await prepareDownloadForBackground(media, originURL);
-
     await browser.runtime.sendMessage({
-        'download': preparedDownloads
+        'download': {
+            'downloads': media,
+            originURL
+        }
     });
 }
 

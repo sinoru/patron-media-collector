@@ -1,7 +1,7 @@
 /**
  * @param {Blob} blob
  * 
- * @returns {Promise<string, DOMException>}
+ * @returns {Promise<URL, DOMException>}
  */
 export const dataURLFromBlob = (blob) => {
     return new Promise((resolve, reject) => {
@@ -9,7 +9,8 @@ export const dataURLFromBlob = (blob) => {
         reader.onload = () => resolve(reader.result);
         reader.onerror = () => reject(reader.error);
         reader.readAsDataURL(blob);
-    });
+    })
+    .then((str) => {new URL(str)});
 }
 
 /**

@@ -10,14 +10,16 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@patron-media-collector/content-scripts": "workspace:*",
     "vite": "^5.4.2",
-    "@patron-media-collector/content-scripts": "workspace:*"
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "webExt": {
     "sourceDir": "dist/",
     "artifactsDir": "dist/web-ext-artifacts"
   },
   "dependencies": {
+    "mime-types": "^2.1.35",
     "webextension-polyfill": "^0.12.0"
   },
   "packageManager": "pnpm@9.9.0"

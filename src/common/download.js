@@ -2,6 +2,7 @@ import browser from 'webextension-polyfill';
 import url from './url.js';
 import { dataURLFromBlob, timeout } from './utils.js';
 import { fetchCurrentTab } from './browser.js';
+import mime from 'mime-types';
 
 const MAX_FILE_SIZE = 38_797_312; // ((4 * n / 3) + 3) & ~3 < 52_428_800
 
@@ -9,22 +10,8 @@ const MAX_FILE_SIZE = 38_797_312; // ((4 * n / 3) + 3) & ~3 < 52_428_800
  * @typedef {Object} Download
  * @property {string} filename
  * @property {string} url
- * @property {number?} estimatedFileSize
+ * @property {string?} type
  */
-
-const fetchEstimatedFileSize = async (url) => {
-    const response = await fetch(
-        url,
-        {
-            method: 'HEAD',
-            mode: 'cors',
-            credentials: 'include',
-            referrerPolicy: 'no-referrer',
-        }
-    );
-
-    return Number(response.headers.get('Content-Length'));
-};
 
 const fetchBlob = async (url) => {
     const response = await fetch(
@@ -44,73 +31,52 @@ const fetchBlob = async (url) => {
  * @param {Download[]} downloads
  * @param {string} originURL
  */
-export async function prepareDownloadForBackground(downloads, originURL) {
-    if (browser.downloads && browser.downloads.download) {
-        return {
-            downloads,
-            originURL,
-        }
-    }
-
+export default async function download(downloads, originURL) {
     const _originURL = url(originURL);
 
     const preparedDownloads = await Promise.all(
-        downloads.map(async (download) => {
-            try {
-                const downloadURL = new URL(download.url);
+        downloads.map(async (_download) => {
+            const download = {
+                filename: _download.filename,
+                url: new URL(_download.url),
+            }
 
-                if (downloadURL.host == _originURL.host) {
+            try {
+                const response = await fetch(
+                    download.url,
+                    {
+                        method: 'HEAD',
+                        mode: 'cors',
+                        credentials: 'include',
+                        referrerPolicy: 'no-referrer',
+                    }
+                );
+
+                const contentType = response.headers.get('Content-Type');
+                if (contentType != null && mime.lookup(download.filename) != contentType) {
+                    download.filename = `${download.filename}.${mime.extension(contentType)}`
+                }
+
+                if (download.url.host == _originURL.host) {
                     return download
                 }
 
-                const estimatedFileSize = await fetchEstimatedFileSize(download.url);
-
+                const estimatedFileSize = Number(response.headers.get('Content-Length'));
                 if (estimatedFileSize > MAX_FILE_SIZE) {
                     return download;
                 }
 
                 const blob = await fetchBlob(download.url);
+                const dataURL = await dataURLFromBlob(blob);
 
                 return {
                     ...download,
-                    'blobObjectURL': URL.createObjectURL(blob),
+                    url: dataURL,
                 }
             } catch (error) {
                 console.error(error);
 
                 return download;
-            }
-        })
-    );
-
-    return {
-        'downloads': preparedDownloads,
-        originURL,
-    }
-}
-
-/**
- * @param {Download[]} downloads
- * @param {string} originURL
- */
-export default async function download(downloads, originURL) {
-    const _originURL = url(originURL);
-
-    const preparedDownloads = await Promise.all(
-        downloads.map(async (download) => {
-            const {blobObjectURL, ..._download} = download;
-            
-            if (blobObjectURL) {
-                const response = await fetch(blobObjectURL);
-                const blob = await response.blob();
-                const dataURL = await dataURLFromBlob(blob);
-
-                return {
-                    ..._download,
-                    url: dataURL,
-                };
-            } else {
-                return _download;
             }
         })
     );
@@ -121,15 +87,13 @@ export default async function download(downloads, originURL) {
         try {
             if (browser.downloads && browser.downloads.download) {
                 await browser.downloads.download({
-                    url: preparedDownload.url,
+                    url: preparedDownload.url.href,
                     filename: preparedDownload.filename,
                 });
             } else {
-                let url = new URL(preparedDownload.url)
-
                 if (
-                    (url.host == _originURL.host) ||
-                    (/(data|blob):/i.test(url.protocol))
+                    (preparedDownload.url.host == _originURL.host) ||
+                    (/(data|blob):/i.test(preparedDownload.url.protocol))
                 ) {
                     await browser.tabs.sendMessage(
                         currentTab.id,
@@ -143,7 +107,7 @@ export default async function download(downloads, originURL) {
                 } else {
                     await browser.tabs.create({
                         active: false,
-                        url: url.href
+                        url: preparedDownload.url.href
                     });
                 }
             }
