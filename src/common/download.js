@@ -40,8 +40,10 @@ export default async function download(downloads, originURL) {
                 url: URL.parse(_download.url),
             }
 
+            /** @type {Response|null} */
+            let response;
             try {
-                const response = await fetch(
+                response = await fetch(
                     download.url,
                     {
                         method: 'HEAD',
@@ -51,6 +53,15 @@ export default async function download(downloads, originURL) {
                     }
                 );
 
+                if (response.ok == false) {
+                    throw new Error(`Response is not OK! status: ${response.status}`);
+                }
+            } catch (error) {
+                console.error(error);
+                response = null;
+            }
+
+            try {
                 const contentType = response.headers.get('Content-Type');
                 const urlFilename = download.url.pathname.split('/').pop();
                 const estimatedFilenameType = mime.lookup(urlFilename);
@@ -97,8 +108,10 @@ export default async function download(downloads, originURL) {
         try {
             if (browser.downloads && browser.downloads.download) {
                 await browser.downloads.download({
-                    url: preparedDownload.url.href,
+                    conflictAction: 'prompt',
                     filename: preparedDownload.filename,
+                    saveAs: false,
+                    url: preparedDownload.url.href,
                 });
             } else {
                 if (
