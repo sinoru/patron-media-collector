@@ -4,7 +4,7 @@ export default function() {
     const post = nextData.props.pageProps.bootstrapEnvelope.pageBootstrap.post;
     const postIncluded = post.included.reduce(
         (accumulator, value) => {
-            if (value.type != "media" && value.type != "attachment") {
+            if (value.type != 'media' && value.type != 'attachment') {
                 return accumulator;
             }
 

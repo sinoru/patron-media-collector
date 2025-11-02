@@ -1,3 +1,5 @@
+import browser from '../common/browser.js';
+
 import _catch from '../common/catch.js';
 import download from '../common/download.js';
 

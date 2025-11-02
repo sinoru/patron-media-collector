@@ -1,5 +1,5 @@
 export default function() {
-    const aElements = document.querySelectorAll("article a[target='_blank']");
+    const aElements = document.querySelectorAll('article a[target="_blank"]');
 
     let media = [];
 

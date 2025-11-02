@@ -1,7 +1,6 @@
-import browser from 'webextension-polyfill';
 import url from './url.js';
 import { dataURLFromBlob, timeout } from './utils.js';
-import { fetchCurrentTab } from './browser.js';
+import { default as browser, fetchCurrentTab } from './browser.js';
 import mime from 'mime-types';
 
 const MAX_FILE_SIZE = 38_797_312; // ((4 * n / 3) + 3) & ~3 < 52_428_800
@@ -38,7 +37,7 @@ export default async function download(downloads, originURL) {
         downloads.map(async (_download) => {
             const download = {
                 filename: _download.filename,
-                url: new URL(_download.url),
+                url: URL.parse(_download.url),
             }
 
             try {
@@ -53,12 +52,23 @@ export default async function download(downloads, originURL) {
                 );
 
                 const contentType = response.headers.get('Content-Type');
-                if (contentType != null && mime.lookup(download.filename) != contentType) {
-                    download.filename = `${download.filename}.${mime.extension(contentType)}`
+                const urlFilename = download.url.pathname.split('/').pop();
+                const estimatedFilenameType = mime.lookup(urlFilename);
+                if (estimatedFilenameType && (estimatedFilenameType != mime.lookup(download.filename))) {
+                    const urlDownloadExtension = urlFilename.split('.').pop();
+                    download.filename = `${download.filename}.${urlDownloadExtension}`
                 }
 
-                if (download.url.host == _originURL.host) {
-                    return download
+                const estimatedExtension = mime.extension(contentType);
+                if (estimatedExtension && mime.extension(mime.lookup(download.filename)) != estimatedExtension) {
+                    download.filename = `${download.filename}.${estimatedExtension}`
+                }
+
+                if (
+                    (browser.downloads && browser.downloads.download) ||
+                    download.url.host == _originURL.host
+                ) {
+                    return download;
                 }
 
                 const estimatedFileSize = Number(response.headers.get('Content-Length'));
@@ -71,7 +81,7 @@ export default async function download(downloads, originURL) {
 
                 return {
                     ...download,
-                    url: dataURL,
+                    url: new URL(dataURL),
                 }
             } catch (error) {
                 console.error(error);

@@ -1,7 +1,5 @@
-import browser from 'webextension-polyfill';
-
 import _catch from '../common/catch.js';
-import { fetchCurrentTab } from '../common/browser.js';
+import { default as browser, fetchCurrentTab } from '../common/browser.js';
 
 import './popup.css';
 
