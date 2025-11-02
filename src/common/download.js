@@ -108,7 +108,6 @@ export default async function download(downloads, originURL) {
         try {
             if (browser.downloads && browser.downloads.download) {
                 await browser.downloads.download({
-                    conflictAction: 'prompt',
                     filename: preparedDownload.filename,
                     saveAs: false,
                     url: preparedDownload.url.href,
