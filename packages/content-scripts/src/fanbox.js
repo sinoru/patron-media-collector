@@ -1,5 +1,5 @@
 export default function() {
-    const aElements = document.querySelectorAll("article a[target='_blank']");
+    const aElements = document.querySelectorAll('article a[target="_blank"]');
 
     let media = [];
 
@@ -9,15 +9,15 @@ export default function() {
         if (aElement.querySelectorAll('img').length > 0) {
             media.push({
                 'type': 'image',
-                'download': `${String(imgCounter).padStart(2, '0')} - ${aElement.href.substring(aElement.href.lastIndexOf('/')+1)}`,
-                'href': aElement.href
+                'filename': `${String(imgCounter).padStart(2, '0')} - ${aElement.href.substring(aElement.href.lastIndexOf('/')+1)}`,
+                'url': URL.parse(aElement.href, location.href).toString()
             });
             imgCounter++;
         } else if (aElement.download) {
             media.push({
                 'type': 'application',
-                'download': aElement.download,
-                'href': aElement.href
+                'filename': aElement.download,
+                'url': URL.parse(aElement.href, location.href).toString()
             });
         }
     }

@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.0] - 2024-06-11
+
+### Changed
+
+- Updates dependent libraries ([commit](https://github.com/sinoru/patron-media-collector/commit/fe99777a), [commit](https://github.com/sinoru/patron-media-collector/commit/ab71524f))
+
+### Fixed
+
+- Fix issue not working on Patreon ([commit](https://github.com/sinoru/patron-media-collector/commit/6c647995))
+- Fix downloading not working on SubscribeStar.adult ([commit](https://github.com/sinoru/patron-media-collector/commit/a7e16cc1))
+
 ## [0.10] - 2024-03-05
 
 ### Changed
@@ -115,7 +126,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3] - 2024-02-09
 
-[unreleased]: https://github.com/sinoru/patron-media-collector/compare/v0.10...develop
+[unreleased]: https://github.com/sinoru/patron-media-collector/compare/v1.0...develop
+[1.0]: https://github.com/sinoru/patron-media-collector/compare/v0.10...v1.0
 [0.10]: https://github.com/sinoru/patron-media-collector/compare/v0.9.1...v0.10
 [0.9.1]: https://github.com/sinoru/patron-media-collector/compare/v0.9...v0.9.1
 [0.9]: https://github.com/sinoru/patron-media-collector/compare/v0.8...v0.9

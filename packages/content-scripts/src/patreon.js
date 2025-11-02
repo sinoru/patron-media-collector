@@ -1,10 +1,10 @@
 export default function() {
     const nextData = JSON.parse(document.getElementById('__NEXT_DATA__').text);
 
-    const post = nextData.props.pageProps.bootstrapEnvelope.bootstrap.post;
+    const post = nextData.props.pageProps.bootstrapEnvelope.pageBootstrap.post;
     const postIncluded = post.included.reduce(
         (accumulator, value) => {
-            if (value.type != "media" && value.type != "attachment") {
+            if (value.type != 'media' && value.type != 'attachment') {
                 return accumulator;
             }
 
@@ -25,13 +25,13 @@ export default function() {
     for (let image of images) {
         let imageAttributes = postIncluded[image.type][image.id].attributes;
 
-        media.push({'type': 'image', 'download': imageAttributes.file_name, 'href': imageAttributes.download_url});
+        media.push({'type': 'image', 'filename': imageAttributes.file_name, 'url': URL.parse(imageAttributes.download_url, location.href).toString()});
     }
 
     for (let attachment of attachments) {
         let attachmentAttributes = postIncluded[attachment.type][attachment.id].attributes;
 
-        media.push({'type': 'application', 'download': attachmentAttributes.name, 'href': attachmentAttributes.url});
+        media.push({'type': 'application', 'filename': attachmentAttributes.name, 'url': URL.parse(attachmentAttributes.url, location.href).toString()});
     }
 
     return media;

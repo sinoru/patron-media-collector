@@ -1,20 +1,16 @@
 import { resolve } from 'path';
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
+import { defineConfig, mergeConfig } from 'vite';
+import commonConfig from './vite.config.common.js';
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
-const root = './src'
-
-export default defineConfig(({ command, mode }) => {
-  return {
-    base: './',
+export default defineConfig((env) => mergeConfig(
+  commonConfig(env),
+  defineConfig({
     build: {
-      emptyOutDir: true,
-      modulePreload: false,
-      outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
         input: {
-          'background': resolve(__dirname, root, 'background/index.js'),
-          'content': resolve(__dirname, root, 'content/index.js'),
-          'popup': resolve(__dirname, root, 'popup/index.html'),
+          'background': resolve(__dirname, 'src/background/index.js'),
+          'popup': resolve(__dirname, 'src/popup/index.html'),
         },
         output: {
           entryFileNames: (chunkInfo) => {
@@ -28,26 +24,22 @@ export default defineConfig(({ command, mode }) => {
           manualChunks: (id) => {
             if (id.includes('src/common')) {
               return 'common'
+            } else if (id.includes('node_modules')) {
+              return 'vendor';
             }
           },
         },
       },
-      sourcemap: (() => {
-        switch (mode) {
-          case 'development':
-            return 'inline';
-          default:
-            return false;
-        }
-      })(),
-      target: [
-        'firefox115',
-        'safari15',
-        'ios15',
-        'chrome121',
-      ],
     },
-    plugins: [splitVendorChunkPlugin()],
-    root,
-  }
-});
+    plugins: [
+      nodePolyfills({
+        include: ['path'],
+        globals: {
+          Buffer: false,
+          global: false,
+          process: false,
+        },
+      }),
+    ],
+  }),
+));
