@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.0.1] - 2025-11-02
+
+### Fixed
+
+- Fix issue not working on Firefox
+
 ## [1.0] - 2024-06-11
 
 ### Changed
