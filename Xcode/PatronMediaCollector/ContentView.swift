@@ -78,6 +78,7 @@ struct ContentView: View {
                     NSApp.terminate(nil)
                 }
             }
+            .accessibilityIdentifier("ShowSafariPreferencesForExtension")
 
             #else
             Text("You can turn on \(Self.bundleName)’s Safari extension in Settings.")

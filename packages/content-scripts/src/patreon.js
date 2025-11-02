@@ -4,7 +4,7 @@ export default function() {
     const post = nextData.props.pageProps.bootstrapEnvelope.pageBootstrap.post;
     const postIncluded = post.included.reduce(
         (accumulator, value) => {
-            if (value.type != "media" && value.type != "attachment") {
+            if (value.type != 'media' && value.type != 'attachment') {
                 return accumulator;
             }
 
@@ -25,13 +25,13 @@ export default function() {
     for (let image of images) {
         let imageAttributes = postIncluded[image.type][image.id].attributes;
 
-        media.push({'type': 'image', 'filename': imageAttributes.file_name, 'url': new URL(imageAttributes.download_url, location.href)});
+        media.push({'type': 'image', 'filename': imageAttributes.file_name, 'url': URL.parse(imageAttributes.download_url, location.href).toString()});
     }
 
     for (let attachment of attachments) {
         let attachmentAttributes = postIncluded[attachment.type][attachment.id].attributes;
 
-        media.push({'type': 'application', 'filename': attachmentAttributes.name, 'url': new URL(attachmentAttributes.url, location.href)});
+        media.push({'type': 'application', 'filename': attachmentAttributes.name, 'url': URL.parse(attachmentAttributes.url, location.href).toString()});
     }
 
     return media;

@@ -10,5 +10,7 @@ git clone --depth 1 "https://github.com/nodenv/node-build.git" "$(nodenv root)"/
 
 pushd ..
 nodenv install
-nodenv exec npm ci --no-fund
+nodenv exec corepack enable pnpm
+nodenv rehash
+nodenv exec pnpm i
 popd

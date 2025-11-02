@@ -17,14 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - uses: actions/setup-node@v4
-      - run: npm install -g web-ext
-      - run: npm ci
-      - run: npm run build -- --mode development
+        with:
+          cache: 'pnpm'
+      - run: pnpm add -g web-ext
+      - run: pnpm i
+      - run: pnpm run build-workspaces --mode=development
         env:
           NODE_ENV: development
-      - run: npx web-ext lint
-      - run: npx web-ext build
+      - run: pnpm run build --mode=development
+        env:
+          NODE_ENV: development
+      - run: pnpm exec web-ext lint
+      - run: pnpm exec web-ext build
       - uses: actions/upload-artifact@v4
         with:
           name: dist

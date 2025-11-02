@@ -1,5 +1,5 @@
 export default function() {
-    const aElements = document.querySelectorAll("article a[target='_blank']");
+    const aElements = document.querySelectorAll('article a[target="_blank"]');
 
     let media = [];
 
@@ -10,14 +10,14 @@ export default function() {
             media.push({
                 'type': 'image',
                 'filename': `${String(imgCounter).padStart(2, '0')} - ${aElement.href.substring(aElement.href.lastIndexOf('/')+1)}`,
-                'url': new URL(aElement.href, location.href)
+                'url': URL.parse(aElement.href, location.href).toString()
             });
             imgCounter++;
         } else if (aElement.download) {
             media.push({
                 'type': 'application',
                 'filename': aElement.download,
-                'url': new URL(aElement.href, location.href)
+                'url': URL.parse(aElement.href, location.href).toString()
             });
         }
     }

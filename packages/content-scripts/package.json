@@ -1,0 +1,21 @@
+{
+  "name": "@patron-media-collector/content-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.12"
+  },
+  "webExt": {
+    "sourceDir": "dist/",
+    "artifactsDir": "dist/web-ext-artifacts"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "packageManager": "pnpm@9.9.0"
+}

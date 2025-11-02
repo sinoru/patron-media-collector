@@ -10,7 +10,7 @@ export default function() {
         media.push({
             'type': image.type,
             'filename': image.original_filename,
-            'url': new URL(image.url, location.href)
+            'url': URL.parse(image.url, location.href).toString()
         });
     }
 

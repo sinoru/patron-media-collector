@@ -1,9 +1,8 @@
+import browser from 'webextension-polyfill';
+
 import getFanboxMedia from './fanbox.js';
 import getPatreonMedia from './patreon.js';
 import getSubscribeStarMedia from './subscribe-star.js';
-
-/** @type {typeof import("webextension-polyfill")} */
-const browser = globalThis.browser ?? globalThis.chrome;
 
 /**
  * @param {string} uriString
@@ -64,17 +63,15 @@ function download(download) {
     document.body.removeChild(element);
 }
 
-browser.runtime.onMessage.addListener((message, sender) => {
-    console.log("Received request: ", message, sender);
-
+browser.runtime.onMessage.addListener((message, _, sendResponse) => {
     const [key, value] = Object.entries(message)[0];
 
     switch (key) {
         case 'download':
             download(value);
-            return;
+            sendResponse();
         default:
-            return;
+            return false;
     }
 });
 
